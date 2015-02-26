@@ -12,8 +12,13 @@ Drop in there the "Marvel" folder you've downloaded here:
 <h2>Screenshots:</h2>
 
 <p>
-<img align="center" src="http://i.imgur.com/9kR0XK4.png" alt="marvel sketch plugin login window">
+<img src="http://i.imgur.com/9kR0XK4.png" alt="marvel sketch plugin login window">
 </p>
+<p>
+<img src="http://i.imgur.com/ISAzgEZ.png" alt="marvel sketch plugin menu">
+</p>
+
+
 
 <h2>Important:</h2>
 
