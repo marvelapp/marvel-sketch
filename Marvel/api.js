@@ -97,22 +97,29 @@ function getTokenFromServer(email,password){
 		task.launch();
 		var outputData = [[outputPipe fileHandleForReading] readDataToEndOfFile];
 		
-		NSLog("Start output data");
+		NSLog("Output pipe finished");
 		
 		if(outputData) {
-				    		    
+		
+				NSLog("Convert output data to string")
+				var stringRead = [[NSString alloc] initWithData:outputData encoding:NSUTF8StringEncoding];
+				NSLog("Return data " + stringRead)
+				NSLog("Convert output data to string finished")
+				
+				NSLog("Convert output data to JSON")   		    
 			  var error;
 			  var res = [NSJSONSerialization JSONObjectWithData:outputData options:NSJSONReadingMutableLeaves error:error];
-			  
-			  var stringRead = [[NSString alloc] initWithData:outputData encoding:NSUTF8StringEncoding];
-			  NSLog("Return data " + stringRead)
+			  NSLog("Convert output data to JSON finished")   
 			  
 			  var token = res.token
 			  
+			  NSLog("Return token if exists")  
 			  if(token){
+			  		NSLog("Token exists and gets returned")  
 			  		return token
 			  } 
-			  		
+			  
+			  NSLog("Token does not exist")  		
 		} 
 		
 		return false;	
