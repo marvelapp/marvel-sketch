@@ -90,7 +90,7 @@ function getTokenFromServer(email,password){
 		var task = NSTask.alloc().init()
 		task.setLaunchPath("/usr/bin/curl");
 		
-		var args = NSArray.arrayWithObjects("-v", "POST", "--header", "User-Agent: Marvel/4.0 CFNetwork/711.1.16 Darwin/14.0.0", "--header", "Content-Type: application/x-www-form-urlencoded", "--data", "email=" + email + "&password=" + password, rootURL + "loginApp/", nil);
+		var args = NSArray.arrayWithObjects("-v", "POST", "--header", "User-Agent: Sketch", "--header", "Content-Type: application/x-www-form-urlencoded", "--data", "email=" + email + "&password=" + password, rootURL + "loginApp/", nil);
 		task.setArguments(args);
 		var outputPipe = [NSPipe pipe];
 		[task setStandardOutput:outputPipe];
