@@ -133,7 +133,7 @@ function getProjectNames() {
 	var task = NSTask.alloc().init()
 	task.setLaunchPath("/usr/bin/curl");
 	
-	var args = NSArray.arrayWithObjects("-v", "GET", "--header", "User-Agent: Marvel/4.0 CFNetwork/711.1.16 Darwin/14.0.0", "--header", "Content-Type: application/x-www-form-urlencoded", "--header", "Authorization: Token " + token, "--header", "HTTP_AUTHORIZATION: " + token, rootURL + "project/all/", nil);
+	var args = NSArray.arrayWithObjects("-v", "GET", "--header", "User-Agent: Sketch", "--header", "Content-Type: application/x-www-form-urlencoded", "--header", "Authorization: Token " + token, "--header", "HTTP_AUTHORIZATION: " + token, rootURL + "project/all/", nil);
 	task.setArguments(args);
 	var outputPipe = [NSPipe pipe];
 	[task setStandardOutput:outputPipe];
@@ -176,7 +176,7 @@ function getProjectId(position) {
 		var task = NSTask.alloc().init()
 		task.setLaunchPath("/usr/bin/curl");
 		
-		var args = NSArray.arrayWithObjects("-v", "GET", "--header", "User-Agent: Marvel/4.0 CFNetwork/711.1.16 Darwin/14.0.0", "--header", "Content-Type: application/x-www-form-urlencoded", "--header", "Authorization: Token " + token, "--header", "HTTP_AUTHORIZATION: " + token, rootURL + "project/all/", nil);
+		var args = NSArray.arrayWithObjects("-v", "GET", "--header", "User-Agent: Sketch", "--header", "Content-Type: application/x-www-form-urlencoded", "--header", "Authorization: Token " + token, "--header", "HTTP_AUTHORIZATION: " + token, rootURL + "project/all/", nil);
 		task.setArguments(args);
 		var outputPipe = [NSPipe pipe];
 		[task setStandardOutput:outputPipe];
@@ -223,7 +223,7 @@ function postFile(path, projectId, filename, uuid, width, height) {
 			var task = NSTask.alloc().init()
 			task.setLaunchPath("/usr/bin/curl");
 			
-			var args = NSArray.arrayWithObjects("-v", "POST", "--header", "Content-Type: multipart/form-data; boundary=0xKhTmLbOuNdArY", "--header", "Authorization: Token " + token, "--header", "HTTP_AUTHORIZATION: 373bd37e71c4b0e8ac8bf6c5f1de8fe14196f6c8", "--header", "User-Agent: Marvel/4.0 CFNetwork/711.1.16 Darwin/14.0.0", "--header", "width: " + width, "--header", "height: " + height, "-F", "Content-Disposition: form-data; name=file; filename=" + filename + "; Content-Type=image/png;", "-F", "file=@" + path, rootURL + "content/upload/sketch/" + projectId + "/" + uuid + "/", nil);
+			var args = NSArray.arrayWithObjects("-v", "POST", "--header", "Content-Type: multipart/form-data; boundary=0xKhTmLbOuNdArY", "--header", "Authorization: Token " + token, "--header", "HTTP_AUTHORIZATION: 373bd37e71c4b0e8ac8bf6c5f1de8fe14196f6c8", "--header", "User-Agent: Sketch", "--header", "width: " + width, "--header", "height: " + height, "-F", "Content-Disposition: form-data; name=file; filename=" + filename + "; Content-Type=image/png;", "-F", "file=@" + path, rootURL + "content/upload/sketch/" + projectId + "/" + uuid + "/", nil);
 						
 			task.setArguments(args);
 			//var outputPipe = [NSPipe pipe];
