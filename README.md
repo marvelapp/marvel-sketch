@@ -15,3 +15,6 @@ Drop in there the "Marvel" folder you've downloaded here:
 <img align="center" src="http://i.imgur.com/9kR0XK4.png" alt="marvel sketch plugin login window">
 </p>
 
+<h2>Important:</h2>
+
+<h2>Known bugs:</h2>
