@@ -4,4 +4,9 @@
 
 <h2>Screenshots:</h2>
 
+<h2>How to install:</h2>
+
+Go to Sketch, in the top menu go "Plugins" and select "Reveal plugins folder..."
+
+Drop in there the "Marvel" folder you've downloaded here: 
 
