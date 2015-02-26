@@ -57,8 +57,10 @@ function fireLoginWindow(){
 	      email: valAtIndex(alert, 1),
 	      password: valAtIndex(alert, 3)
 	    }
-	
+			
+			NSLog("Get Token From Server Start");
 			var token = getTokenFromServer(opts.email,opts.password)
+			NSLog("Get Token From Server End");
 			
 			if(token){
 				
@@ -84,7 +86,7 @@ function fireError(title,text){
 // Api Calls
 
 function getTokenFromServer(email,password){
-					
+							
 		var task = NSTask.alloc().init()
 		task.setLaunchPath("/usr/bin/curl");
 		
@@ -95,10 +97,15 @@ function getTokenFromServer(email,password){
 		task.launch();
 		var outputData = [[outputPipe fileHandleForReading] readDataToEndOfFile];
 		
+		NSLog("Start output data");
+		
 		if(outputData) {
 				    		    
 			  var error;
 			  var res = [NSJSONSerialization JSONObjectWithData:outputData options:NSJSONReadingMutableLeaves error:error];
+			  
+			  var stringRead = [[NSString alloc] initWithData:outputData encoding:NSUTF8StringEncoding];
+			  NSLog("Return data " + stringRead)
 			  
 			  var token = res.token
 			  
