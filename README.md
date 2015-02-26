@@ -13,7 +13,7 @@ Drop in there the "Marvel" folder you've downloaded here:
 <p><img src="http://i.imgur.com/Gw8VuPI.png" alt="marvel sketch plugin menu"></p>
 
 <h2>Important:</h2>
-<p>If you use <b>Dropbox</b> to login you first have to go to your Marvel account settings on <a href= "http://marvelapp.com">http://marvelapp.com</a></p>
+<p>If you normally use <b>Dropbox</b> to login into Marvel you first have to go to <a href= "https://marvelapp.com/manage/account/">https://marvelapp.com/manage/account/</a> and set a password in order to login without Dropbox on the Sketch plugin.</p>
 
 <h2>Known bugs:</h2>
 <p>If you artboard name starts with a blank space AND you have a second artboard with the same name but without a space in front of the name (" artboardname " and "artboard name"), the server might not upload your file. </p>
