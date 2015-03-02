@@ -41,7 +41,7 @@ function deleteActiveTokenFromComputer() {
 	
 	var fileManager = NSFileManager.defaultManager()
 	fileManager.removeItemAtPath_error(tokenPath,nil)
-
+	
 }
 
 function fireLoginWindow(){
@@ -204,6 +204,7 @@ function fireAlreadyLoggedInWindow(){
 			deleteActiveTokenFromComputer()
 	    [window orderOut:nil]
 	    [NSApp stopModal]
+	    fireLoginWindow()
 	}];
 	[logoutButton setAction:"callAction:"]
 	[[window contentView] addSubview:logoutButton]
