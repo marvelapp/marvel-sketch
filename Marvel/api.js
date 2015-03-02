@@ -23,6 +23,7 @@ SOFTWARE.*/
 var rootURL = "https://marvelapp.com/api/";
 var tokenPath = NSHomeDirectory() + "/.marvelToken"
 var pluginPath = sketch.scriptPath.substring(0, sketch.scriptPath.lastIndexOf('/'));
+var scriptPath = scriptPath || sketch.scriptPath;
 
 // Plugin Calls
 
@@ -37,29 +38,132 @@ function getActiveTokenFromComputer() {
 }
 
 function fireLoginWindow(){
+	
+	// create window
+	var window = [[NSWindow alloc] init]
+	[window setFrame:NSMakeRect(0, 0, 540, 332) display:false]
+	[window setBackgroundColor:NSColor.whiteColor()]
 		
-	var alert = createAlertBase();
+	//Image
+	function imageSuffix() {
+	   return isRetinaDisplay() ? "@2x" : "";
+	}
+	var imageFilePath=pluginPath + '/images/' + 'logo' + imageSuffix() + '.png';
+	var image = NSImage.alloc().initByReferencingFile(imageFilePath);
 	
-	alert.setMessageText("Login to Marvel");
-	alert.setInformativeText("After you are logged in to marvelapp.com you upload artboards to Marvel.");
+	var imageView = [[NSImageView alloc] initWithFrame:NSMakeRect(46, 124, 164, 149)];
+	[imageView setImage: image];
+	[[window contentView] addSubview:imageView];
 	
-	alert.addTextLabelWithValue("Email");
-	alert.addTextFieldWithValue("");
+	// create prompt text
+	var titleField = [[NSTextField alloc] initWithFrame:NSMakeRect(248, 249, 243, 17)]
+	[titleField setEditable:false]
+	[titleField setBordered:false]
+	[titleField setDrawsBackground:false]
+	[titleField setFont:[NSFont boldSystemFontOfSize:13]];
+	[titleField setStringValue:"Prototype with Sketch"]
+	[[window contentView] addSubview:titleField]
 	
-	alert.addTextLabelWithValue("Password");
-	alert.addTextFieldWithValue("");
+	// create prompt text
+	var subtitleField = [[NSTextField alloc] initWithFrame:NSMakeRect(248, 224, 243, 15)]
+	[subtitleField setEditable:false]
+	[subtitleField setBordered:false]
+	[subtitleField setFont:[NSFont systemFontOfSize:13]];
+	[subtitleField setTextColor:[NSColor colorWithCalibratedRed:(93/255) green:(93/255) blue:(93/255) alpha:1]];
+	[subtitleField setDrawsBackground:false]
+	[subtitleField setStringValue:"Sign in and sent artboards to Marvel!"]
+	[subtitleField sizeToFit]
+	[[window contentView] addSubview:subtitleField]
 	
-	var responseCode = alert.runModal();
+	var emailInputField = [[NSTextField alloc] initWithFrame:NSMakeRect(250, 181, 243, 23)]
+	[[emailInputField cell] setPlaceholderString:"Email"]
+	[[window contentView] addSubview:emailInputField]	
+	  
+	var passwordField = [[NSSecureTextField alloc] initWithFrame:NSMakeRect(250, 150, 243, 23)]
+	[[passwordField cell] setPlaceholderString:"Password"]
+	[[window contentView] addSubview:passwordField]	
 	
-	if (responseCode == "1000") {
+	var yPosButtons = 102;
 	
-	    var opts = {
-	      email: valAtIndex(alert, 1),
-	      password: valAtIndex(alert, 3)
-	    }
-			
+	var loginButton = [[NSButton alloc] initWithFrame:NSMakeRect(407, yPosButtons, 92, 46)]
+	[loginButton setTitle:"Login"]
+	[loginButton setBezelStyle:NSRoundedBezelStyle]
+	[loginButton setKeyEquivalent:"\r"]
+	[loginButton setCOSJSTargetFunction:function(sender) {
+	    [window orderOut:nil]
+	    [NSApp stopModal]
+	    
+	    var email = emailInputField.stringValue()
+	    var password = passwordField.stringValue()
+	    loginWithUsernameAndPassword(email, password)
+	}];
+	[loginButton setAction:"callAction:"]
+	[[window contentView] addSubview:loginButton]
+	
+	
+	var cancelButton = [[NSButton alloc] initWithFrame:NSMakeRect(321, yPosButtons, 92, 46)]
+	[cancelButton setTitle:"Cancel"]
+	[cancelButton setBezelStyle:NSRoundedBezelStyle]
+	[cancelButton setCOSJSTargetFunction:function(sender) {
+	    [window orderOut:nil]
+	    [NSApp stopModal]
+	}];
+	[cancelButton setAction:"callAction:"]
+	[[window contentView] addSubview:cancelButton]
+	
+
+	//Bottom Bar
+
+	var bottomActionsView = [[NSView alloc] initWithFrame:NSMakeRect(0, 0, 540, 79)];
+	bottomActionsView.setWantsLayer(true);
+	[[window contentView] addSubview:bottomActionsView];	
+	
+	var backgroundLayer = [CALayer layer];
+	[backgroundLayer setBackgroundColor:CGColorCreateGenericRGB(246/255, 246/255, 246/255, 1.0)]; //RGB plus Alpha Channel
+	[bottomActionsView setLayer:backgroundLayer]
+	
+	var borderLayer = [CALayer layer];
+	borderLayer.frame = CGRectMake(0, 78, 540, 1);
+	[borderLayer setBackgroundColor:CGColorCreateGenericRGB(220/255, 220/255, 220/255, 1.0)]; //RGB plus Alpha Channel
+	[backgroundLayer addSublayer:borderLayer];
+
+	//Create Marvel Button
+	
+	var createMarvelButton = [[NSButton alloc] initWithFrame:NSMakeRect(44, 23, 162, 32)]
+	[createMarvelButton setTitle:"Create Marvel account"]
+	[createMarvelButton setBezelStyle:NSRoundedBezelStyle]
+	[createMarvelButton setCOSJSTargetFunction:function(sender) {
+	    var url = [NSURL URLWithString:@"https://marvelapp.com/manage/account/"];
+	    if( ![[NSWorkspace sharedWorkspace] openURL:url] ){
+	        NSLog(@"Failed to open url:" + [url description])
+	    }    
+	}];
+	[createMarvelButton setAction:"callAction:"]
+	[bottomActionsView addSubview:createMarvelButton]
+	
+	
+	var createHelpButton = [[NSButton alloc] initWithFrame:NSMakeRect(470, 23, 32, 32)]
+	[createHelpButton setBezelStyle:NSHelpButtonBezelStyle]
+	[createHelpButton setTitle:nil]
+	[createHelpButton setCOSJSTargetFunction:function(sender) {
+	    var url = [NSURL URLWithString:@"http://marvel.helpscoutdocs.com/article/62-getting-started-with-the-marvel-sketch-plugin"];
+	    if( ![[NSWorkspace sharedWorkspace] openURL:url] ){
+	        NSLog(@"Failed to open url:" + [url description])
+	    }    
+	}];
+	[createHelpButton setAction:"callAction:"]
+	[bottomActionsView addSubview:createHelpButton]
+	
+
+	[window setDefaultButtonCell:[loginButton cell]];
+	
+	[NSApp runModalForWindow:window]
+}
+
+function loginWithUsernameAndPassword(email, password){
+
 			NSLog("Get Token From Server Start");
-			var token = getTokenFromServer(opts.email,opts.password)
+			var token = getTokenFromServer(email,password)
 			NSLog("Get Token From Server End");
 			
 			if(token){
@@ -73,14 +177,7 @@ function fireLoginWindow(){
 				var app = [NSApplication sharedApplication];
 				[app displayDialog:"If you sign into Marvel using Dropbox, you'll need to set a password for your account to use Sketch, head to My Profile in Marvel to set one up." withTitle:"Incorrect email or password."]
 			}
-	
-	 }
-	 
-}
-
-function fireError(title,text){
-		var app = [NSApplication sharedApplication];
-		[app displayDialog:text withTitle:title]
+			
 }
 
 // Api Calls
@@ -375,4 +472,9 @@ function sendArtboardOnArray(array){
 				}
 		}
 
+}
+
+function fireError(title,text){
+		var app = [NSApplication sharedApplication];
+		[app displayDialog:text withTitle:title]
 }
