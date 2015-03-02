@@ -37,6 +37,13 @@ function getActiveTokenFromComputer() {
 	}
 }
 
+function deleteActiveTokenFromComputer() {
+	
+	var fileManager = NSFileManager.defaultManager()
+	fileManager.removeItemAtPath_error(tokenPath,nil)
+
+}
+
 function fireLoginWindow(){
 	
 	// create window
@@ -156,6 +163,63 @@ function fireLoginWindow(){
 	
 
 	[window setDefaultButtonCell:[loginButton cell]];
+	
+	[NSApp runModalForWindow:window]
+}
+
+function fireAlreadyLoggedInWindow(){
+	
+	// create window
+	var window = [[NSWindow alloc] init]
+	[window setFrame:NSMakeRect(0, 0, 540, 332) display:false]
+	[window setBackgroundColor:NSColor.whiteColor()]
+	
+	// create prompt text
+	var titleField = [[NSTextField alloc] initWithFrame:NSMakeRect(0, 179, 540, 17)]
+	[titleField setEditable:false]
+	[titleField setBordered:false]
+	[titleField setAlignment:NSCenterTextAlignment] 
+	[titleField setDrawsBackground:false]
+	[titleField setFont:[NSFont boldSystemFontOfSize:13]];
+	[titleField setStringValue:"You are already logged in!"]
+	[[window contentView] addSubview:titleField]
+	
+	// create prompt text
+	var subtitleField = [[NSTextField alloc] initWithFrame:NSMakeRect(0, 140, 540, 30)]
+	[subtitleField setEditable:false]
+	[subtitleField setBordered:false]
+	[subtitleField setAlignment:NSCenterTextAlignment] 
+	[subtitleField setFont:[NSFont systemFontOfSize:13]];
+	[subtitleField setTextColor:[NSColor colorWithCalibratedRed:(93/255) green:(93/255) blue:(93/255) alpha:1]];
+	[subtitleField setDrawsBackground:false]
+	[subtitleField setStringValue:"Logout first if you would like to use a different account."]
+	[[window contentView] addSubview:subtitleField]
+	
+	var yPosButtons = 100;
+	
+	var logoutButton = [[NSButton alloc] initWithFrame:NSMakeRect(267, yPosButtons, 92, 46)]
+	[logoutButton setTitle:"Log out"]
+	[logoutButton setBezelStyle:NSRoundedBezelStyle]
+	[logoutButton setCOSJSTargetFunction:function(sender) {
+			deleteActiveTokenFromComputer()
+	    [window orderOut:nil]
+	    [NSApp stopModal]
+	}];
+	[logoutButton setAction:"callAction:"]
+	[[window contentView] addSubview:logoutButton]
+	
+	
+	var cancelButton = [[NSButton alloc] initWithFrame:NSMakeRect(181, yPosButtons, 92, 46)]
+	[cancelButton setTitle:"Cancel"]
+	[cancelButton setBezelStyle:NSRoundedBezelStyle]
+	[cancelButton setCOSJSTargetFunction:function(sender) {
+	    [window orderOut:nil]
+	    [NSApp stopModal]
+	}];
+	[cancelButton setAction:"callAction:"]
+	[[window contentView] addSubview:cancelButton]
+
+	[window setDefaultButtonCell:[logoutButton cell]];
 	
 	[NSApp runModalForWindow:window]
 }
