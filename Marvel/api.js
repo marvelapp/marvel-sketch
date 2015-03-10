@@ -225,6 +225,106 @@ function fireAlreadyLoggedInWindow(){
 	[NSApp runModalForWindow:window]
 }
 
+function fireSendArtboards(projectsArray, all){
+	
+	var window = [[NSWindow alloc] init]
+	[window setFrame:NSMakeRect(0, 0, 485, 333) display:false]
+	[window setBackgroundColor:NSColor.whiteColor()]
+	
+	var titleField = [[NSTextField alloc] initWithFrame:NSMakeRect(74, 225, 540, 17)]
+	[titleField setEditable:false]
+	[titleField setBordered:false]
+	[titleField setDrawsBackground:false]
+	[titleField setFont:[NSFont boldSystemFontOfSize:13]];
+	[titleField setStringValue:"Export settings"]
+	[[window contentView] addSubview:titleField]
+
+	var yDropdowns = 170;
+	
+	var projectPopup = [[NSPopUpButton alloc] initWithFrame:NSMakeRect(74, yDropdowns, 266, 26)]
+	[projectPopup removeAllItems]
+	[projectPopup setFocusRingType:NSFocusRingTypeNone]
+	[projectPopup addItemsWithTitles:projectsArray]
+	[projectPopup selectItemAtIndex:0]
+	[[window contentView] addSubview:projectPopup]
+	
+	var subtitleField = [[NSTextField alloc] initWithFrame:NSMakeRect(74, yDropdowns - 28, 266, 26)]
+	[subtitleField setEditable:false]
+	[subtitleField setBordered:false]
+	[subtitleField setAlignment:NSCenterTextAlignment] 
+	[subtitleField setFont:[NSFont systemFontOfSize:11]];
+	[subtitleField setTextColor:[NSColor colorWithCalibratedRed:(93/255) green:(93/255) blue:(93/255) alpha:1]];
+	[subtitleField setDrawsBackground:false]
+	[subtitleField setStringValue:"Project"]
+	[[window contentView] addSubview:subtitleField]
+
+	var pluralNounPopup = [[NSComboBox alloc] initWithFrame:NSMakeRect(345, yDropdowns, 78, 26)]
+	var pluralNouns  = ["1x", "1.5x", "2x", "0.5x"]
+	[pluralNounPopup removeAllItems]
+	[pluralNounPopup setFocusRingType:NSFocusRingTypeNone]
+	[pluralNounPopup addItemsWithObjectValues:pluralNouns]
+	[pluralNounPopup selectItemAtIndex:0]
+	[[window contentView] addSubview:pluralNounPopup]
+	
+	var subtitleField2 = [[NSTextField alloc] initWithFrame:NSMakeRect(345, yDropdowns - 28, 78, 26)]
+	[subtitleField2 setEditable:false]
+	[subtitleField2 setBordered:false]
+	[subtitleField2 setAlignment:NSCenterTextAlignment] 
+	[subtitleField2 setFont:[NSFont systemFontOfSize:11]];
+	[subtitleField2 setTextColor:[NSColor colorWithCalibratedRed:(93/255) green:(93/255) blue:(93/255) alpha:1]];
+	[subtitleField2 setDrawsBackground:false]
+	[subtitleField2 setStringValue:"Size"]
+	[[window contentView] addSubview:subtitleField2]
+	
+		var bottomActionsView = [[NSView alloc] initWithFrame:NSMakeRect(74, 112, 348, 1)]
+	bottomActionsView.setWantsLayer(true)
+	[[window contentView] addSubview:bottomActionsView]	
+		
+	var borderLayer = [CALayer layer]
+	borderLayer.frame = CGRectMake(0, 1, 348, 1)
+	[borderLayer setBackgroundColor:CGColorCreateGenericRGB(220/255, 220/255, 220/255, 1.0)]
+	[bottomActionsView setLayer:borderLayer];
+
+	var yPosButtons = 45;
+	
+	var sendButton = [[NSButton alloc] initWithFrame:NSMakeRect(295, yPosButtons, 134, 46)]
+	[sendButton setTitle:"Send or update"]
+	[sendButton setBezelStyle:NSRoundedBezelStyle]
+	[sendButton setCOSJSTargetFunction:function(sender) {
+			deleteActiveTokenFromComputer()
+	    [window orderOut:nil]
+	    [NSApp stopModal]
+	    
+	    if(all == 1){
+	    		//var projectId = getProjectId(choice)
+	    		//exportAllArtboardsAndSendTo(projectId)
+	    } else {
+	       
+	       // not all
+	       
+	    }
+	    fireLoginWindow()
+	}];
+	[sendButton setAction:"callAction:"]
+	[[window contentView] addSubview:sendButton]
+	
+	
+	var cancelButton = [[NSButton alloc] initWithFrame:NSMakeRect(225, yPosButtons, 76, 46)]
+	[cancelButton setTitle:"Cancel"]
+	[cancelButton setBezelStyle:NSRoundedBezelStyle]
+	[cancelButton setCOSJSTargetFunction:function(sender) {
+	    [window orderOut:nil]
+	    [NSApp stopModal]
+	}];
+	[cancelButton setAction:"callAction:"]
+	[[window contentView] addSubview:cancelButton]
+
+	[window setDefaultButtonCell:[sendButton cell]];
+	
+	[NSApp runModalForWindow:window]
+	
+}
+
 function loginWithUsernameAndPassword(email, password){
 
 			NSLog("Get Token From Server Start");
@@ -291,7 +391,9 @@ function getTokenFromServer(email,password){
 function getProjectNames() {
 	
 	var token = getActiveTokenFromComputer()
-		
+	
+	NSLog("token is " + token);
+	
 	var task = NSTask.alloc().init()
 	task.setLaunchPath("/usr/bin/curl");
 	
@@ -307,6 +409,14 @@ function getProjectNames() {
 		  var error;
 		  var res = [NSJSONSerialization JSONObjectWithData:outputData options:NSJSONReadingMutableLeaves error:error];
 		  
+		  
+		 NSLog("Convert output data to string")
+		var stringRead = [[NSString alloc] initWithData:outputData encoding:NSUTF8StringEncoding];
+		NSLog("Return data " + stringRead)
+		NSLog("Convert output data to string finished")
+
+
+
 		  if(res.count() > 0){
 		   
 		   	var projects = [];
@@ -327,53 +437,6 @@ function getProjectNames() {
 	
 	return false;	
 			
-}
-
-function getProjectId(position) {
-	
-		NSLog("Get project id")
-		
-		var token = getActiveTokenFromComputer()
-			
-		var task = NSTask.alloc().init()
-		task.setLaunchPath("/usr/bin/curl");
-		
-		var args = NSArray.arrayWithObjects("-v", "GET", "--header", "User-Agent: Sketch", "--header", "Content-Type: application/x-www-form-urlencoded", "--header", "Authorization: Token " + token, "--header", "HTTP_AUTHORIZATION: " + token, rootURL + "project/all/", nil);
-		task.setArguments(args);
-		var outputPipe = [NSPipe pipe];
-		[task setStandardOutput:outputPipe];
-		task.launch();
-		var outputData = [[outputPipe fileHandleForReading] readDataToEndOfFile];
-		
-		if(outputData) {
-				    		    
-			  var error;
-			  var res = [NSJSONSerialization JSONObjectWithData:outputData options:NSJSONReadingMutableLeaves error:error];
-			  
-			  if(res.count() > 0){
-			   
-			   	var projects = [];
-			   	for (var i = 0; i < res.count(); i++) {
-			   		
-			   		if(i== position){
-			   			var project = res[i]
-			   			projects.push(project.id)
-			   		}	
-			   		
-			   	}
-			   	
-			   	 return projects;
-			   	 
-			   } else {
-			   	
-			   	return false
-			   	
-			  }
-		
-		} 
-		
-		return false;
-		
 }
 
 function postFile(path, projectId, filename, uuid, width, height) {
@@ -485,8 +548,7 @@ function exportArtboardsAndSendTo(projectId) {
 				  return false
 				}
 		
-	sendArtboardOnArray(selection)
-
+	sendArtboardOnArray(selection, 1)
 
 }
 
@@ -515,11 +577,11 @@ function exportAllArtboardsAndSendTo(projectId) {
 				
 					}
 			
-		sendArtboardOnArray(artboards)
+		sendArtboardOnArray(artboards, 1)
 				
 }
 
-function sendArtboardOnArray(array){
+function sendArtboardOnArray(array, scale){
 
 		var loopFinal = [array objectEnumerator];
 		
@@ -528,15 +590,27 @@ function sendArtboardOnArray(array){
 				if (item.className() == "MSArtboardGroup") {
 				
 				var filename = [item name] + ".png"
-				
 				NSLog("Artboard found with name " + filename + " and object id " + item.objectID())
 				var path = NSTemporaryDirectory() + filename
-				[doc saveArtboardOrSlice:item toFile: path];
+				var version = copy_layer_with_factor(item, scale);
+				[doc saveArtboardOrSlice: version toFile:path];
+				
 				postFile(path, projectId, filename,item.objectID(), [[item frame] width], [[item frame] height])
 				
 				}
 		}
 
+}
+
+function copy_layer_with_factor(original_slice, factor){
+    var copy = [original_slice duplicate];
+    var frame = [copy frame];
+
+    var rect = [copy absoluteDirtyRect],
+    slice = [MSExportRequest requestWithRect:rect scale:factor];
+
+    [copy removeFromParent];
+    return slice;
 }
 
 function fireError(title,text){

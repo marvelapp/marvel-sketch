@@ -30,9 +30,4 @@ if (getActiveTokenFromComputer() == false) {
 
 var projectNames = getProjectNames()
 
-var choice = createSelect('Choose a project...', projectNames, nil)
-
-if(choice != nil){
-	var projectId = getProjectId(choice)
-	exportAllArtboardsAndSendTo(projectId)
-}
+fireSendArtboards(projectNames, 1)
