@@ -31,7 +31,11 @@ function getActiveTokenFromComputer() {
 	var fileExists = NSFileManager.defaultManager().fileExistsAtPath(tokenPath);
 	if (fileExists) {
 		var token = NSString.stringWithContentsOfFile_encoding_error(tokenPath,NSUTF8StringEncoding,nil)
-		return token
+		if(token){
+			return token
+		} else {
+			return false
+		}
 	} else {
 		return false;
 	}
@@ -44,7 +48,7 @@ function deleteActiveTokenFromComputer() {
 	
 }
 
-function fireLoginWindow(){
+function fireLoginWindow(showResponse){
 	
 	// create window
 	var window = [[NSWindow alloc] init]
@@ -102,7 +106,7 @@ function fireLoginWindow(){
 	    
 	    var email = emailInputField.stringValue()
 	    var password = passwordField.stringValue()
-	    loginWithUsernameAndPassword(email, password)
+	    loginWithUsernameAndPassword(email, password, showResponse)
 	}];
 	[loginButton setAction:"callAction:"]
 	[[window contentView] addSubview:loginButton]
@@ -227,6 +231,8 @@ function fireAlreadyLoggedInWindow(){
 
 function fireSendArtboards(projectsArray, all){
 	
+	NSLog("Trigger Send Artboards");
+		
 	var window = [[NSWindow alloc] init]
 	[window setFrame:NSMakeRect(0, 0, 485, 333) display:false]
 	[window setBackgroundColor:NSColor.whiteColor()]
@@ -244,7 +250,11 @@ function fireSendArtboards(projectsArray, all){
 	var projectPopup = [[NSPopUpButton alloc] initWithFrame:NSMakeRect(74, yDropdowns, 266, 26)]
 	[projectPopup removeAllItems]
 	[projectPopup setFocusRingType:NSFocusRingTypeNone]
-	[projectPopup addItemsWithTitles:projectsArray]
+	var projectNames = [];
+	for (i = 0; i < projectsArray.length; ++i) {
+			projectNames.push(projectsArray[i].name);
+	}
+	[projectPopup addItemsWithTitles:projectNames]
 	[projectPopup selectItemAtIndex:0]
 	[[window contentView] addSubview:projectPopup]
 	
@@ -276,7 +286,7 @@ function fireSendArtboards(projectsArray, all){
 	[subtitleField2 setStringValue:"Size"]
 	[[window contentView] addSubview:subtitleField2]
 	
-		var bottomActionsView = [[NSView alloc] initWithFrame:NSMakeRect(74, 112, 348, 1)]
+	var bottomActionsView = [[NSView alloc] initWithFrame:NSMakeRect(74, 112, 348, 1)]
 	bottomActionsView.setWantsLayer(true)
 	[[window contentView] addSubview:bottomActionsView]	
 		
@@ -291,19 +301,34 @@ function fireSendArtboards(projectsArray, all){
 	[sendButton setTitle:"Send or update"]
 	[sendButton setBezelStyle:NSRoundedBezelStyle]
 	[sendButton setCOSJSTargetFunction:function(sender) {
-			deleteActiveTokenFromComputer()
 	    [window orderOut:nil]
 	    [NSApp stopModal]
 	    
 	    if(all == 1){
-	    		//var projectId = getProjectId(choice)
-	    		//exportAllArtboardsAndSendTo(projectId)
+					
+					NSLog("Send All Artboards");
+					
+	    		for (i = 0; i < projectsArray.length; ++i) {
+	    				
+	    				if (projectPopup.titleOfSelectedItem() == projectsArray[i].name){
+	    						exportAllArtboardsAndSendTo(projectsArray[i].id, 1)
+	    				}
+	    				
+	    		}
+
 	    } else {
 	       
-	       // not all
+	       NSLog("Send Artboards");
+	       
+	       for (i = 0; i < projectsArray.length; ++i) {
+	       		
+	       		if (projectPopup.titleOfSelectedItem() == projectsArray[i].name){
+	       				exportArtboardsAndSendTo(projectsArray[i].id, 1)
+	       		}
+	       		
+	       }
 	       
 	    }
-	    fireLoginWindow()
 	}];
 	[sendButton setAction:"callAction:"]
 	[[window contentView] addSubview:sendButton]
@@ -325,7 +350,7 @@ function fireSendArtboards(projectsArray, all){
 	
 }
 
-function loginWithUsernameAndPassword(email, password){
+function loginWithUsernameAndPassword(email, password, showResponse){
 
 			NSLog("Get Token From Server Start");
 			var token = getTokenFromServer(email,password)
@@ -336,8 +361,11 @@ function loginWithUsernameAndPassword(email, password){
 				var fileManager = NSFileManager.defaultManager()
 				fileManager.createFileAtPath_contents_attributes(tokenPath, token, nil)
 				
-				var app = [NSApplication sharedApplication];
-				[app displayDialog:"Select your artboards, go to plugins > Marvel > Send to Project..." withTitle:"You are now logged in."]
+				if(showResponse){
+					var app = [NSApplication sharedApplication];
+					[app displayDialog:"Select your artboards, go to plugins > Marvel > Send to Project..." withTitle:"You are now logged in."]
+				}
+				
 			} else {
 				var app = [NSApplication sharedApplication];
 				[app displayDialog:"If you sign into Marvel using Dropbox, you'll need to set a password for your account to use Sketch, head to My Profile in Marvel to set one up." withTitle:"Incorrect email or password."]
@@ -388,7 +416,7 @@ function getTokenFromServer(email,password){
 
 }
 
-function getProjectNames() {
+function getProjectNamesArray() {
 	
 	var token = getActiveTokenFromComputer()
 	
@@ -396,35 +424,33 @@ function getProjectNames() {
 	
 	var task = NSTask.alloc().init()
 	task.setLaunchPath("/usr/bin/curl");
-	
+		
 	var args = NSArray.arrayWithObjects("-v", "GET", "--header", "User-Agent: Sketch", "--header", "Content-Type: application/x-www-form-urlencoded", "--header", "Authorization: Token " + token, "--header", "HTTP_AUTHORIZATION: " + token, rootURL + "project/all/", nil);
 	task.setArguments(args);
 	var outputPipe = [NSPipe pipe];
 	[task setStandardOutput:outputPipe];
 	task.launch();
 	var outputData = [[outputPipe fileHandleForReading] readDataToEndOfFile];
-	
+		
 	if(outputData) {
-			    		    
-		  var error;
-		  var res = [NSJSONSerialization JSONObjectWithData:outputData options:NSJSONReadingMutableLeaves error:error];
+
+		var error;
+				
+		var res = [NSJSONSerialization JSONObjectWithData:outputData options:NSJSONReadingMutableLeaves error:error];
 		  
-		  
-		 NSLog("Convert output data to string")
+		NSLog("Convert output data to string")
 		var stringRead = [[NSString alloc] initWithData:outputData encoding:NSUTF8StringEncoding];
 		NSLog("Return data " + stringRead)
 		NSLog("Convert output data to string finished")
-
-
 
 		  if(res.count() > 0){
 		   
 		   	var projects = [];
 		   	for (var i = 0; i < res.count(); i++) {
 		   		var project = res[i]
-		   		projects.push(project.name)
+		   		projects.push({name: project.name, id: project.id})
 		   	}
-		   	
+
 		   	return projects;
 		   	 
 		   } else {
@@ -515,7 +541,7 @@ function createSelect(msg, items, selectedItemIndex){
   
 }
 
-function exportArtboardsAndSendTo(projectId) {
+function exportArtboardsAndSendTo(projectId, scale) {
 	
 	NSLog("Export All Artboards and send to project with id " + projectId)
 
@@ -548,11 +574,11 @@ function exportArtboardsAndSendTo(projectId) {
 				  return false
 				}
 		
-	sendArtboardOnArray(selection, 1)
+	sendArtboardOnArray(selection, scale, projectId)
 
 }
 
-function exportAllArtboardsAndSendTo(projectId) {
+function exportAllArtboardsAndSendTo(projectId, scale) {
 		
 		NSLog("Export All Artboards and send to project with id " + projectId)
 					
@@ -577,11 +603,11 @@ function exportAllArtboardsAndSendTo(projectId) {
 				
 					}
 			
-		sendArtboardOnArray(artboards, 1)
+					sendArtboardOnArray(artboards, scale, projectId)
 				
 }
 
-function sendArtboardOnArray(array, scale){
+function sendArtboardOnArray(array, scale, projectId){
 
 		var loopFinal = [array objectEnumerator];
 		
