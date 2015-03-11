@@ -22,6 +22,7 @@ SOFTWARE.*/
 
 var rootURL = "https://marvelapp.com/api/";
 var tokenPath = NSHomeDirectory() + "/.marvelToken"
+var scaleSettingsPath = NSHomeDirectory() + "/.marvelScaleSettings"
 var pluginPath = sketch.scriptPath.substring(0, sketch.scriptPath.lastIndexOf('/'));
 var scriptPath = scriptPath || sketch.scriptPath;
 
@@ -42,10 +43,27 @@ function getActiveTokenFromComputer() {
 }
 
 function deleteActiveTokenFromComputer() {
-	
 	var fileManager = NSFileManager.defaultManager()
 	fileManager.removeItemAtPath_error(tokenPath,nil)
-	
+}
+
+function getScaleSettingFromComputer() {
+	var fileExists = NSFileManager.defaultManager().fileExistsAtPath(scaleSettingsPath);
+	if (fileExists) {
+		var scale = NSString.stringWithContentsOfFile_encoding_error(scaleSettingsPath,NSUTF8StringEncoding,nil)
+		if(scale){
+			return scale
+		} else {
+			return false
+		}
+	} else {
+		return false;
+	}
+}
+
+function saveScaleSetting(value){
+	var fileManager = NSFileManager.defaultManager()
+	fileManager.createFileAtPath_contents_attributes(scaleSettingsPath, value, nil)
 }
 
 function fireLoginWindow(){
@@ -274,8 +292,24 @@ function fireSendArtboards(projectsArray, all){
 	[pluralNounPopup removeAllItems]
 	[pluralNounPopup setFocusRingType:NSFocusRingTypeNone]
 	[pluralNounPopup addItemsWithObjectValues:pluralNouns]
-	[pluralNounPopup selectItemAtIndex:0]
 	[[windowSendArtboards contentView] addSubview:pluralNounPopup]
+		
+	var scale = getScaleSettingFromComputer();
+		
+	var foundIndex = 0;
+	for (i = 0; i < pluralNouns.length; ++i) {
+			if(scale == pluralNouns[i]){
+				[pluralNounPopup selectItemAtIndex:i]
+				foundIndex = 1
+			}
+	}
+		
+	if(foundIndex != 1){
+			[pluralNounPopup insertItemWithObjectValue:scale atIndex:0];
+			[pluralNounPopup selectItemAtIndex:0]
+	}
+
+	
 	
 	var subtitleField2 = [[NSTextField alloc] initWithFrame:NSMakeRect(345, yDropdowns - 28, 78, 26)]
 	[subtitleField2 setEditable:false]
@@ -323,6 +357,7 @@ function fireSendArtboards(projectsArray, all){
 	    						   [app displayDialog:"Try again without" withTitle:"We don't support w or h characters for scaling at this moment"]
 	    						} else {
 	    							exportAllArtboardsAndSendTo(projectsArray[i].id, export_scale_factor)
+	    							saveScaleSetting(str)
 	    							[windowSendArtboards orderOut:nil]
 	    							[NSApp stopModal] 
 	    						}
@@ -351,6 +386,7 @@ function fireSendArtboards(projectsArray, all){
 	       				   [app displayDialog:"Try again without" withTitle:"We don't support w or h characters for scaling at this moment"]
 	       				} else {
 	       					exportArtboardsAndSendTo(projectsArray[i].id, export_scale_factor)
+	       					saveScaleSetting(str)
 	       					[windowSendArtboards orderOut:nil]
 	       					[NSApp stopModal] 
 	       				}
