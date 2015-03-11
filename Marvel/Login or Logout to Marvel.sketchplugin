@@ -23,7 +23,7 @@ SOFTWARE.*/
 #import 'api.js'
 
 if (getActiveTokenFromComputer() == false) {
-	fireLoginWindow(1)
+	fireLoginWindow()
 } else {
 	fireAlreadyLoggedInWindow()
 }

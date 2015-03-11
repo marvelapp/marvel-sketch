@@ -25,10 +25,8 @@ SOFTWARE.*/
 #import 'api.js'
 
 if (getActiveTokenFromComputer() == false) {
-	fireLoginWindow(0)
-}
-
-if (getActiveTokenFromComputer()) {
+	fireLoginWindow()
+} else {
 	var projectNamesArray = getProjectNamesArray()
 	fireSendArtboards(projectNamesArray, 0)
 }

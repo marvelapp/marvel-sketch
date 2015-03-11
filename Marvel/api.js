@@ -48,12 +48,12 @@ function deleteActiveTokenFromComputer() {
 	
 }
 
-function fireLoginWindow(showResponse){
+function fireLoginWindow(){
 	
 	// create window
-	var window = [[NSWindow alloc] init]
-	[window setFrame:NSMakeRect(0, 0, 540, 332) display:false]
-	[window setBackgroundColor:NSColor.whiteColor()]
+	var loginWindow = [[NSWindow alloc] init]
+	[loginWindow setFrame:NSMakeRect(0, 0, 540, 332) display:false]
+	[loginWindow setBackgroundColor:NSColor.whiteColor()]
 		
 	//Image
 	function imageSuffix() {
@@ -64,7 +64,7 @@ function fireLoginWindow(showResponse){
 	
 	var imageView = [[NSImageView alloc] initWithFrame:NSMakeRect(46, 124, 164, 149)];
 	[imageView setImage: image];
-	[[window contentView] addSubview:imageView];
+	[[loginWindow contentView] addSubview:imageView];
 	
 	// create prompt text
 	var titleField = [[NSTextField alloc] initWithFrame:NSMakeRect(248, 249, 243, 17)]
@@ -73,7 +73,7 @@ function fireLoginWindow(showResponse){
 	[titleField setDrawsBackground:false]
 	[titleField setFont:[NSFont boldSystemFontOfSize:13]];
 	[titleField setStringValue:"Prototype with Sketch"]
-	[[window contentView] addSubview:titleField]
+	[[loginWindow contentView] addSubview:titleField]
 	
 	// create prompt text
 	var subtitleField = [[NSTextField alloc] initWithFrame:NSMakeRect(248, 224, 243, 15)]
@@ -84,15 +84,15 @@ function fireLoginWindow(showResponse){
 	[subtitleField setDrawsBackground:false]
 	[subtitleField setStringValue:"Sign in and sent artboards to Marvel!"]
 	[subtitleField sizeToFit]
-	[[window contentView] addSubview:subtitleField]
+	[[loginWindow contentView] addSubview:subtitleField]
 	
 	var emailInputField = [[NSTextField alloc] initWithFrame:NSMakeRect(250, 181, 243, 23)]
 	[[emailInputField cell] setPlaceholderString:"Email"]
-	[[window contentView] addSubview:emailInputField]	
+	[[loginWindow contentView] addSubview:emailInputField]	
 	  
 	var passwordField = [[NSSecureTextField alloc] initWithFrame:NSMakeRect(250, 150, 243, 23)]
 	[[passwordField cell] setPlaceholderString:"Password"]
-	[[window contentView] addSubview:passwordField]	
+	[[loginWindow contentView] addSubview:passwordField]	
 	
 	var yPosButtons = 102;
 	
@@ -101,33 +101,32 @@ function fireLoginWindow(showResponse){
 	[loginButton setBezelStyle:NSRoundedBezelStyle]
 	[loginButton setKeyEquivalent:"\r"]
 	[loginButton setCOSJSTargetFunction:function(sender) {
-	    [window orderOut:nil]
+	    [loginWindow orderOut:nil]
 	    [NSApp stopModal]
-	    
 	    var email = emailInputField.stringValue()
 	    var password = passwordField.stringValue()
-	    loginWithUsernameAndPassword(email, password, showResponse)
+	    loginWithUsernameAndPassword(email, password)
 	}];
 	[loginButton setAction:"callAction:"]
-	[[window contentView] addSubview:loginButton]
+	[[loginWindow contentView] addSubview:loginButton]
 	
 	
 	var cancelButton = [[NSButton alloc] initWithFrame:NSMakeRect(321, yPosButtons, 92, 46)]
 	[cancelButton setTitle:"Cancel"]
 	[cancelButton setBezelStyle:NSRoundedBezelStyle]
 	[cancelButton setCOSJSTargetFunction:function(sender) {
-	    [window orderOut:nil]
+	    [loginWindow orderOut:nil]
 	    [NSApp stopModal]
 	}];
 	[cancelButton setAction:"callAction:"]
-	[[window contentView] addSubview:cancelButton]
+	[[loginWindow contentView] addSubview:cancelButton]
 	
 
 	//Bottom Bar
 
 	var bottomActionsView = [[NSView alloc] initWithFrame:NSMakeRect(0, 0, 540, 79)];
 	bottomActionsView.setWantsLayer(true);
-	[[window contentView] addSubview:bottomActionsView];	
+	[[loginWindow contentView] addSubview:bottomActionsView];	
 	
 	var backgroundLayer = [CALayer layer];
 	[backgroundLayer setBackgroundColor:CGColorCreateGenericRGB(246/255, 246/255, 246/255, 1.0)]; //RGB plus Alpha Channel
@@ -166,17 +165,18 @@ function fireLoginWindow(showResponse){
 	[bottomActionsView addSubview:createHelpButton]
 	
 
-	[window setDefaultButtonCell:[loginButton cell]];
+	[loginWindow setDefaultButtonCell:[loginButton cell]];
 	
-	[NSApp runModalForWindow:window]
+	[NSApp runModalForWindow:loginWindow]
+	
 }
 
 function fireAlreadyLoggedInWindow(){
 	
 	// create window
-	var window = [[NSWindow alloc] init]
-	[window setFrame:NSMakeRect(0, 0, 540, 332) display:false]
-	[window setBackgroundColor:NSColor.whiteColor()]
+	var alreadyLoggedInWindow = [[NSWindow alloc] init]
+	[alreadyLoggedInWindow setFrame:NSMakeRect(0, 0, 540, 332) display:false]
+	[alreadyLoggedInWindow setBackgroundColor:NSColor.whiteColor()]
 	
 	// create prompt text
 	var titleField = [[NSTextField alloc] initWithFrame:NSMakeRect(0, 179, 540, 17)]
@@ -186,7 +186,7 @@ function fireAlreadyLoggedInWindow(){
 	[titleField setDrawsBackground:false]
 	[titleField setFont:[NSFont boldSystemFontOfSize:13]];
 	[titleField setStringValue:"You are already logged in!"]
-	[[window contentView] addSubview:titleField]
+	[[alreadyLoggedInWindow contentView] addSubview:titleField]
 	
 	// create prompt text
 	var subtitleField = [[NSTextField alloc] initWithFrame:NSMakeRect(0, 140, 540, 30)]
@@ -197,7 +197,7 @@ function fireAlreadyLoggedInWindow(){
 	[subtitleField setTextColor:[NSColor colorWithCalibratedRed:(93/255) green:(93/255) blue:(93/255) alpha:1]];
 	[subtitleField setDrawsBackground:false]
 	[subtitleField setStringValue:"Logout first if you would like to use a different account."]
-	[[window contentView] addSubview:subtitleField]
+	[[alreadyLoggedInWindow contentView] addSubview:subtitleField]
 	
 	var yPosButtons = 100;
 	
@@ -206,36 +206,37 @@ function fireAlreadyLoggedInWindow(){
 	[logoutButton setBezelStyle:NSRoundedBezelStyle]
 	[logoutButton setCOSJSTargetFunction:function(sender) {
 			deleteActiveTokenFromComputer()
-	    [window orderOut:nil]
+	    [alreadyLoggedInWindow orderOut:nil]
 	    [NSApp stopModal]
 	    fireLoginWindow()
 	}];
 	[logoutButton setAction:"callAction:"]
-	[[window contentView] addSubview:logoutButton]
+	[[alreadyLoggedInWindow contentView] addSubview:logoutButton]
 	
 	
 	var cancelButton = [[NSButton alloc] initWithFrame:NSMakeRect(181, yPosButtons, 92, 46)]
 	[cancelButton setTitle:"Cancel"]
 	[cancelButton setBezelStyle:NSRoundedBezelStyle]
 	[cancelButton setCOSJSTargetFunction:function(sender) {
-	    [window orderOut:nil]
+	    [alreadyLoggedInWindow  orderOut:nil]
 	    [NSApp stopModal]
 	}];
 	[cancelButton setAction:"callAction:"]
-	[[window contentView] addSubview:cancelButton]
+	[[alreadyLoggedInWindow contentView] addSubview:cancelButton]
 
-	[window setDefaultButtonCell:[logoutButton cell]];
+	[alreadyLoggedInWindow setDefaultButtonCell:[logoutButton cell]];
 	
-	[NSApp runModalForWindow:window]
+	[NSApp runModalForWindow:alreadyLoggedInWindow]
+
 }
 
 function fireSendArtboards(projectsArray, all){
 	
 	NSLog("Trigger Send Artboards");
 		
-	var window = [[NSWindow alloc] init]
-	[window setFrame:NSMakeRect(0, 0, 485, 333) display:false]
-	[window setBackgroundColor:NSColor.whiteColor()]
+	var windowSendArtboards = [[NSWindow alloc] init]
+	[windowSendArtboards setFrame:NSMakeRect(0, 0, 485, 333) display:false]
+	[windowSendArtboards setBackgroundColor:NSColor.whiteColor()]
 	
 	var titleField = [[NSTextField alloc] initWithFrame:NSMakeRect(74, 225, 540, 17)]
 	[titleField setEditable:false]
@@ -243,7 +244,7 @@ function fireSendArtboards(projectsArray, all){
 	[titleField setDrawsBackground:false]
 	[titleField setFont:[NSFont boldSystemFontOfSize:13]];
 	[titleField setStringValue:"Export settings"]
-	[[window contentView] addSubview:titleField]
+	[[windowSendArtboards contentView] addSubview:titleField]
 
 	var yDropdowns = 170;
 	
@@ -256,7 +257,7 @@ function fireSendArtboards(projectsArray, all){
 	}
 	[projectPopup addItemsWithTitles:projectNames]
 	[projectPopup selectItemAtIndex:0]
-	[[window contentView] addSubview:projectPopup]
+	[[windowSendArtboards contentView] addSubview:projectPopup]
 	
 	var subtitleField = [[NSTextField alloc] initWithFrame:NSMakeRect(74, yDropdowns - 28, 266, 26)]
 	[subtitleField setEditable:false]
@@ -266,7 +267,7 @@ function fireSendArtboards(projectsArray, all){
 	[subtitleField setTextColor:[NSColor colorWithCalibratedRed:(93/255) green:(93/255) blue:(93/255) alpha:1]];
 	[subtitleField setDrawsBackground:false]
 	[subtitleField setStringValue:"Project"]
-	[[window contentView] addSubview:subtitleField]
+	[[windowSendArtboards contentView] addSubview:subtitleField]
 
 	var pluralNounPopup = [[NSComboBox alloc] initWithFrame:NSMakeRect(345, yDropdowns, 78, 26)]
 	var pluralNouns  = ["1x", "1.5x", "2x", "0.5x"]
@@ -274,7 +275,7 @@ function fireSendArtboards(projectsArray, all){
 	[pluralNounPopup setFocusRingType:NSFocusRingTypeNone]
 	[pluralNounPopup addItemsWithObjectValues:pluralNouns]
 	[pluralNounPopup selectItemAtIndex:0]
-	[[window contentView] addSubview:pluralNounPopup]
+	[[windowSendArtboards contentView] addSubview:pluralNounPopup]
 	
 	var subtitleField2 = [[NSTextField alloc] initWithFrame:NSMakeRect(345, yDropdowns - 28, 78, 26)]
 	[subtitleField2 setEditable:false]
@@ -284,11 +285,11 @@ function fireSendArtboards(projectsArray, all){
 	[subtitleField2 setTextColor:[NSColor colorWithCalibratedRed:(93/255) green:(93/255) blue:(93/255) alpha:1]];
 	[subtitleField2 setDrawsBackground:false]
 	[subtitleField2 setStringValue:"Size"]
-	[[window contentView] addSubview:subtitleField2]
+	[[windowSendArtboards contentView] addSubview:subtitleField2]
 	
 	var bottomActionsView = [[NSView alloc] initWithFrame:NSMakeRect(74, 112, 348, 1)]
 	bottomActionsView.setWantsLayer(true)
-	[[window contentView] addSubview:bottomActionsView]	
+	[[windowSendArtboards contentView] addSubview:bottomActionsView]	
 		
 	var borderLayer = [CALayer layer]
 	borderLayer.frame = CGRectMake(0, 1, 348, 1)
@@ -301,8 +302,9 @@ function fireSendArtboards(projectsArray, all){
 	[sendButton setTitle:"Send or update"]
 	[sendButton setBezelStyle:NSRoundedBezelStyle]
 	[sendButton setCOSJSTargetFunction:function(sender) {
-	    [window orderOut:nil]
-	    [NSApp stopModal]
+	    
+	    [windowSendArtboards orderOut:nil]
+	    [NSApp stopModal] 
 	    
 	    if(all == 1){
 					
@@ -311,7 +313,14 @@ function fireSendArtboards(projectsArray, all){
 	    		for (i = 0; i < projectsArray.length; ++i) {
 	    				
 	    				if (projectPopup.titleOfSelectedItem() == projectsArray[i].name){
-	    						exportAllArtboardsAndSendTo(projectsArray[i].id, 1)
+	    						
+	    						var str = [pluralNounPopup objectValueOfSelectedItem];
+	    						if (!str){
+	    						    str = [pluralNounPopup stringValue];
+	    						}    
+	    						    
+	    						export_scale_factor = str.replace(/[^0-9.]/g,"");
+	    						exportAllArtboardsAndSendTo(projectsArray[i].id, export_scale_factor)
 	    				}
 	    				
 	    		}
@@ -323,34 +332,41 @@ function fireSendArtboards(projectsArray, all){
 	       for (i = 0; i < projectsArray.length; ++i) {
 	       		
 	       		if (projectPopup.titleOfSelectedItem() == projectsArray[i].name){
-	       				exportArtboardsAndSendTo(projectsArray[i].id, 1)
+	       		
+	       				var str = [pluralNounPopup objectValueOfSelectedItem];
+	       				if (!str){
+	       				    str = [pluralNounPopup stringValue];
+	       				}    
+	       				    
+	       				export_scale_factor = str.replace(/[^0-9.]/g,"");
+	       				exportArtboardsAndSendTo(projectsArray[i].id, export_scale_factor)
 	       		}
 	       		
 	       }
-	       
+
 	    }
+	    
 	}];
 	[sendButton setAction:"callAction:"]
-	[[window contentView] addSubview:sendButton]
-	
+	[[windowSendArtboards contentView] addSubview:sendButton]
 	
 	var cancelButton = [[NSButton alloc] initWithFrame:NSMakeRect(225, yPosButtons, 76, 46)]
 	[cancelButton setTitle:"Cancel"]
 	[cancelButton setBezelStyle:NSRoundedBezelStyle]
 	[cancelButton setCOSJSTargetFunction:function(sender) {
-	    [window orderOut:nil]
+	    [windowSendArtboards orderOut:nil]
 	    [NSApp stopModal]
 	}];
 	[cancelButton setAction:"callAction:"]
-	[[window contentView] addSubview:cancelButton]
+	[[windowSendArtboards contentView] addSubview:cancelButton]
 
-	[window setDefaultButtonCell:[sendButton cell]];
+	[windowSendArtboards setDefaultButtonCell:[sendButton cell]];
 	
-	[NSApp runModalForWindow:window]
+	[NSApp runModalForWindow:windowSendArtboards]
 	
 }
 
-function loginWithUsernameAndPassword(email, password, showResponse){
+function loginWithUsernameAndPassword(email, password){
 
 			NSLog("Get Token From Server Start");
 			var token = getTokenFromServer(email,password)
@@ -361,10 +377,8 @@ function loginWithUsernameAndPassword(email, password, showResponse){
 				var fileManager = NSFileManager.defaultManager()
 				fileManager.createFileAtPath_contents_attributes(tokenPath, token, nil)
 				
-				if(showResponse){
-					var app = [NSApplication sharedApplication];
-					[app displayDialog:"Select your artboards, go to plugins > Marvel > Send to Project..." withTitle:"You are now logged in."]
-				}
+				var app = [NSApplication sharedApplication];
+				[app displayDialog:"Select your artboards, go to plugins > Marvel > Send to Project..." withTitle:"You are now logged in."]
 				
 			} else {
 				var app = [NSApplication sharedApplication];
@@ -543,7 +557,7 @@ function createSelect(msg, items, selectedItemIndex){
 
 function exportArtboardsAndSendTo(projectId, scale) {
 	
-	NSLog("Export All Artboards and send to project with id " + projectId)
+	NSLog("Export All Artboards and send to project with id " + projectId + " and size " + scale)
 
 				var loop = [selection objectEnumerator];
 				var existing_artboards_names = [];
@@ -580,7 +594,7 @@ function exportArtboardsAndSendTo(projectId, scale) {
 
 function exportAllArtboardsAndSendTo(projectId, scale) {
 		
-		NSLog("Export All Artboards and send to project with id " + projectId)
+		NSLog("Export All Artboards and send to project with id " + projectId + " and size " + scale)
 					
 					var artboards = [[doc currentPage] artboards];
 					var loop = [artboards objectEnumerator];
