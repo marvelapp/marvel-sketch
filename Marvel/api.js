@@ -302,10 +302,7 @@ function fireSendArtboards(projectsArray, all){
 	[sendButton setTitle:"Send or update"]
 	[sendButton setBezelStyle:NSRoundedBezelStyle]
 	[sendButton setCOSJSTargetFunction:function(sender) {
-	    
-	    [windowSendArtboards orderOut:nil]
-	    [NSApp stopModal] 
-	    
+
 	    if(all == 1){
 					
 					NSLog("Send All Artboards");
@@ -317,10 +314,19 @@ function fireSendArtboards(projectsArray, all){
 	    						var str = [pluralNounPopup objectValueOfSelectedItem];
 	    						if (!str){
 	    						    str = [pluralNounPopup stringValue];
-	    						}    
-	    						    
-	    						export_scale_factor = str.replace(/[^0-9.]/g,"");
-	    						exportAllArtboardsAndSendTo(projectsArray[i].id, export_scale_factor)
+	    						}
+	    						
+	    						export_scale_factor = str.replace(/[^0-9.wWhH]/g,"");
+	    						
+	    						if(export_scale_factor.indexOf("w") !=-1 || export_scale_factor.indexOf("h") !=-1 || export_scale_factor.indexOf("W") !=-1 || export_scale_factor.indexOf("H") !=-1) {
+	    						   var app = [NSApplication sharedApplication];
+	    						   [app displayDialog:"Try again without" withTitle:"We don't support w or h characters for scaling at this moment"]
+	    						} else {
+	    							exportAllArtboardsAndSendTo(projectsArray[i].id, export_scale_factor)
+	    							[windowSendArtboards orderOut:nil]
+	    							[NSApp stopModal] 
+	    						}
+
 	    				}
 	    				
 	    		}
@@ -338,8 +344,18 @@ function fireSendArtboards(projectsArray, all){
 	       				    str = [pluralNounPopup stringValue];
 	       				}    
 	       				    
-	       				export_scale_factor = str.replace(/[^0-9.]/g,"");
-	       				exportArtboardsAndSendTo(projectsArray[i].id, export_scale_factor)
+	       				export_scale_factor = str.replace(/[^0-9.wWhH]/g,"");
+	       				
+	       				if(export_scale_factor.indexOf("w") !=-1 || export_scale_factor.indexOf("h") !=-1 || export_scale_factor.indexOf("W") !=-1 || export_scale_factor.indexOf("H") !=-1) {
+	       				   var app = [NSApplication sharedApplication];
+	       				   [app displayDialog:"Try again without" withTitle:"We don't support w or h characters for scaling at this moment"]
+	       				} else {
+	       					exportArtboardsAndSendTo(projectsArray[i].id, export_scale_factor)
+	       					[windowSendArtboards orderOut:nil]
+	       					[NSApp stopModal] 
+	       				}
+
+	       				
 	       		}
 	       		
 	       }
