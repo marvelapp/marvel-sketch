@@ -489,7 +489,7 @@ function getProjectNamesArray() {
 	var token = getActiveTokenFromComputer()
 	
 	NSLog("token is " + token);
-	
+
 	var task = NSTask.alloc().init()
 	task.setLaunchPath("/usr/bin/curl");
 		
@@ -510,7 +510,13 @@ function getProjectNamesArray() {
 		var stringRead = [[NSString alloc] initWithData:outputData encoding:NSUTF8StringEncoding];
 		NSLog("Return data " + stringRead)
 		NSLog("Convert output data to string finished")
-
+	
+	  if(res.detail && res.detail == "Invalid token"){
+	  		deleteActiveTokenFromComputer()
+	  		fireError("Your token is not valid anymore, please login again.","After you are logged in again please try again.")
+	  		return false
+	  } else {
+	  
 		  if(res.count() > 0){
 		   
 		   	var projects = [];
@@ -526,6 +532,8 @@ function getProjectNamesArray() {
 		   	return false
 		   	
 		  }
+		  
+	}	  
 	
 	} 
 	

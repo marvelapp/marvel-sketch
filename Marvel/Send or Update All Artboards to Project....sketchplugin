@@ -28,5 +28,7 @@ if (getActiveTokenFromComputer() == false) {
 	fireLoginWindow()
 } else {
 	var projectNamesArray = getProjectNamesArray()
-	fireSendArtboards(projectNamesArray, 1)
+	if(projectNamesArray){
+		fireSendArtboards(projectNamesArray, 1)
+	}
 }
