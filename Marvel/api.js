@@ -683,7 +683,8 @@ function sendArtboardOnArray(array, scale, projectId){
 				
 				if (item.className() == "MSArtboardGroup") {
 				
-				var filename = [item name] + ".png"
+				var filename = escapedString([item name]) + ".png"
+				
 				NSLog("Artboard found with name " + filename + " and object id " + item.objectID())
 				var path = NSTemporaryDirectory() + filename
 				var version = copy_layer_with_factor(item, scale);
@@ -694,6 +695,12 @@ function sendArtboardOnArray(array, scale, projectId){
 				}
 		}
 
+}
+
+function escapedString(string){
+	var notAllowedChars = [NSCharacterSet characterSetWithCharactersInString:@"\\<>=,"];
+	var cleanString = [[string componentsSeparatedByCharactersInSet:notAllowedChars] componentsJoinedByString:@""];
+	return cleanString
 }
 
 function copy_layer_with_factor(original_slice, factor){
