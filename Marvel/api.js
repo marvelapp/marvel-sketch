@@ -21,9 +21,9 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.*/
 
 var rootURL = "https://marvelapp.com/api/";
-var tokenPath = NSHomeDirectory() + "/.marvelToken"
-var scaleSettingsPath = NSHomeDirectory() + "/.marvelScaleSettings"
 var pluginPath = sketch.scriptPath.substring(0, sketch.scriptPath.lastIndexOf('/'));
+var tokenPath = pluginPath + "/.marvelToken"
+var scaleSettingsPath = pluginPath + "/.marvelScaleSettings"
 var scriptPath = scriptPath || sketch.scriptPath;
 
 // Plugin Calls
@@ -295,22 +295,24 @@ function fireSendArtboards(projectsArray, all){
 	[[windowSendArtboards contentView] addSubview:pluralNounPopup]
 		
 	var scale = getScaleSettingFromComputer();
-		
-	var foundIndex = 0;
-	for (i = 0; i < pluralNouns.length; ++i) {
-			if(scale == pluralNouns[i]){
-				[pluralNounPopup selectItemAtIndex:i]
-				foundIndex = 1
-			}
-	}
-		
-	if(foundIndex != 1){
-			[pluralNounPopup insertItemWithObjectValue:scale atIndex:0];
-			[pluralNounPopup selectItemAtIndex:0]
+	
+	if(scale){	
+		var foundIndex = 0;
+		for (i = 0; i < pluralNouns.length; ++i) {
+				if(scale == pluralNouns[i]){
+					[pluralNounPopup selectItemAtIndex:i]
+					foundIndex = 1
+				}
+		}
+			
+		if(foundIndex != 1){
+				[pluralNounPopup insertItemWithObjectValue:scale atIndex:0];
+				[pluralNounPopup selectItemAtIndex:0]
+		}
+	} else {
+		[pluralNounPopup selectItemAtIndex:0]
 	}
 
-	
-	
 	var subtitleField2 = [[NSTextField alloc] initWithFrame:NSMakeRect(345, yDropdowns - 28, 78, 26)]
 	[subtitleField2 setEditable:false]
 	[subtitleField2 setBordered:false]
