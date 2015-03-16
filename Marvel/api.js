@@ -447,8 +447,8 @@ function getTokenFromServer(email,password){
 							
 		var task = NSTask.alloc().init()
 		task.setLaunchPath("/usr/bin/curl");
-		
-		var args = NSArray.arrayWithObjects("-v", "POST", "--header", "User-Agent: Sketch", "--header", "Content-Type: application/x-www-form-urlencoded", "--data", "email=" + email + "&password=" + password, rootURL + "loginApp/", nil);
+
+		var args = NSArray.arrayWithObjects("-v", "POST", "--header", "User-Agent: Sketch", "--header", "Content-Type: application/x-www-form-urlencoded", "--data", "email=" + email + "&password=" + escapedPassword(password), rootURL + "loginApp/", nil);
 		task.setArguments(args);
 		var outputPipe = [NSPipe pipe];
 		[task setStandardOutput:outputPipe];
@@ -691,7 +691,7 @@ function sendArtboardOnArray(array, scale, projectId){
 				
 				if (item.className() == "MSArtboardGroup") {
 				
-				var filename = escapedString([item name]) + ".png"
+				var filename = escapedFileName([item name]) + ".png"
 				
 				NSLog("Artboard found with name " + filename + " and object id " + item.objectID())
 				var path = NSTemporaryDirectory() + filename
@@ -705,10 +705,20 @@ function sendArtboardOnArray(array, scale, projectId){
 
 }
 
-function escapedString(string){
-	var notAllowedChars = [NSCharacterSet characterSetWithCharactersInString:@"\\<>=,"];
+function escapedFileName(string){
+	
+	var notAllowedChars = [NSCharacterSet characterSetWithCharactersInString:@"\\<>=,!#$&'()*+/:;=?@[]%"];
 	var cleanString = [[string componentsSeparatedByCharactersInSet:notAllowedChars] componentsJoinedByString:@""];
 	return cleanString
+}
+
+function escapedPassword(string){
+
+	var alnum = [NSMutableCharacterSet characterSetWithCharactersInString:@"!#$&'()*+,/:;=?@[]%"];
+	var escapedString = [string stringByAddingPercentEncodingWithAllowedCharacters:[alnum invertedSet]];
+	
+	return escapedString;
+	
 }
 
 function copy_layer_with_factor(original_slice, factor){
