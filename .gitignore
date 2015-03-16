@@ -11,3 +11,11 @@ ehthumbs.db
 Thumbs.db
 .marvelScaleSettings
 .marvelToken
+
+.idea/marvelapp_sketchplugin.iml
+
+.idea/misc.xml
+
+.idea/modules.xml
+
+.idea/vcs.xml
