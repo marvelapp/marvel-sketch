@@ -28,7 +28,10 @@ if (getActiveTokenFromComputer() == false) {
 	fireLoginWindow()
 } else {
 	var projectNamesArray = getProjectNamesArray()
-	if(projectNamesArray){
+	
+	if(projectNamesArray.count > 0){
 		fireSendArtboards(projectNamesArray, 0)
+	} else{
+		fireError("You don\'t have any projects.","Make first a project on marvelapp.com");
 	}
 }
