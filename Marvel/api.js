@@ -488,12 +488,12 @@ function getProjectNamesArray() {
 	
 	var token = getActiveTokenFromComputer()
 	
-	NSLog("token is " + token);
+	NSLog("token for project names fetch is " + token);
 
 	var task = NSTask.alloc().init()
 	task.setLaunchPath("/usr/bin/curl");
 		
-	var args = NSArray.arrayWithObjects("-v", "GET", "--header", "User-Agent: Sketch", "--header", "Content-Type: application/x-www-form-urlencoded", "--header", "Authorization: Token " + token, "--header", "HTTP_AUTHORIZATION: " + token, rootURL + "project/all/", nil);
+	var args = NSArray.arrayWithObjects("-v", "GET", "-H", "User-Agent: Sketch", "-H", "Content-Type: application/x-www-form-urlencoded", "-H", "Authorization: Token " + token, "-H", "HTTP_AUTHORIZATION: " + token, rootURL + "project/all/", nil);
 	task.setArguments(args);
 	var outputPipe = [NSPipe pipe];
 	[task setStandardOutput:outputPipe];
@@ -501,16 +501,16 @@ function getProjectNamesArray() {
 	var outputData = [[outputPipe fileHandleForReading] readDataToEndOfFile];
 		
 	if(outputData) {
-
-		var error;
 				
-		var res = [NSJSONSerialization JSONObjectWithData:outputData options:NSJSONReadingMutableLeaves error:error];
-		  
 		NSLog("Convert output data to string")
-		var stringRead = [[NSString alloc] initWithData:outputData encoding:NSUTF8StringEncoding];
+		var stringRead = [[NSString alloc] initWithData:outputData encoding:NSUTF8StringEncoding];	
 		NSLog("Return data " + stringRead)
 		NSLog("Convert output data to string finished")
-	
+		
+		var error;
+		
+		var res = [NSJSONSerialization JSONObjectWithData:outputData options:NSJSONReadingMutableLeaves error:error];;
+
 	  if(res.detail && res.detail == "Invalid token"){
 	  		deleteActiveTokenFromComputer()
 	  		fireError("Your token is not valid anymore, please login again.","After you are logged in again please try again.")
