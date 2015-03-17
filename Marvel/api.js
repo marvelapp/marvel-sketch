@@ -455,7 +455,6 @@ function getTokenFromServer(email,password){
 		[request setValue:"Sketch" forHTTPHeaderField:"User-Agent"]
 		[request setValue:"application/json" forHTTPHeaderField:"Content-Type"]
 		
-		
 		var tmp = [[NSDictionary alloc] initWithObjectsAndKeys:
 		                     email, @"email",
 		                     password, @"password",
@@ -463,9 +462,7 @@ function getTokenFromServer(email,password){
 		
 		var error = nil;                     
 		var postData = [NSJSONSerialization dataWithJSONObject:tmp options:0 error:error];
-		                     
-		//var post = [NSString stringWithFormat:"email=" + email + "&password=" + password];
-		//var postData = [post dataUsingEncoding:NSUTF8StringEncoding];
+
 		[request setHTTPBody:postData];
 			
 		var response = nil;
@@ -506,8 +503,6 @@ function getTokenFromServer(email,password){
 			return false;	
 
 }
-
-
 
 function getProjectNamesArray() {
 	
@@ -695,15 +690,6 @@ function escapedFileName(string){
 	var notAllowedChars = [NSCharacterSet characterSetWithCharactersInString:@"\\<>=,!#$&'()*+/:;=?@[]%"];
 	var cleanString = [[string componentsSeparatedByCharactersInSet:notAllowedChars] componentsJoinedByString:@""];
 	return cleanString
-}
-
-function escapedPassword(string){
-
-	var alnum = [NSMutableCharacterSet characterSetWithCharactersInString:@"!#$&'()*+,/:;=?@[]%"];
-	var escapedString = [string stringByAddingPercentEncodingWithAllowedCharacters:[alnum invertedSet]];
-	
-	return escapedString;
-	
 }
 
 function copy_layer_with_factor(original_slice, factor){
