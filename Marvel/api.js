@@ -20,7 +20,7 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.*/
 
-var DEBUG = true
+var DEBUG = false
 var rootURL = "https://marvelapp.com/api/"
 var pluginPath = sketch.scriptPath.substring(0, sketch.scriptPath.lastIndexOf('/'))
 var tokenPath = pluginPath + "/.marvelToken"
