@@ -288,7 +288,7 @@ function fireSendArtboards(projectsArray, all){
 	[[windowSendArtboards contentView] addSubview:subtitleField]
 
 	var pluralNounPopup = [[NSComboBox alloc] initWithFrame:NSMakeRect(345, yDropdowns, 78, 26)]
-	var pluralNouns  = ["1x", "1.5x", "2x", "0.5x"]
+	var pluralNouns  = ["1x", "1.5x", "2x", "0.5x", "3x"]
 	[pluralNounPopup removeAllItems]
 	[pluralNounPopup setFocusRingType:NSFocusRingTypeNone]
 	[pluralNounPopup addItemsWithObjectValues:pluralNouns]
