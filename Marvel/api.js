@@ -425,21 +425,8 @@ function fireSendArtboards(projectsArray, all){
 function loginWithUsernameAndPassword(email, password){
 
 			sketchLog("Get Token From Server Start");
-			var token = getTokenFromServer(email,password)
+			getTokenFromServer(email,password)
 			sketchLog("Get Token From Server End");
-			
-			if(token){
-				
-				var fileManager = NSFileManager.defaultManager()
-				fileManager.createFileAtPath_contents_attributes(tokenPath, token, nil)
-				
-				var app = [NSApplication sharedApplication];
-				[app displayDialog:"Select your artboards, go to plugins > Marvel > Send to Project..." withTitle:"You are now logged in."]
-				
-			} else {
-				var app = [NSApplication sharedApplication];
-				[app displayDialog:"If you sign into Marvel using Dropbox, you'll need to set a password for your account to use Sketch, head to My Profile in Marvel to set one up." withTitle:"Incorrect email or password."]
-			}
 			
 }
 
@@ -467,37 +454,40 @@ function getTokenFromServer(email,password){
 			
 		var response = nil;
 		var error = nil;
-		sketchLog("Fetch project names")
+		sketchLog("Fetch token")
 		var data = [NSURLConnection sendSynchronousRequest:request returningResponse:response error:error];
 			
-		if (error == nil)
-			{	    
-			    var errorJson;
-			    		
-					var res = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableLeaves error:errorJson]
+		if (error == nil && data != nil){	
+		    
+						var res = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableLeaves error:nil]
 			
-				  if(res.detail && res.detail == "Invalid token"){
-				  		deleteActiveTokenFromComputer()
-				  		fireError("Your token is not valid anymore, please login again.","After you are logged in again please try again.")
-				  		return false
-				  } else {
-				  	
 				  	var token = res.token
 				  	
 				  	sketchLog("Return token if exists")  
-				  	if(token){
-				  			sketchLog("Token exists and gets returned")  
-				  			return token
-				  	} 
 				  	
-				  	sketchLog("Token does not exist")  		
+				  	if(token){
+				  			sketchLog("Token exists and gets returned") 
+				  			
+				  			var fileManager = NSFileManager.defaultManager()
+				  			fileManager.createFileAtPath_contents_attributes(tokenPath, token, nil)
+				  			
+				  			var app = [NSApplication sharedApplication];
+				  			[app displayDialog:"Select your artboards, go to plugins > Marvel > Send to Project..." withTitle:"You are now logged in."]
+				  			
+						} else if(res.detail) {
+		
+								var app = [NSApplication sharedApplication];
+								[app displayDialog:"If you sign into Marvel using Dropbox, you'll need to set a password for your account to use Sketch, head to My Profile in Marvel to set one up." withTitle:"Incorrect email or password."]
+							
+						}
+				  	
+						sketchLog("Token does not exist")  		
 					  
-				}
 			    	
 			} else {
-					sketchLog("Received an error from the server")
-					var stringRead = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];	
-					sketchLog("Return data " + stringRead)
+										
+						dealWithErrors(data)
+						
 			}
 		
 			return false;	
@@ -524,7 +514,7 @@ function getProjectNamesArray() {
 	sketchLog("Fetch project names")
 	var data = [NSURLConnection sendSynchronousRequest:request returningResponse:response error:error];
 	
-	if (error == nil)
+	if (error == nil && data != nil)
 	{	    
 	    var errorJson;
 	    		
@@ -555,9 +545,7 @@ function getProjectNamesArray() {
 		}
 	    	
 	} else {
-			sketchLog("Received an error from the server")
-			var stringRead = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];	
-			sketchLog("Return data " + stringRead)
+			dealWithErrors(data)
 	}
 
 	return false;	
@@ -592,6 +580,75 @@ function postFile(path, projectId, filename, uuid, width, height) {
 }
 
 // Helpers
+
+function dealWithErrors(data){
+
+		sketchLog("Received an error from the server")
+		var stringRead = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];	
+		
+		var alert = [[NSAlert alloc] init]
+		[alert setMessageText:"Something went wrong..."]
+		[alert setInformativeText:"Please ensure your internet isn\'t down or a firewall (e.g. Little Snitch) is not blocking any connections to marvelapp.com."]
+
+		if(stringRead != nil && stringRead != ""){
+				[alert addButtonWithTitle:'Close']
+				[alert addButtonWithTitle:'Show more details']
+		} else {
+				[alert addButtonWithTitle:'Close']
+		}
+		
+		var responseCode = [alert runModal]
+		if(responseCode == "1001"){
+				webViewWhichShowsResults()
+		}
+
+		sketchLog("Return data " + stringRead)
+		
+}
+
+function webViewWhichShowsResults(){
+	// create window
+		var webViewWindow = [[NSWindow alloc] init]
+		[webViewWindow setFrame:NSMakeRect(0, 0, 680, 420) display:false]
+		[webViewWindow setBackgroundColor:NSColor.whiteColor()]
+		
+		var webView = [[WebView alloc] initWithFrame:NSMakeRect(0, 87, 680, 420 - 87) frameName:"Error frame" groupName:nil];
+		[[webView mainFrame] loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://marvelapp.com/"]]];
+		[[webViewWindow contentView] addSubview:webView];
+		
+		//Bottom Line
+		var bottomLineView = [[NSView alloc] initWithFrame:NSMakeRect(0, 86, 680, 1)];
+		bottomLineView.setWantsLayer(true);
+		[[webViewWindow contentView] addSubview:bottomLineView];	
+			
+		var backgroundLayer = [CALayer layer];
+		[backgroundLayer setBackgroundColor:CGColorCreateGenericRGB(220/255, 220/255, 220/255, 1.0)]; //RGB plus Alpha Channel
+		[bottomLineView setLayer:backgroundLayer]
+		
+		var subtitleField = [[NSTextField alloc] initWithFrame:NSMakeRect(40, 30, 480, 40)]
+		[subtitleField setEditable:false]
+		[subtitleField setBordered:false]
+		[subtitleField setFont:[NSFont systemFontOfSize:12]];
+		[subtitleField setTextColor:[NSColor colorWithCalibratedRed:(93/255) green:(93/255) blue:(93/255) alpha:1]];
+		[subtitleField setDrawsBackground:false]
+		[subtitleField setStringValue:"In most cases this screen should show more information why connections get\nblocked, if it doesn’t please get in touch with help@marvelapp.com"]
+		[subtitleField sizeToFit]
+		[[webViewWindow contentView] addSubview:subtitleField]
+		
+		var cancelButton = [[NSButton alloc] initWithFrame:NSMakeRect(550, 20, 92, 46)]
+		[cancelButton setTitle:"Close"]
+		[cancelButton setBezelStyle:NSRoundedBezelStyle]
+		[cancelButton setCOSJSTargetFunction:function(sender) {
+		    [webViewWindow orderOut:nil]
+		    [NSApp stopModal]
+		}];
+		[cancelButton setAction:"callAction:"]
+		[[webViewWindow contentView] addSubview:cancelButton]
+		
+		[webViewWindow setDefaultButtonCell:[cancelButton cell]];
+			
+		[NSApp runModalForWindow:webViewWindow ]
+}
 
 function isRetinaDisplay() {
     return NSScreen.isOnRetinaScreen();
