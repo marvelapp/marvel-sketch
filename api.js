@@ -21,7 +21,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.*/
 
 var DEBUG = false
-var rootURL = "https://dev02.marvelapp.com/api/"
+var rootURL = "https://marvelapp.com/api/"
 var pluginPath = sketch.scriptPath.substring(0, sketch.scriptPath.lastIndexOf('/'))
 var tokenPath = pluginPath + "/.marvelToken"
 var scaleSettingsPath = pluginPath + "/.marvelScaleSettings"
