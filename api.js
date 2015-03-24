@@ -474,11 +474,13 @@ function getTokenFromServer(email,password){
 				  			var app = [NSApplication sharedApplication];
 				  			[app displayDialog:"Select your artboards, go to plugins > Marvel > Send to Project..." withTitle:"You are now logged in."]
 				  			
-						} else if(res.detail) {
+						} else if(res.password) {
 		
 								var app = [NSApplication sharedApplication];
 								[app displayDialog:"If you sign into Marvel using Dropbox, you'll need to set a password for your account to use Sketch, head to My Profile in Marvel to set one up." withTitle:"Incorrect email or password."]
 							
+						} else {
+								dealWithErrors(data)
 						}
 				  	
 						sketchLog("Token does not exist")  		
