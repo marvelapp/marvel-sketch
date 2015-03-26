@@ -163,7 +163,7 @@ function fireLoginWindow(){
 	[createMarvelButton setTitle:"Create Marvel account"]
 	[createMarvelButton setBezelStyle:NSRoundedBezelStyle]
 	[createMarvelButton setCOSJSTargetFunction:function(sender) {
-	    var url = [NSURL URLWithString:@"https://marvelapp.com/manage/account/"];
+	    var url = [NSURL URLWithString:@"https://marvelapp.com/"];
 	    if( ![[NSWorkspace sharedWorkspace] openURL:url] ){
 	        sketchLog(@"Failed to open url:" + [url description])
 	    }    
