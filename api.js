@@ -25,6 +25,7 @@ var rootURL = "https://marvelapp.com/api/"
 var pluginPath = sketch.scriptPath.substring(0, sketch.scriptPath.lastIndexOf('/'))
 var tokenPath = pluginPath + "/.marvelToken"
 var scaleSettingsPath = pluginPath + "/.marvelScaleSettings"
+var projectSettingsPath = pluginPath + "/.marvelProjectSettings"
 var scriptPath = scriptPath || sketch.scriptPath
 
 // Plugin Calls
@@ -63,9 +64,28 @@ function getScaleSettingFromComputer() {
 	}
 }
 
+function getProjectIdSettingFromComputer() {
+	var fileExists = NSFileManager.defaultManager().fileExistsAtPath(projectSettingsPath);
+	if (fileExists) {
+		var result = NSString.stringWithContentsOfFile_encoding_error(projectSettingsPath,NSUTF8StringEncoding,nil)
+		if(result){
+			return result
+		} else {
+			return false
+		}
+	} else {
+		return false
+	}
+}
+
 function saveScaleSetting(value){
 	var fileManager = NSFileManager.defaultManager()
 	fileManager.createFileAtPath_contents_attributes(scaleSettingsPath, value, nil)
+}
+
+function saveProjectId(value){
+	var fileManager = NSFileManager.defaultManager()
+	fileManager.createFileAtPath_contents_attributes(projectSettingsPath, value.toString(), nil)
 }
 
 function fireLoginWindow(){
@@ -272,11 +292,28 @@ function fireSendArtboards(projectsArray, all){
 	[projectPopup removeAllItems]
 	[projectPopup setFocusRingType:NSFocusRingTypeNone]
 	var projectNames = [];
+	var previousIndexFound = -1
+	var previousProjectId = getProjectIdSettingFromComputer()
+	
 	for (i = 0; i < projectsArray.length; ++i) {
 			projectNames.push(projectsArray[i].name);
+			
+			if(previousProjectId){
+			
+				if(projectsArray[i].id.toString() == previousProjectId){
+							previousIndexFound = i;
+				}
+				
+			}
+			
 	}
 	[projectPopup addItemsWithTitles:projectNames]
-	[projectPopup selectItemAtIndex:0]
+	if(previousIndexFound >= 0){
+		[projectPopup selectItemAtIndex:previousIndexFound]
+	} else {
+		[projectPopup selectItemAtIndex:0]
+	}
+
 	[[windowSendArtboards contentView] addSubview:projectPopup]
 	
 	var subtitleField = [[NSTextField alloc] initWithFrame:NSMakeRect(74, yDropdowns - 28, 266, 26)]
@@ -362,6 +399,7 @@ function fireSendArtboards(projectsArray, all){
 	    						} else {
 	    							exportAllArtboardsAndSendTo(projectsArray[i].id, export_scale_factor)
 	    							saveScaleSetting(str)
+	    							saveProjectId(projectsArray[i].id)
 	    							[windowSendArtboards orderOut:nil]
 	    							[NSApp stopModal] 
 	    						}
@@ -391,6 +429,7 @@ function fireSendArtboards(projectsArray, all){
 	       				} else {
 	       					exportArtboardsAndSendTo(projectsArray[i].id, export_scale_factor)
 	       					saveScaleSetting(str)
+	       					saveProjectId(projectsArray[i].id)
 	       					[windowSendArtboards orderOut:nil]
 	       					[NSApp stopModal] 
 	       				}
