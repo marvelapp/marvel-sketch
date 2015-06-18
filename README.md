@@ -4,7 +4,7 @@
 
 <h2>How to install:</h2>
 <p>
-Unzip the plugin, go to Sketch, in the top menu select "Plugins" then "Reveal plugins folder...". Drag and drop the Marvel.sketchpluginbundle file into there. <a href="https://github.com/marvelapp/marvelapp_sketchplugin/archive/master.zip">Download</a>
+<a href="https://github.com/marvelapp/marvelapp_sketchplugin/archive/master.zip">Download</a>, Unzip, double click the Marvel.sketchpluginbundle file. That’s it!. 
 </p>
 
 
