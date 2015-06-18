@@ -1,5 +1,3 @@
-// (cmd alt g)
-
 /*The MIT License (MIT)
 
 Copyright (c) 2015 Marvel App
@@ -22,16 +20,19 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.*/
 
-#import 'api.js'
+@import 'api.js'
 
-if (getActiveTokenFromComputer() == false) {
-	fireLoginWindow()
-} else {
-	var projectNamesArray = getProjectNamesArray()
-	
-	if(projectNamesArray){
-		fireSendArtboards(projectNamesArray, 0)
-	} else{
-		fireError("You don\'t have any projects.","Make first a project on marvelapp.com");
+var onRun = function (context) {
+
+	if (getActiveTokenFromComputer() == false) {
+		fireLoginWindowWithContext(context)
+	} else {
+		var projectNamesArray = getProjectNamesArray()
+		
+		if(projectNamesArray){
+			fireSendArtboards(projectNamesArray, 1, context)
+		} else{
+			fireError("You don\'t have any projects.","Make first a project on marvelapp.com");
+		}
 	}
 }

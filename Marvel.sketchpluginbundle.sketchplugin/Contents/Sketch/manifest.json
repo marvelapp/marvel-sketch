@@ -1,0 +1,37 @@
+{
+  "name": "Marvel",
+  "description": "Send artboards to Marvel",
+  "author": "Marvel",
+  "homepage": "https://marvelapp.com/prototype-with-sketch/",
+  "version": 1.1,
+  "identifier": "com.marvel.sketch.marvel-plugin",
+  "updateURL": "https://github.com/downloads/example/sketchplugins/sketchplugins.json",
+  "compatibleVersion": 3,
+  "bundleVersion": 1,
+  "commands": [
+    {
+      "name": "Login or Logout to Marvel",
+      "identifier": "login",
+      "script": "authenticate.js",
+    },
+    {
+      "name": "Send or Update All Artboards to Project...",
+      "identifier": "allartboards",
+      "shortcut": "cmd alt f",
+      "script": "artboards-all.js"
+    },
+    {
+      "name": "Send or Update Selected Artboards to Project...",
+      "identifier": "selectedartboards",
+      "shortcut": "cmd alt g",
+      "script": "artboards-selected.js"
+    }
+  ],
+  "menu": {
+    "items": [
+      "login",
+      "allartboards",
+      "selectedartboards"
+    ]
+  }
+}
