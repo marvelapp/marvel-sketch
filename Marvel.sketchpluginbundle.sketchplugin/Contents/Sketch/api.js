@@ -22,48 +22,41 @@ SOFTWARE.*/
 
 var DEBUG = false
 var rootURL = "https://marvelapp.com/api/"
+<<<<<<< HEAD:api.js
 var pluginPath = sketch.scriptPath.substring(0, sketch.scriptPath.lastIndexOf('/'))
 var tokenPath = pluginPath + "/.marvelToken"
 var scaleSettingsPath = pluginPath + "/.marvelScaleSettings"
 var projectSettingsPath = pluginPath + "/.marvelProjectSettings"
 var scriptPath = scriptPath || sketch.scriptPath
+=======
+>>>>>>> development:Marvel.sketchpluginbundle.sketchplugin/Contents/Sketch/api.js
 
 // Plugin Calls
 
 function getActiveTokenFromComputer() {
 	sketchLog("Get active token from computer")
-	var fileExists = NSFileManager.defaultManager().fileExistsAtPath(tokenPath);
-	if (fileExists) {
-		var token = NSString.stringWithContentsOfFile_encoding_error(tokenPath,NSUTF8StringEncoding,nil)
-		if(token){
-			return token
-		} else {
-			return false
-		}
+	var token = [[NSUserDefaults standardUserDefaults] objectForKey:"token"];
+	if (token) {
+		return token;
 	} else {
 		return false;
 	}
 }
 
 function deleteActiveTokenFromComputer() {
-	var fileManager = NSFileManager.defaultManager()
-	fileManager.removeItemAtPath_error(tokenPath,nil)
+	[[NSUserDefaults standardUserDefaults] removeObjectForKey:@"token"];
 }
 
 function getScaleSettingFromComputer() {
-	var fileExists = NSFileManager.defaultManager().fileExistsAtPath(scaleSettingsPath);
-	if (fileExists) {
-		var scale = NSString.stringWithContentsOfFile_encoding_error(scaleSettingsPath,NSUTF8StringEncoding,nil)
-		if(scale){
-			return scale
-		} else {
-			return false
-		}
+	var scale = [[NSUserDefaults standardUserDefaults] objectForKey:"scale"];
+	if (scale) {
+		return scale;
 	} else {
 		return false;
 	}
 }
 
+<<<<<<< HEAD:api.js
 function getProjectIdSettingFromComputer() {
 	var fileExists = NSFileManager.defaultManager().fileExistsAtPath(projectSettingsPath);
 	if (fileExists) {
@@ -89,19 +82,32 @@ function saveProjectId(value){
 }
 
 function fireLoginWindow(){
+=======
+function saveScaleSetting(scaleValue){
+	[[NSUserDefaults standardUserDefaults] setObject:scaleValue forKey:"scale"]
+	[[NSUserDefaults standardUserDefaults] synchronize]
+}
+
+function fireLoginWindowWithContext(context){
+>>>>>>> development:Marvel.sketchpluginbundle.sketchplugin/Contents/Sketch/api.js
 	
 	// create window
 	var loginWindow = [[NSWindow alloc] init]
 	[loginWindow setFrame:NSMakeRect(0, 0, 540, 332) display:false]
 	[loginWindow setBackgroundColor:NSColor.whiteColor()]
 		
-	//Image
-	function imageSuffix() {
-	   return isRetinaDisplay() ? "@2x" : "";
+	var plugin = context.plugin
+
+	if(isRetinaDisplay()){
+		var imageFilePath=[plugin urlForResourceNamed:"logo.png"];
+	} else {
+		var imageFilePath=[plugin urlForResourceNamed:"logo.png"];
 	}
-	var imageFilePath=pluginPath + '/images/' + 'logo' + imageSuffix() + '.png';
-	var image = NSImage.alloc().initByReferencingFile(imageFilePath);
-	
+	var imageData = [NSData dataWithContentsOfURL:imageFilePath];
+	var image = NSImage.alloc().initWithData(imageData);
+
+	//var image = NSImage.alloc().initByReferencingFile([imageFilePath absoluteString]);
+
 	var imageView = [[NSImageView alloc] initWithFrame:NSMakeRect(46, 124, 164, 149)];
 	[imageView setImage: image];
 	[[loginWindow contentView] addSubview:imageView];
@@ -211,7 +217,7 @@ function fireLoginWindow(){
 	
 }
 
-function fireAlreadyLoggedInWindow(){
+function fireAlreadyLoggedInWindow(context){
 	
 	// create window
 	var alreadyLoggedInWindow = [[NSWindow alloc] init]
@@ -248,7 +254,7 @@ function fireAlreadyLoggedInWindow(){
 			deleteActiveTokenFromComputer()
 	    [alreadyLoggedInWindow orderOut:nil]
 	    [NSApp stopModal]
-	    fireLoginWindow()
+	    fireLoginWindow(context)
 	}];
 	[logoutButton setAction:"callAction:"]
 	[[alreadyLoggedInWindow contentView] addSubview:logoutButton]
@@ -270,7 +276,7 @@ function fireAlreadyLoggedInWindow(){
 
 }
 
-function fireSendArtboards(projectsArray, all){
+function fireSendArtboards(projectsArray, all, context){
 	
 	sketchLog("Trigger Send Artboards");
 		
@@ -397,7 +403,7 @@ function fireSendArtboards(projectsArray, all){
 	    						   var app = [NSApplication sharedApplication];
 	    						   [app displayDialog:"Try again without" withTitle:"We don't support w or h characters for scaling at this moment"]
 	    						} else {
-	    							exportAllArtboardsAndSendTo(projectsArray[i].id, export_scale_factor)
+	    							exportAllArtboardsAndSendTo(projectsArray[i].id, export_scale_factor, context.document)
 	    							saveScaleSetting(str)
 	    							saveProjectId(projectsArray[i].id)
 	    							[windowSendArtboards orderOut:nil]
@@ -427,7 +433,7 @@ function fireSendArtboards(projectsArray, all){
 	       				   var app = [NSApplication sharedApplication];
 	       				   [app displayDialog:"Try again without" withTitle:"We don't support w or h characters for scaling at this moment"]
 	       				} else {
-	       					exportArtboardsAndSendTo(projectsArray[i].id, export_scale_factor)
+	       					exportArtboardsAndSendTo(projectsArray[i].id, export_scale_factor, context.selection, context.document)
 	       					saveScaleSetting(str)
 	       					saveProjectId(projectsArray[i].id)
 	       					[windowSendArtboards orderOut:nil]
@@ -498,7 +504,7 @@ function getTokenFromServer(email,password){
 			
 		if (error == nil && data != nil){	
 		    
-						var res = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableLeaves error:nil]
+					var res = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableLeaves error:nil]
 			
 				  	var token = res.token
 				  	
@@ -507,8 +513,8 @@ function getTokenFromServer(email,password){
 				  	if(token){
 				  			sketchLog("Token exists and gets returned") 
 				  			
-				  			var fileManager = NSFileManager.defaultManager()
-				  			fileManager.createFileAtPath_contents_attributes(tokenPath, token, nil)
+				  			[[NSUserDefaults standardUserDefaults] setObject:token forKey:"token"]
+							[[NSUserDefaults standardUserDefaults] synchronize]
 				  			
 				  			var app = [NSApplication sharedApplication];
 				  			[app displayDialog:"Select your artboards, go to plugins > Marvel > Send to Project..." withTitle:"You are now logged in."]
@@ -695,9 +701,9 @@ function isRetinaDisplay() {
     return NSScreen.isOnRetinaScreen();
 }
 
-function exportArtboardsAndSendTo(projectId, scale) {
+function exportArtboardsAndSendTo(projectId, scale, selection, document) {
 		
-	sketchLog("Export All Artboards and send to project with id " + projectId + " and size " + scale)
+	sketchLog("Export Selected Artboards and send to project with id " + projectId + " and size " + scale)
 
 				var loop = [selection objectEnumerator];
 				var existing_artboards_names = [];
@@ -728,15 +734,15 @@ function exportArtboardsAndSendTo(projectId, scale) {
 				  return false
 				}
 		
-	sendArtboardOnArray(selection, scale, projectId)
+	sendArtboardOnArray(selection, scale, projectId, document)
 
 }
 
-function exportAllArtboardsAndSendTo(projectId, scale) {
+function exportAllArtboardsAndSendTo(projectId, scale, document) {
 
 		sketchLog("Export All Artboards and send to project with id " + projectId + " and size " + scale)
 					
-					var artboards = [[doc currentPage] artboards];
+					var artboards = [[document currentPage] artboards];
 					var loop = [artboards objectEnumerator];
 					var existing_artboards_names = [];
 											
@@ -757,11 +763,11 @@ function exportAllArtboardsAndSendTo(projectId, scale) {
 				
 					}
 			
-					sendArtboardOnArray(artboards, scale, projectId)
+					sendArtboardOnArray(artboards, scale, projectId, document)
 				
 }
 
-function sendArtboardOnArray(array, scale, projectId){
+function sendArtboardOnArray(array, scale, projectId, document){
 
 		var loopFinal = [array objectEnumerator];
 		
@@ -769,15 +775,21 @@ function sendArtboardOnArray(array, scale, projectId){
 				
 				if (item.className() == "MSArtboardGroup") {
 				
-				var filename = escapedFileName([item name]) + ".png"
-				
-				sketchLog("Artboard found with name " + filename + " and object id " + item.objectID())
-				var path = NSTemporaryDirectory() + filename
-				var version = copy_layer_with_factor(item, scale);
-				[doc saveArtboardOrSlice: version toFile:path];
-				
-				postFile(path, projectId, filename,item.objectID(), [[item frame] width], [[item frame] height])
-				
+					var filename = escapedFileName([item name]) + ".png"
+					
+					NSLog("test 0");
+
+					sketchLog("Artboard found with name " + filename + " and object id " + item.objectID())
+					var path = NSTemporaryDirectory() + filename
+					var version = copy_layer_with_factor(item, scale)
+
+					NSLog("test 1");
+					[document saveArtboardOrSlice:version toFile:path];
+					NSLog("test 2");
+					
+					postFile(path, projectId, filename,item.objectID(), [[item frame] width], [[item frame] height])
+					NSLog("test 3");
+
 				}
 		}
 
@@ -812,3 +824,4 @@ function sketchLog(string){
 		NSLog("Sketch: " + string)
 	}
 }
+
