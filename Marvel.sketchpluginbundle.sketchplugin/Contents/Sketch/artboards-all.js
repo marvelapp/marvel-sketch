@@ -25,8 +25,11 @@ SOFTWARE.*/
 var onRun = function (context) {
 
 	if (getActiveTokenFromComputer() == false) {
+		
 		fireLoginWindowWithContext(context)
+
 	} else {
+
 		var projectNamesArray = getProjectNamesArray()
 		
 		if(projectNamesArray){
@@ -34,5 +37,7 @@ var onRun = function (context) {
 		} else{
 			fireError("You don\'t have any projects.","Make first a project on marvelapp.com");
 		}
+		
+
 	}
 }
