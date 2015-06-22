@@ -48,6 +48,20 @@ function getScaleSettingFromComputer() {
 	}
 }
 
+function getLastUsedProject() {
+	var scale = [[NSUserDefaults standardUserDefaults] objectForKey:"last used project"];
+	if (scale) {
+		return scale;
+	} else {
+		return false;
+	}
+}
+
+function saveLastUsedProject(projectId){
+	[[NSUserDefaults standardUserDefaults] setObject:projectId forKey:"last used project"]
+	[[NSUserDefaults standardUserDefaults] synchronize]
+}
+
 function saveScaleSetting(scaleValue){
 	[[NSUserDefaults standardUserDefaults] setObject:scaleValue forKey:"scale"]
 	[[NSUserDefaults standardUserDefaults] synchronize]
@@ -259,12 +273,22 @@ function fireSendArtboards(projectsArray, all, context){
 	var projectPopup = [[NSComboBox alloc] initWithFrame:NSMakeRect(74, yDropdowns, 266, 26)]
 	[projectPopup removeAllItems]
 	[projectPopup setFocusRingType:NSFocusRingTypeNone]
+	var lastUsedProjectId = getLastUsedProject();
+	var lastUsedProjectIdIndex;
 	var projectNames = [];
 	for (i = 0; i < projectsArray.length; ++i) {
 			projectNames.push(projectsArray[i].name);
+
+			if(lastUsedProjectId == projectsArray[i].id){
+				lastUsedProjectIdIndex = i;
+			}
 	}
 	[projectPopup addItemsWithObjectValues:projectNames]
-	[projectPopup selectItemAtIndex:0]
+	if(lastUsedProjectIdIndex){
+		[projectPopup selectItemAtIndex:lastUsedProjectIdIndex]
+	} else {
+		[projectPopup selectItemAtIndex:0]
+	}
 	[[windowSendArtboards contentView] addSubview:projectPopup]
 	
 	var subtitleField = [[NSTextField alloc] initWithFrame:NSMakeRect(74, yDropdowns - 28, 266, 26)]
@@ -372,6 +396,7 @@ function fireSendArtboards(projectsArray, all, context){
 						exportArtboardsAndSendTo(projectId, export_scale_factor, context.selection, context.document)
 					}
 					saveScaleSetting(scaleString)
+					saveLastUsedProject(projectId)
 					[windowSendArtboards orderOut:nil]
 					[NSApp stopModal]
 
@@ -436,11 +461,9 @@ function createProject(nameValue){
 		  	return false
 		} else if ([res valueForKey:@"id"]) {
 			var itemId = [NSString stringWithFormat:@"%@", [[res valueForKey:@"id"] intValue]];
-			NSLog(itemId)
 		   	return itemId
 		}
 
-		NSLog("nothing")
 		return false	
 	    	
 	} else {
