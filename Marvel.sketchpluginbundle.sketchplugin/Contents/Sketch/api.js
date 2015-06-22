@@ -177,8 +177,7 @@ function fireLoginWindowWithContext(context){
 
 	[loginWindow setDefaultButtonCell:[loginButton cell]];
 	
-	[NSApp runModalForWindow:loginWindow]
-	
+	[NSApp runModalForWindow:loginWindow]	
 }
 
 function fireAlreadyLoggedInWindow(context){
@@ -237,7 +236,6 @@ function fireAlreadyLoggedInWindow(context){
 	[alreadyLoggedInWindow setDefaultButtonCell:[logoutButton cell]];
 	
 	[NSApp runModalForWindow:alreadyLoggedInWindow]
-
 }
 
 function fireSendArtboards(projectsArray, all, context){
@@ -258,14 +256,14 @@ function fireSendArtboards(projectsArray, all, context){
 
 	var yDropdowns = 170;
 	
-	var projectPopup = [[NSPopUpButton alloc] initWithFrame:NSMakeRect(74, yDropdowns, 266, 26)]
+	var projectPopup = [[NSComboBox alloc] initWithFrame:NSMakeRect(74, yDropdowns, 266, 26)]
 	[projectPopup removeAllItems]
 	[projectPopup setFocusRingType:NSFocusRingTypeNone]
 	var projectNames = [];
 	for (i = 0; i < projectsArray.length; ++i) {
 			projectNames.push(projectsArray[i].name);
 	}
-	[projectPopup addItemsWithTitles:projectNames]
+	[projectPopup addItemsWithObjectValues:projectNames]
 	[projectPopup selectItemAtIndex:0]
 	[[windowSendArtboards contentView] addSubview:projectPopup]
 	
@@ -331,66 +329,54 @@ function fireSendArtboards(projectsArray, all, context){
 	[sendButton setBezelStyle:NSRoundedBezelStyle]
 	[sendButton setCOSJSTargetFunction:function(sender) {
 
-	    if(all == 1){
-					
-					sketchLog("Send All Artboards");
-					
-	    		for (i = 0; i < projectsArray.length; ++i) {
-	    				
-	    				if (projectPopup.titleOfSelectedItem() == projectsArray[i].name){
-	    						
-	    						var str = [pluralNounPopup objectValueOfSelectedItem];
-	    						if (!str){
-	    						    str = [pluralNounPopup stringValue];
-	    						}
-	    						
-	    						export_scale_factor = str.replace(/[^0-9.wWhH]/g,"");
-	    						
-	    						if(export_scale_factor.indexOf("w") !=-1 || export_scale_factor.indexOf("h") !=-1 || export_scale_factor.indexOf("W") !=-1 || export_scale_factor.indexOf("H") !=-1) {
-	    						   var app = [NSApplication sharedApplication];
-	    						   [app displayDialog:"Try again without" withTitle:"We don't support w or h characters for scaling at this moment"]
-	    						} else {
-	    							exportAllArtboardsAndSendTo(projectsArray[i].id, export_scale_factor, context.document)
-	    							saveScaleSetting(str)
-	    							[windowSendArtboards orderOut:nil]
-	    							[NSApp stopModal] 
-	    						}
+				sketchLog("Send Artboards");
+				
+				var scaleString = [pluralNounPopup objectValueOfSelectedItem];
+				if (!scaleString){
+					scaleString = [pluralNounPopup stringValue];
+				}
 
-	    				}
+				var export_scale_factor = scaleString.replace(/[^0-9.wWhH]/g,"");
+
+				if(export_scale_factor.indexOf("w") !=-1 || export_scale_factor.indexOf("h") !=-1 || export_scale_factor.indexOf("W") !=-1 || export_scale_factor.indexOf("H") !=-1) {
+	    			var app = [NSApplication sharedApplication];
+	    			[app displayDialog:"Try again without" withTitle:"We don't support w or h characters for scaling at this moment"]
+	    			return false
+	    		} 
+
+				var selectedProject = [projectPopup objectValueOfSelectedItem];
+				if (!selectedProject){
+				    selectedProject = [projectPopup stringValue];
+				}
+
+				var projectId;
+
+	    		for (i = 0; i < projectsArray.length; ++i) {
+
+	    				if (selectedProject == projectsArray[i].name){
+	    					
+	    					projectId = projectsArray[i].id;	
+
+	    				} 
 	    				
 	    		}
 
-	    } else {
-	       
-	       sketchLog("Send Artboards");
-	       
-	       for (i = 0; i < projectsArray.length; ++i) {
-	       		
-	       		if (projectPopup.titleOfSelectedItem() == projectsArray[i].name){
-	       		
-	       				var str = [pluralNounPopup objectValueOfSelectedItem];
-	       				if (!str){
-	       				    str = [pluralNounPopup stringValue];
-	       				}    
-	       				    
-	       				export_scale_factor = str.replace(/[^0-9.wWhH]/g,"");
-	       				
-	       				if(export_scale_factor.indexOf("w") !=-1 || export_scale_factor.indexOf("h") !=-1 || export_scale_factor.indexOf("W") !=-1 || export_scale_factor.indexOf("H") !=-1) {
-	       				   var app = [NSApplication sharedApplication];
-	       				   [app displayDialog:"Try again without" withTitle:"We don't support w or h characters for scaling at this moment"]
-	       				} else {
-	       					exportArtboardsAndSendTo(projectsArray[i].id, export_scale_factor, context.selection, context.document)
-	       					saveScaleSetting(str)
-	       					[windowSendArtboards orderOut:nil]
-	       					[NSApp stopModal] 
-	       				}
+	    		if (projectId == nil) {
+	    			projectId = createProject(selectedProject)
+	    		}
 
-	       				
-	       		}
-	       		
-	       }
+	    		if (projectId){
+		    		if(all == 1){
+						exportAllArtboardsAndSendTo(projectId, export_scale_factor, context.document)
+					} else {
+						exportArtboardsAndSendTo(projectId, export_scale_factor, context.selection, context.document)
+					}
+					saveScaleSetting(scaleString)
+					[windowSendArtboards orderOut:nil]
+					[NSApp stopModal]
 
-	    }
+				};
+
 	    
 	}];
 	[sendButton setAction:"callAction:"]
@@ -409,15 +395,66 @@ function fireSendArtboards(projectsArray, all, context){
 	[windowSendArtboards setDefaultButtonCell:[sendButton cell]];
 	
 	[NSApp runModalForWindow:windowSendArtboards]
+}
+
+function createProject(nameValue){
+
+	sketchLog("Create project")
 	
+	var token = getActiveTokenFromComputer()
+	
+	var jsonDict = [[NSDictionary alloc] initWithObjectsAndKeys: nameValue, @"name", nil]
+	var errorDataConvert;
+    var jsonData = [NSJSONSerialization dataWithJSONObject:jsonDict options:0 error:errorDataConvert];
+
+	var url = [NSURL URLWithString:rootURL + "project/"];
+	
+	var request=[NSMutableURLRequest requestWithURL:url cachePolicy:NSURLRequestReloadIgnoringCacheData timeoutInterval:60]
+	[request setHTTPMethod:"POST"]
+	[request setValue:"Sketch" forHTTPHeaderField:"User-Agent"]
+	[request setValue:"application/json" forHTTPHeaderField:"Content-Type"]
+	[request setValue:"Token " + token forHTTPHeaderField:"Authorization"]
+	[request setValue:token forHTTPHeaderField:"HTTP_AUTHORIZATION"]
+	[request setHTTPBody: jsonData]
+		
+	var response = nil;
+	var error = nil;
+	sketchLog("Start create project connection")
+	var data = [NSURLConnection sendSynchronousRequest:request returningResponse:response error:error];
+	
+	if (error == nil && data != nil)
+	{	    
+	    var errorJson;
+		var res = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableLeaves error:errorJson]
+		 
+		if(res.detail && res.detail == "Invalid token"){
+		  	deleteActiveTokenFromComputer()
+		  	fireError("Your token is not valid anymore, please login again.","After you are logged in again please try again.")
+		  	return false
+		} else if (res.detail && res.detail == "Project name already exists"){
+		  	fireError("Project name already exists.","Change your project name to go forward.")
+		  	return false
+		} else if ([res valueForKey:@"id"]) {
+			var itemId = [NSString stringWithFormat:@"%@", [[res valueForKey:@"id"] intValue]];
+			NSLog(itemId)
+		   	return itemId
+		}
+
+		NSLog("nothing")
+		return false	
+	    	
+	} else {
+			dealWithErrors(data)
+	}
+
+	return false;
 }
 
 function loginWithUsernameAndPassword(email, password){
 
 			sketchLog("Get Token From Server Start");
 			getTokenFromServer(email,password)
-			sketchLog("Get Token From Server End");
-			
+			sketchLog("Get Token From Server End");			
 }
 
 // Api Calls
@@ -483,7 +520,6 @@ function getTokenFromServer(email,password){
 			}
 		
 			return false;	
-
 }
 
 function getProjectNamesArray() {
@@ -540,8 +576,7 @@ function getProjectNamesArray() {
 			dealWithErrors(data)
 	}
 
-	return false;	
-	
+	return false;		
 }
 
 function postFile(path, projectId, filename, uuid, width, height) {
@@ -568,7 +603,6 @@ function postFile(path, projectId, filename, uuid, width, height) {
 			} else {
 				task.launch();
 			}
-
 }
 
 // Helpers
@@ -594,8 +628,7 @@ function dealWithErrors(data){
 				webViewWhichShowsResults()
 		}
 
-		sketchLog("Return data " + stringRead)
-		
+		sketchLog("Return data " + stringRead)		
 }
 
 function webViewWhichShowsResults(){
@@ -680,7 +713,6 @@ function exportArtboardsAndSendTo(projectId, scale, selection, document) {
 				}
 		
 	sendArtboardOnArray(selection, scale, projectId, document)
-
 }
 
 function exportAllArtboardsAndSendTo(projectId, scale, document) {
@@ -708,8 +740,7 @@ function exportAllArtboardsAndSendTo(projectId, scale, document) {
 				
 					}
 			
-					sendArtboardOnArray(artboards, scale, projectId, document)
-				
+					sendArtboardOnArray(artboards, scale, projectId, document)				
 }
 
 function sendArtboardOnArray(array, scale, projectId, document){
@@ -722,22 +753,16 @@ function sendArtboardOnArray(array, scale, projectId, document){
 				
 					var filename = escapedFileName([item name]) + ".png"
 					
-					NSLog("test 0");
-
 					sketchLog("Artboard found with name " + filename + " and object id " + item.objectID())
 					var path = NSTemporaryDirectory() + filename
 					var version = copy_layer_with_factor(item, scale)
 
-					NSLog("test 1");
 					[document saveArtboardOrSlice:version toFile:path];
-					NSLog("test 2");
 					
 					postFile(path, projectId, filename,item.objectID(), [[item frame] width], [[item frame] height])
-					NSLog("test 3");
 
 				}
 		}
-
 }
 
 function escapedFileName(string){
@@ -769,4 +794,3 @@ function sketchLog(string){
 		NSLog("Sketch: " + string)
 	}
 }
-
