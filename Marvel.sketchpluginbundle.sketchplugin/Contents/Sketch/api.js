@@ -274,7 +274,7 @@ function fireSendArtboards(projectsArray, all, context){
 	[subtitleField setFont:[NSFont systemFontOfSize:11]];
 	[subtitleField setTextColor:[NSColor colorWithCalibratedRed:(93/255) green:(93/255) blue:(93/255) alpha:1]];
 	[subtitleField setDrawsBackground:false]
-	[subtitleField setStringValue:"Project"]
+	[subtitleField setStringValue:"Project (or enter a new one)"]
 	[[windowSendArtboards contentView] addSubview:subtitleField]
 
 	var pluralNounPopup = [[NSComboBox alloc] initWithFrame:NSMakeRect(345, yDropdowns, 78, 26)]
