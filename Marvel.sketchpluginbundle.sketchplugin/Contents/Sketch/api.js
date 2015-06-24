@@ -231,7 +231,7 @@ function fireAlreadyLoggedInWindow(context){
 			deleteActiveTokenFromComputer()
 	    [alreadyLoggedInWindow orderOut:nil]
 	    [NSApp stopModal]
-	    fireLoginWindow(context)
+	    fireLoginWindowWithContext(context)
 	}];
 	[logoutButton setAction:"callAction:"]
 	[[alreadyLoggedInWindow contentView] addSubview:logoutButton]
