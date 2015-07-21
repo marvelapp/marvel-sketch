@@ -26,10 +26,13 @@ var onRun = function (context) {
 
 	if (getActiveTokenFromComputer() == false) {
 		
+		sketchLog("Fire login window");
 		fireLoginWindowWithContext(context)
 
 	} else {
-
+		
+		sketchLog("Get project names array");
+		
 		var projectNamesArray = getProjectNamesArray()
 		
 		if(projectNamesArray){
