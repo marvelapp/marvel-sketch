@@ -20,8 +20,9 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.*/
 
-var DEBUG = false
+var DEBUG = true
 var rootURL = "https://marvelapp.com/api/"
+var app = [NSApplication sharedApplication];
 
 // Plugin Calls
 
@@ -363,7 +364,6 @@ function fireSendArtboards(projectsArray, all, context){
 				var export_scale_factor = scaleString.replace(/[^0-9.wWhH]/g,"");
 
 				if(export_scale_factor.indexOf("w") !=-1 || export_scale_factor.indexOf("h") !=-1 || export_scale_factor.indexOf("W") !=-1 || export_scale_factor.indexOf("H") !=-1) {
-	    			var app = [NSApplication sharedApplication];
 	    			[app displayDialog:"Try again without" withTitle:"We don't support w or h characters for scaling at this moment"]
 	    			return false
 	    		} 
@@ -521,12 +521,10 @@ function getTokenFromServer(email,password){
 				  			[[NSUserDefaults standardUserDefaults] setObject:token forKey:"token"]
 							[[NSUserDefaults standardUserDefaults] synchronize]
 				  			
-				  			var app = [NSApplication sharedApplication];
 				  			[app displayDialog:"Select your artboards, go to plugins > Marvel > Send to Project..." withTitle:"You are now logged in."]
 				  			
 						} else if(res.password) {
 		
-								var app = [NSApplication sharedApplication];
 								[app displayDialog:"If you sign into Marvel using Dropbox, you'll need to set a password for your account to use Sketch, head to My Profile in Marvel to set one up." withTitle:"Incorrect email or password."]
 							
 						} else {
@@ -810,7 +808,6 @@ function copy_layer_with_factor(original_slice, factor){
 }
 
 function fireError(title,text){
-		var app = [NSApplication sharedApplication];
 		[app displayDialog:text withTitle:title]
 }
 
