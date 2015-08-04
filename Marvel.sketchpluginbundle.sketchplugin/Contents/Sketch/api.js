@@ -127,7 +127,7 @@ function fireLoginWindowWithContext(context){
 	[loginButton setKeyEquivalent:"\r"]
 	[loginButton setCOSJSTargetFunction:function(sender) {
 	    [loginWindow orderOut:nil]
-	    [NSApp stopModal]
+	    [app stopModal]
 	    var email = emailInputField.stringValue()
 	    var password = passwordField.stringValue()
 	    loginWithUsernameAndPassword(email, password)
@@ -141,7 +141,7 @@ function fireLoginWindowWithContext(context){
 	[cancelButton setBezelStyle:NSRoundedBezelStyle]
 	[cancelButton setCOSJSTargetFunction:function(sender) {
 	    [loginWindow orderOut:nil]
-	    [NSApp stopModal]
+	    [app stopModal]
 	}];
 	[cancelButton setAction:"callAction:"]
 	[[loginWindow contentView] addSubview:cancelButton]
@@ -192,7 +192,7 @@ function fireLoginWindowWithContext(context){
 
 	[loginWindow setDefaultButtonCell:[loginButton cell]];
 	
-	[NSApp runModalForWindow:loginWindow]	
+	[app runModalForWindow:loginWindow]	
 }
 
 function fireAlreadyLoggedInWindow(context){
@@ -231,7 +231,7 @@ function fireAlreadyLoggedInWindow(context){
 	[logoutButton setCOSJSTargetFunction:function(sender) {
 			deleteActiveTokenFromComputer()
 	    [alreadyLoggedInWindow orderOut:nil]
-	    [NSApp stopModal]
+	    [app stopModal]
 	    fireLoginWindowWithContext(context)
 	}];
 	[logoutButton setAction:"callAction:"]
@@ -243,14 +243,14 @@ function fireAlreadyLoggedInWindow(context){
 	[cancelButton setBezelStyle:NSRoundedBezelStyle]
 	[cancelButton setCOSJSTargetFunction:function(sender) {
 	    [alreadyLoggedInWindow  orderOut:nil]
-	    [NSApp stopModal]
+	    [app stopModal]
 	}];
 	[cancelButton setAction:"callAction:"]
 	[[alreadyLoggedInWindow contentView] addSubview:cancelButton]
 
 	[alreadyLoggedInWindow setDefaultButtonCell:[logoutButton cell]];
 	
-	[NSApp runModalForWindow:alreadyLoggedInWindow]
+	[app runModalForWindow:alreadyLoggedInWindow]
 }
 
 function fireSendArtboards(projectsArray, all, context){
@@ -398,7 +398,7 @@ function fireSendArtboards(projectsArray, all, context){
 					saveScaleSetting(scaleString)
 					saveLastUsedProject(projectId)
 					[windowSendArtboards orderOut:nil]
-					[NSApp stopModal]
+					[app stopModal]
 
 				};
 
@@ -412,14 +412,14 @@ function fireSendArtboards(projectsArray, all, context){
 	[cancelButton setBezelStyle:NSRoundedBezelStyle]
 	[cancelButton setCOSJSTargetFunction:function(sender) {
 	    [windowSendArtboards orderOut:nil]
-	    [NSApp stopModal]
+	    [app stopModal]
 	}];
 	[cancelButton setAction:"callAction:"]
 	[[windowSendArtboards contentView] addSubview:cancelButton]
 
 	[windowSendArtboards setDefaultButtonCell:[sendButton cell]];
 	
-	[NSApp runModalForWindow:windowSendArtboards]
+	[app runModalForWindow:windowSendArtboards]
 }
 
 function createProject(nameValue){
@@ -689,14 +689,14 @@ function webViewWhichShowsResults(){
 		[cancelButton setBezelStyle:NSRoundedBezelStyle]
 		[cancelButton setCOSJSTargetFunction:function(sender) {
 		    [webViewWindow orderOut:nil]
-		    [NSApp stopModal]
+		    [app stopModal]
 		}];
 		[cancelButton setAction:"callAction:"]
 		[[webViewWindow contentView] addSubview:cancelButton]
 		
 		[webViewWindow setDefaultButtonCell:[cancelButton cell]];
 			
-		[NSApp runModalForWindow:webViewWindow ]
+		[app runModalForWindow:webViewWindow ]
 }
 
 function isRetinaDisplay() {
