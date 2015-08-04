@@ -22,6 +22,7 @@ SOFTWARE.*/
 
 var DEBUG = false
 var rootURL = "https://marvelapp.com/api/"
+var app = [NSApplication sharedApplication];
 
 // Plugin Calls
 
@@ -126,7 +127,7 @@ function fireLoginWindowWithContext(context){
 	[loginButton setKeyEquivalent:"\r"]
 	[loginButton setCOSJSTargetFunction:function(sender) {
 	    [loginWindow orderOut:nil]
-	    [NSApp stopModal]
+	    [app stopModal]
 	    var email = emailInputField.stringValue()
 	    var password = passwordField.stringValue()
 	    loginWithUsernameAndPassword(email, password)
@@ -140,7 +141,7 @@ function fireLoginWindowWithContext(context){
 	[cancelButton setBezelStyle:NSRoundedBezelStyle]
 	[cancelButton setCOSJSTargetFunction:function(sender) {
 	    [loginWindow orderOut:nil]
-	    [NSApp stopModal]
+	    [app stopModal]
 	}];
 	[cancelButton setAction:"callAction:"]
 	[[loginWindow contentView] addSubview:cancelButton]
@@ -191,7 +192,7 @@ function fireLoginWindowWithContext(context){
 
 	[loginWindow setDefaultButtonCell:[loginButton cell]];
 	
-	[NSApp runModalForWindow:loginWindow]	
+	[app runModalForWindow:loginWindow]	
 }
 
 function fireAlreadyLoggedInWindow(context){
@@ -205,7 +206,7 @@ function fireAlreadyLoggedInWindow(context){
 	var titleField = [[NSTextField alloc] initWithFrame:NSMakeRect(0, 179, 540, 17)]
 	[titleField setEditable:false]
 	[titleField setBordered:false]
-	[titleField setAlignment:NSCenterTextAlignment] 
+	[titleField setAlignment:2] 
 	[titleField setDrawsBackground:false]
 	[titleField setFont:[NSFont boldSystemFontOfSize:13]];
 	[titleField setStringValue:"You are already logged in!"]
@@ -215,7 +216,7 @@ function fireAlreadyLoggedInWindow(context){
 	var subtitleField = [[NSTextField alloc] initWithFrame:NSMakeRect(0, 140, 540, 30)]
 	[subtitleField setEditable:false]
 	[subtitleField setBordered:false]
-	[subtitleField setAlignment:NSCenterTextAlignment] 
+	[subtitleField setAlignment:2] 
 	[subtitleField setFont:[NSFont systemFontOfSize:13]];
 	[subtitleField setTextColor:[NSColor colorWithCalibratedRed:(93/255) green:(93/255) blue:(93/255) alpha:1]];
 	[subtitleField setDrawsBackground:false]
@@ -230,7 +231,7 @@ function fireAlreadyLoggedInWindow(context){
 	[logoutButton setCOSJSTargetFunction:function(sender) {
 			deleteActiveTokenFromComputer()
 	    [alreadyLoggedInWindow orderOut:nil]
-	    [NSApp stopModal]
+	    [app stopModal]
 	    fireLoginWindowWithContext(context)
 	}];
 	[logoutButton setAction:"callAction:"]
@@ -242,14 +243,14 @@ function fireAlreadyLoggedInWindow(context){
 	[cancelButton setBezelStyle:NSRoundedBezelStyle]
 	[cancelButton setCOSJSTargetFunction:function(sender) {
 	    [alreadyLoggedInWindow  orderOut:nil]
-	    [NSApp stopModal]
+	    [app stopModal]
 	}];
 	[cancelButton setAction:"callAction:"]
 	[[alreadyLoggedInWindow contentView] addSubview:cancelButton]
 
 	[alreadyLoggedInWindow setDefaultButtonCell:[logoutButton cell]];
 	
-	[NSApp runModalForWindow:alreadyLoggedInWindow]
+	[app runModalForWindow:alreadyLoggedInWindow]
 }
 
 function fireSendArtboards(projectsArray, all, context){
@@ -294,7 +295,7 @@ function fireSendArtboards(projectsArray, all, context){
 	var subtitleField = [[NSTextField alloc] initWithFrame:NSMakeRect(74, yDropdowns - 28, 266, 26)]
 	[subtitleField setEditable:false]
 	[subtitleField setBordered:false]
-	[subtitleField setAlignment:NSCenterTextAlignment] 
+	[subtitleField setAlignment:2] 
 	[subtitleField setFont:[NSFont systemFontOfSize:11]];
 	[subtitleField setTextColor:[NSColor colorWithCalibratedRed:(93/255) green:(93/255) blue:(93/255) alpha:1]];
 	[subtitleField setDrawsBackground:false]
@@ -330,7 +331,7 @@ function fireSendArtboards(projectsArray, all, context){
 	var subtitleField2 = [[NSTextField alloc] initWithFrame:NSMakeRect(345, yDropdowns - 28, 78, 26)]
 	[subtitleField2 setEditable:false]
 	[subtitleField2 setBordered:false]
-	[subtitleField2 setAlignment:NSCenterTextAlignment] 
+	[subtitleField2 setAlignment:2] 
 	[subtitleField2 setFont:[NSFont systemFontOfSize:11]];
 	[subtitleField2 setTextColor:[NSColor colorWithCalibratedRed:(93/255) green:(93/255) blue:(93/255) alpha:1]];
 	[subtitleField2 setDrawsBackground:false]
@@ -363,7 +364,6 @@ function fireSendArtboards(projectsArray, all, context){
 				var export_scale_factor = scaleString.replace(/[^0-9.wWhH]/g,"");
 
 				if(export_scale_factor.indexOf("w") !=-1 || export_scale_factor.indexOf("h") !=-1 || export_scale_factor.indexOf("W") !=-1 || export_scale_factor.indexOf("H") !=-1) {
-	    			var app = [NSApplication sharedApplication];
 	    			[app displayDialog:"Try again without" withTitle:"We don't support w or h characters for scaling at this moment"]
 	    			return false
 	    		} 
@@ -398,7 +398,7 @@ function fireSendArtboards(projectsArray, all, context){
 					saveScaleSetting(scaleString)
 					saveLastUsedProject(projectId)
 					[windowSendArtboards orderOut:nil]
-					[NSApp stopModal]
+					[app stopModal]
 
 				};
 
@@ -412,14 +412,14 @@ function fireSendArtboards(projectsArray, all, context){
 	[cancelButton setBezelStyle:NSRoundedBezelStyle]
 	[cancelButton setCOSJSTargetFunction:function(sender) {
 	    [windowSendArtboards orderOut:nil]
-	    [NSApp stopModal]
+	    [app stopModal]
 	}];
 	[cancelButton setAction:"callAction:"]
 	[[windowSendArtboards contentView] addSubview:cancelButton]
 
 	[windowSendArtboards setDefaultButtonCell:[sendButton cell]];
 	
-	[NSApp runModalForWindow:windowSendArtboards]
+	[app runModalForWindow:windowSendArtboards]
 }
 
 function createProject(nameValue){
@@ -521,12 +521,10 @@ function getTokenFromServer(email,password){
 				  			[[NSUserDefaults standardUserDefaults] setObject:token forKey:"token"]
 							[[NSUserDefaults standardUserDefaults] synchronize]
 				  			
-				  			var app = [NSApplication sharedApplication];
 				  			[app displayDialog:"Select your artboards, go to plugins > Marvel > Send to Project..." withTitle:"You are now logged in."]
 				  			
 						} else if(res.password) {
 		
-								var app = [NSApplication sharedApplication];
 								[app displayDialog:"If you sign into Marvel using Dropbox, you'll need to set a password for your account to use Sketch, head to My Profile in Marvel to set one up." withTitle:"Incorrect email or password."]
 							
 						} else {
@@ -613,7 +611,7 @@ function postFile(path, projectId, filename, uuid, width, height) {
 			var task = NSTask.alloc().init()
 			task.setLaunchPath("/usr/bin/curl");
 						
-			var args = NSArray.arrayWithObjects("-v", "POST", "--header", "Content-Type: multipart/form-data; boundary=0xKhTmLbOuNdArY", "--header", "Authorization: Token " + token, "--header", "HTTP_AUTHORIZATION: 373bd37e71c4b0e8ac8bf6c5f1de8fe14196f6c8", "--header", "User-Agent: Sketch", "--header", "width: " + width, "--header", "height: " + height, "-F", "Content-Disposition: form-data; name=file; filename=" + filename + "; Content-Type=image/png;", "-F", "file=@" + path, rootURL + "content/upload/sketch/" + projectId + "/" + uuid + "/", nil);
+			var args = NSArray.arrayWithObjects("-v", "POST", "--header", "Content-Type: multipart/form-data; boundary=0xKhTmLbOuNdArY", "--header", "Authorization: Token " + token, "--header", "HTTP_AUTHORIZATION: " + token, "--header", "User-Agent: Sketch", "--header", "width: " + width, "--header", "height: " + height, "-F", "Content-Disposition: form-data; name=file; filename=" + filename + "; Content-Type=image/png;", "-F", "file=@" + path, rootURL + "content/upload/sketch/" + projectId + "/" + uuid + "/", nil);
 						
 			task.setArguments(args);
 			
@@ -691,14 +689,14 @@ function webViewWhichShowsResults(){
 		[cancelButton setBezelStyle:NSRoundedBezelStyle]
 		[cancelButton setCOSJSTargetFunction:function(sender) {
 		    [webViewWindow orderOut:nil]
-		    [NSApp stopModal]
+		    [app stopModal]
 		}];
 		[cancelButton setAction:"callAction:"]
 		[[webViewWindow contentView] addSubview:cancelButton]
 		
 		[webViewWindow setDefaultButtonCell:[cancelButton cell]];
 			
-		[NSApp runModalForWindow:webViewWindow ]
+		[app runModalForWindow:webViewWindow ]
 }
 
 function isRetinaDisplay() {
@@ -810,7 +808,6 @@ function copy_layer_with_factor(original_slice, factor){
 }
 
 function fireError(title,text){
-		var app = [NSApplication sharedApplication];
 		[app displayDialog:text withTitle:title]
 }
 
