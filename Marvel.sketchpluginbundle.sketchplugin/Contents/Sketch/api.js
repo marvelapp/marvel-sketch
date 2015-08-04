@@ -206,7 +206,7 @@ function fireAlreadyLoggedInWindow(context){
 	var titleField = [[NSTextField alloc] initWithFrame:NSMakeRect(0, 179, 540, 17)]
 	[titleField setEditable:false]
 	[titleField setBordered:false]
-	[titleField setAlignment:NSCenterTextAlignment] 
+	[titleField setAlignment:2] 
 	[titleField setDrawsBackground:false]
 	[titleField setFont:[NSFont boldSystemFontOfSize:13]];
 	[titleField setStringValue:"You are already logged in!"]
@@ -216,7 +216,7 @@ function fireAlreadyLoggedInWindow(context){
 	var subtitleField = [[NSTextField alloc] initWithFrame:NSMakeRect(0, 140, 540, 30)]
 	[subtitleField setEditable:false]
 	[subtitleField setBordered:false]
-	[subtitleField setAlignment:NSCenterTextAlignment] 
+	[subtitleField setAlignment:2] 
 	[subtitleField setFont:[NSFont systemFontOfSize:13]];
 	[subtitleField setTextColor:[NSColor colorWithCalibratedRed:(93/255) green:(93/255) blue:(93/255) alpha:1]];
 	[subtitleField setDrawsBackground:false]
@@ -295,7 +295,7 @@ function fireSendArtboards(projectsArray, all, context){
 	var subtitleField = [[NSTextField alloc] initWithFrame:NSMakeRect(74, yDropdowns - 28, 266, 26)]
 	[subtitleField setEditable:false]
 	[subtitleField setBordered:false]
-	[subtitleField setAlignment:NSCenterTextAlignment] 
+	[subtitleField setAlignment:2] 
 	[subtitleField setFont:[NSFont systemFontOfSize:11]];
 	[subtitleField setTextColor:[NSColor colorWithCalibratedRed:(93/255) green:(93/255) blue:(93/255) alpha:1]];
 	[subtitleField setDrawsBackground:false]
@@ -331,7 +331,7 @@ function fireSendArtboards(projectsArray, all, context){
 	var subtitleField2 = [[NSTextField alloc] initWithFrame:NSMakeRect(345, yDropdowns - 28, 78, 26)]
 	[subtitleField2 setEditable:false]
 	[subtitleField2 setBordered:false]
-	[subtitleField2 setAlignment:NSCenterTextAlignment] 
+	[subtitleField2 setAlignment:2] 
 	[subtitleField2 setFont:[NSFont systemFontOfSize:11]];
 	[subtitleField2 setTextColor:[NSColor colorWithCalibratedRed:(93/255) green:(93/255) blue:(93/255) alpha:1]];
 	[subtitleField2 setDrawsBackground:false]
