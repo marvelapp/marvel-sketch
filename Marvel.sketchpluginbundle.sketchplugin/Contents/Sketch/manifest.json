@@ -25,13 +25,19 @@
       "identifier": "selectedartboards",
       "shortcut": "cmd alt g",
       "script": "artboards-selected.js"
+    },
+    {
+      "name": "Support",
+      "identifier": "support",
+      "script": "support.js"
     }
   ],
   "menu": {
     "items": [
       "login",
       "allartboards",
-      "selectedartboards"
+      "selectedartboards",
+      "support"
     ]
   }
 }

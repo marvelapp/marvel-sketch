@@ -24,21 +24,19 @@ SOFTWARE.*/
 
 var onRun = function (context) {
 
-	if (getActiveTokenFromComputer() == false) {
+	if (getActiveTokenFromComputer(context) == false) {
 		
-		sketchLog("Fire login window");
+		sketchLog(context,"Fire login window");
 		fireLoginWindowWithContext(context)
 
 	} else {
 		
-		sketchLog("Get project names array");
+		sketchLog(context,"Get project names array");
 		
-		var projectNamesArray = getProjectNamesArray()
+		var projectNamesArray = getProjectNamesArray(context)
 		
 		if(projectNamesArray){
 			fireSendArtboards(projectNamesArray, 1, context)
-		} else{
-			fireError("You don\'t have any projects.","Make first a project on marvelapp.com");
 		}
 		
 
