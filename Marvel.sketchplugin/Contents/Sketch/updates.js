@@ -29,7 +29,7 @@ var updatesChecker = {
        
        	sketchLog(context,"updatesChecker.getNewestVersionNumber()")
        	       	
-       	var url = [NSURL URLWithString:"https://raw.githubusercontent.com/marvelapp/marvel-sketch/master/Marvel.sketchpluginbundle.sketchplugin/Contents/Sketch/manifest.json"];
+       	var url = [NSURL URLWithString:"https://raw.githubusercontent.com/marvelapp/marvel-sketch/master/Marvel.sketchplugin/Contents/Sketch/manifest.json"];
 
        	var request=[NSMutableURLRequest requestWithURL:url cachePolicy:NSURLRequestReloadIgnoringCacheData timeoutInterval:30]
        	[request setHTTPMethod:"GET"]
