@@ -55,7 +55,7 @@ function fireLoginWindowWithContext(context){
 		
 	var plugin = context.plugin
 
-	if(isRetinaDisplay()){
+	if(mini.isRetinaDisplay()){
 		var imageFilePath=[plugin urlForResourceNamed:"logo@2x.png"];
 	} else {
 		var imageFilePath=[plugin urlForResourceNamed:"logo.png"];
@@ -250,7 +250,7 @@ function fireSendArtboards(projectsArray, all, context){
 	var projectPopup = [[NSComboBox alloc] initWithFrame:NSMakeRect(74, yDropdowns, 266, 26)]
 	[projectPopup removeAllItems]
 	[projectPopup setFocusRingType:NSFocusRingTypeNone]
-	var lastUsedProjectId = getLastUsedProject(context);
+	var lastUsedProjectId = settings.getLastUsedProject(context);
 	var lastUsedProjectIdIndex;
 	var projectNames = [];
 	for (i = 0; i < projectsArray.length; ++i) {
@@ -285,7 +285,7 @@ function fireSendArtboards(projectsArray, all, context){
 	[pluralNounPopup addItemsWithObjectValues:pluralNouns]
 	[[windowSendArtboards contentView] addSubview:pluralNounPopup]
 		
-	var scale = getScaleSettingFromComputer(context);
+	var scale = settings.getScaleSettingFromComputer(context);
 	
 	if(scale){	
 		var foundIndex = 0;
@@ -371,8 +371,8 @@ function fireSendArtboards(projectsArray, all, context){
 					} else {
 						exportArtboardsAndSendTo(context,projectId, export_scale_factor, context.selection, context.document)
 					}
-					saveScaleSetting(scaleString,context)
-					saveLastUsedProject(projectId,context)
+					settings.saveScaleSetting(scaleString,context)
+					settings.saveLastUsedProject(projectId,context)
 					[windowSendArtboards orderOut:nil]
 					[app stopModal]
 
@@ -432,7 +432,7 @@ function fireSupport(context){
 	var debugCheckbox = [[NSButton alloc] initWithFrame:NSMakeRect (350,195,50,25)]
     [debugCheckbox setButtonType:NSSwitchButton];
     [debugCheckbox setTitle:@""];
-    if(getDebugSettingFromComputer(context) == 1){
+    if(settings.getDebugSettingFromComputer(context) == 1){
     	[debugCheckbox setState:NSOnState];
     } else {
     	[debugCheckbox setState:NSOffState];
@@ -443,9 +443,9 @@ function fireSupport(context){
         removeFileOrFolder(directory + "main.txt")
 
 		if ([sender state] == NSOnState) {
-        	saveDebugSetting(1,context)
+        	settings.saveDebugSetting(1,context)
     	} else {
-        	saveDebugSetting(0,context)
+        	settings.saveDebugSetting(0,context)
     	}
 	    
 	}];
@@ -724,7 +724,7 @@ function postFile(context, path, projectId, filename, uuid, width, height) {
 						
 		task.setArguments(args);
 
-		if(getDebugSettingFromComputer(context) == 1)
+		if(settings.getDebugSettingFromComputer(context) == 1)
 		{
 			/*
 			sketchLog(context,"Output pipe")
@@ -962,7 +962,7 @@ function sendArtboardOnArray(context, array, scale, projectId, document){
 				
 				if (item.className() == "MSArtboardGroup") {
 				
-					var filename = escapedFileName([item name]) + ".png"
+					var filename = mini.escapedFileName([item name]) + ".png"
 					
 					sketchLog(context,"Artboard found with name " + filename + " and object id " + item.objectID())
 					var path = NSTemporaryDirectory() + filename
@@ -994,7 +994,7 @@ function fireError(title,text){
 }
 
 function sketchLog(context,string){
-	if(getDebugSettingFromComputer(context) == 1)
+	if(settings.getDebugSettingFromComputer(context) == 1)
 	{
 		NSLog(string)
 		errorLogging.write(context,string)

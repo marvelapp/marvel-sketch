@@ -20,45 +20,48 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.*/
 
-function getDebugSettingFromComputer(context) {
-	var debug = [[NSUserDefaults standardUserDefaults] objectForKey:"debug"]
-	if (debug) {
-		return debug
-	} else {
-		return 0
+var settings = {
+
+	"getDebugSettingFromComputer": function(context){
+		var debug = [[NSUserDefaults standardUserDefaults] objectForKey:"debug"]
+		if (debug) {
+			return debug
+		} else {
+			return 0
+		}
+	},
+
+	"saveDebugSetting": function(debugValue,context){
+		[[NSUserDefaults standardUserDefaults] setObject:debugValue forKey:"debug"]
+		[[NSUserDefaults standardUserDefaults] synchronize]
+	},
+
+	"getScaleSettingFromComputer": function(context){
+		var scale = [[NSUserDefaults standardUserDefaults] objectForKey:"scale"];
+		if (scale) {
+			return scale;
+		} else {
+			return false;
+		}
+	},
+
+	"getLastUsedProject": function(context){
+		var last = [[NSUserDefaults standardUserDefaults] objectForKey:"last used project"];
+		if (last) {
+			return last;
+		} else {
+			return false;
+		}
+	},
+
+	"saveLastUsedProject": function(projectId,context){
+		[[NSUserDefaults standardUserDefaults] setObject:projectId forKey:"last used project"]
+		[[NSUserDefaults standardUserDefaults] synchronize]
+	},
+
+	"saveScaleSetting": function(scaleValue,context){
+		[[NSUserDefaults standardUserDefaults] setObject:scaleValue forKey:"scale"]
+		[[NSUserDefaults standardUserDefaults] synchronize]
 	}
-}
 
-function saveDebugSetting(debugValue,context){
-	[[NSUserDefaults standardUserDefaults] setObject:debugValue forKey:"debug"]
-	[[NSUserDefaults standardUserDefaults] synchronize]
-}
-
-
-function getScaleSettingFromComputer(context) {
-	var scale = [[NSUserDefaults standardUserDefaults] objectForKey:"scale"];
-	if (scale) {
-		return scale;
-	} else {
-		return false;
-	}
-}
-
-function getLastUsedProject(context) {
-	var last = [[NSUserDefaults standardUserDefaults] objectForKey:"last used project"];
-	if (last) {
-		return last;
-	} else {
-		return false;
-	}
-}
-
-function saveLastUsedProject(projectId,context){
-	[[NSUserDefaults standardUserDefaults] setObject:projectId forKey:"last used project"]
-	[[NSUserDefaults standardUserDefaults] synchronize]
-}
-
-function saveScaleSetting(scaleValue,context){
-	[[NSUserDefaults standardUserDefaults] setObject:scaleValue forKey:"scale"]
-	[[NSUserDefaults standardUserDefaults] synchronize]
 }
