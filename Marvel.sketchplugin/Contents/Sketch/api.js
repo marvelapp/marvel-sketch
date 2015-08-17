@@ -439,8 +439,8 @@ function fireSupport(context){
     }
     [debugCheckbox setCOSJSTargetFunction:function(sender) {
 
-    	var directory = getLogDirectory(context);
-        removeFileOrFolder(directory + "main.txt")
+    	var directory = errorLogging.getLogDirectory(context);
+        errorLogging.removeFileOrFolder(directory + "main.txt")
 
 		if ([sender state] == NSOnState) {
         	settings.saveDebugSetting(1,context)

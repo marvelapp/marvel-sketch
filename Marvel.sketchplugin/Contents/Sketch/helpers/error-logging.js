@@ -100,7 +100,7 @@ var errorLogging = {
 
 	"fetchLog": function(context){
 
-		var logsDirectory = getLogDirectory(context) + "main.txt"
+		var logsDirectory = errorLogging.getLogDirectory(context) + "main.txt"
 
 		var log = errorLogging.readTextFromFile(context,logsDirectory)
 
