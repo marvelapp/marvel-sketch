@@ -20,53 +20,31 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.*/
 
-var DEBUG = false
+@import 'helpers/error-logging.js'
+@import 'helpers/settings.js'
+@import 'helpers/mini.js'
+@import 'helpers/manifest.js'
+
 var rootURL = "https://marvelapp.com/api/"
 var app = [NSApplication sharedApplication];
 
 // Plugin Calls
 
-function getActiveTokenFromComputer() {
-	sketchLog("Get active token from computer")
+function getActiveTokenFromComputer(context) {
+	sketchLog(context,"getActiveTokenFromComputer()")
 	var token = [[NSUserDefaults standardUserDefaults] objectForKey:"token"];
 	if (token) {
+		sketchLog(context,"Token return : " + token)
 		return token;
 	} else {
 		return false;
 	}
 }
 
-function deleteActiveTokenFromComputer() {
+function deleteActiveTokenFromComputer(context) {
 	[[NSUserDefaults standardUserDefaults] removeObjectForKey:@"token"];
 }
 
-function getScaleSettingFromComputer() {
-	var scale = [[NSUserDefaults standardUserDefaults] objectForKey:"scale"];
-	if (scale) {
-		return scale;
-	} else {
-		return false;
-	}
-}
-
-function getLastUsedProject() {
-	var scale = [[NSUserDefaults standardUserDefaults] objectForKey:"last used project"];
-	if (scale) {
-		return scale;
-	} else {
-		return false;
-	}
-}
-
-function saveLastUsedProject(projectId){
-	[[NSUserDefaults standardUserDefaults] setObject:projectId forKey:"last used project"]
-	[[NSUserDefaults standardUserDefaults] synchronize]
-}
-
-function saveScaleSetting(scaleValue){
-	[[NSUserDefaults standardUserDefaults] setObject:scaleValue forKey:"scale"]
-	[[NSUserDefaults standardUserDefaults] synchronize]
-}
 
 function fireLoginWindowWithContext(context){
 	
@@ -77,15 +55,13 @@ function fireLoginWindowWithContext(context){
 		
 	var plugin = context.plugin
 
-	if(isRetinaDisplay()){
-		var imageFilePath=[plugin urlForResourceNamed:"logo.png"];
+	if(mini.isRetinaDisplay()){
+		var imageFilePath=[plugin urlForResourceNamed:"logo@2x.png"];
 	} else {
 		var imageFilePath=[plugin urlForResourceNamed:"logo.png"];
 	}
 	var imageData = [NSData dataWithContentsOfURL:imageFilePath];
 	var image = NSImage.alloc().initWithData(imageData);
-
-	//var image = NSImage.alloc().initByReferencingFile([imageFilePath absoluteString]);
 
 	var imageView = [[NSImageView alloc] initWithFrame:NSMakeRect(46, 124, 164, 149)];
 	[imageView setImage: image];
@@ -130,7 +106,7 @@ function fireLoginWindowWithContext(context){
 	    [app stopModal]
 	    var email = emailInputField.stringValue()
 	    var password = passwordField.stringValue()
-	    loginWithUsernameAndPassword(email, password)
+	    loginWithUsernameAndPassword(email, password, context)
 	}];
 	[loginButton setAction:"callAction:"]
 	[[loginWindow contentView] addSubview:loginButton]
@@ -170,7 +146,7 @@ function fireLoginWindowWithContext(context){
 	[createMarvelButton setCOSJSTargetFunction:function(sender) {
 	    var url = [NSURL URLWithString:@"https://marvelapp.com/manage/account/"];
 	    if( ![[NSWorkspace sharedWorkspace] openURL:url] ){
-	        sketchLog(@"Failed to open url:" + [url description])
+	        sketchLog(context,"Failed to open url:" + [url description])
 	    }    
 	}];
 	[createMarvelButton setAction:"callAction:"]
@@ -183,7 +159,7 @@ function fireLoginWindowWithContext(context){
 	[createHelpButton setCOSJSTargetFunction:function(sender) {
 	    var url = [NSURL URLWithString:@"http://marvel.helpscoutdocs.com/article/62-getting-started-with-the-marvel-sketch-plugin"];
 	    if( ![[NSWorkspace sharedWorkspace] openURL:url] ){
-	        sketchLog(@"Failed to open url:" + [url description])
+	        sketchLog(context,"Failed to open url:" + [url description])
 	    }    
 	}];
 	[createHelpButton setAction:"callAction:"]
@@ -229,7 +205,7 @@ function fireAlreadyLoggedInWindow(context){
 	[logoutButton setTitle:"Log out"]
 	[logoutButton setBezelStyle:NSRoundedBezelStyle]
 	[logoutButton setCOSJSTargetFunction:function(sender) {
-			deleteActiveTokenFromComputer()
+			deleteActiveTokenFromComputer(context)
 	    [alreadyLoggedInWindow orderOut:nil]
 	    [app stopModal]
 	    fireLoginWindowWithContext(context)
@@ -255,7 +231,7 @@ function fireAlreadyLoggedInWindow(context){
 
 function fireSendArtboards(projectsArray, all, context){
 	
-	sketchLog("Trigger Send Artboards");
+	sketchLog(context,"fireSendArtboards()");
 		
 	var windowSendArtboards = [[NSWindow alloc] init]
 	[windowSendArtboards setFrame:NSMakeRect(0, 0, 485, 333) display:false]
@@ -274,7 +250,7 @@ function fireSendArtboards(projectsArray, all, context){
 	var projectPopup = [[NSComboBox alloc] initWithFrame:NSMakeRect(74, yDropdowns, 266, 26)]
 	[projectPopup removeAllItems]
 	[projectPopup setFocusRingType:NSFocusRingTypeNone]
-	var lastUsedProjectId = getLastUsedProject();
+	var lastUsedProjectId = settings.getLastUsedProject(context);
 	var lastUsedProjectIdIndex;
 	var projectNames = [];
 	for (i = 0; i < projectsArray.length; ++i) {
@@ -309,7 +285,7 @@ function fireSendArtboards(projectsArray, all, context){
 	[pluralNounPopup addItemsWithObjectValues:pluralNouns]
 	[[windowSendArtboards contentView] addSubview:pluralNounPopup]
 		
-	var scale = getScaleSettingFromComputer();
+	var scale = settings.getScaleSettingFromComputer(context);
 	
 	if(scale){	
 		var foundIndex = 0;
@@ -354,7 +330,7 @@ function fireSendArtboards(projectsArray, all, context){
 	[sendButton setBezelStyle:NSRoundedBezelStyle]
 	[sendButton setCOSJSTargetFunction:function(sender) {
 
-				sketchLog("Send Artboards");
+				sketchLog(context,"Send Artboards");
 				
 				var scaleString = [pluralNounPopup objectValueOfSelectedItem];
 				if (!scaleString){
@@ -386,17 +362,17 @@ function fireSendArtboards(projectsArray, all, context){
 	    		}
 
 	    		if (projectId == nil) {
-	    			projectId = createProject(selectedProject)
+	    			projectId = createProject(selectedProject,context)
 	    		}
 
 	    		if (projectId){
 		    		if(all == 1){
-						exportAllArtboardsAndSendTo(projectId, export_scale_factor, context.document)
+						exportAllArtboardsAndSendTo(context,projectId, export_scale_factor, context.document)
 					} else {
-						exportArtboardsAndSendTo(projectId, export_scale_factor, context.selection, context.document)
+						exportArtboardsAndSendTo(context,projectId, export_scale_factor, context.selection, context.document)
 					}
-					saveScaleSetting(scaleString)
-					saveLastUsedProject(projectId)
+					settings.saveScaleSetting(scaleString,context)
+					settings.saveLastUsedProject(projectId,context)
 					[windowSendArtboards orderOut:nil]
 					[app stopModal]
 
@@ -422,11 +398,145 @@ function fireSendArtboards(projectsArray, all, context){
 	[app runModalForWindow:windowSendArtboards]
 }
 
-function createProject(nameValue){
 
-	sketchLog("Create project")
+function fireSupport(context){
+
+	sketchLog(context,"fireSupport()");
+
+	var systemVersionDictionary = [NSDictionary dictionaryWithContentsOfFile:@"/System/Library/CoreServices/SystemVersion.plist"]
+	var systemVersion = [systemVersionDictionary objectForKey:@"ProductVersion"]
+	var pluginVersion = manifest.getPluginVersion(context)
+	var sketchVersion = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"]
+		
+	var windowSendArtboards = [[NSWindow alloc] init]
+	[windowSendArtboards setFrame:NSMakeRect(0, 0, 485, 333) display:false]
+	[windowSendArtboards setBackgroundColor:NSColor.whiteColor()]
 	
-	var token = getActiveTokenFromComputer()
+	var titleField = [[NSTextField alloc] initWithFrame:NSMakeRect(74, 235, 540, 17)]
+	[titleField setEditable:false]
+	[titleField setBordered:false]
+	[titleField setDrawsBackground:false]
+	[titleField setFont:[NSFont boldSystemFontOfSize:13]];
+	[titleField setStringValue:"Report a bug"]
+	[[windowSendArtboards contentView] addSubview:titleField]
+
+	var step1Label = [[NSTextField alloc] initWithFrame:NSMakeRect(74, 200, 540, 17)]
+	[step1Label setEditable:false]
+	[step1Label setBordered:false]
+	[step1Label setDrawsBackground:false]
+	[step1Label setFont:[NSFont systemFontOfSize:12]]
+	[step1Label setStringValue:"1. First tick this checkbox to turn debug mode on:"]
+	[step1Label setTextColor:[NSColor colorWithCalibratedRed:(93/255) green:(93/255) blue:(93/255) alpha:1]]
+	[[windowSendArtboards contentView] addSubview:step1Label]
+
+	var debugCheckbox = [[NSButton alloc] initWithFrame:NSMakeRect (350,195,50,25)]
+    [debugCheckbox setButtonType:NSSwitchButton];
+    [debugCheckbox setTitle:@""];
+    if(settings.getDebugSettingFromComputer(context) == 1){
+    	[debugCheckbox setState:NSOnState];
+    } else {
+    	[debugCheckbox setState:NSOffState];
+    }
+    [debugCheckbox setCOSJSTargetFunction:function(sender) {
+
+    	var directory = errorLogging.getLogDirectory(context);
+        errorLogging.removeFileOrFolder(directory + "main.txt")
+
+		if ([sender state] == NSOnState) {
+        	settings.saveDebugSetting(1,context)
+    	} else {
+        	settings.saveDebugSetting(0,context)
+    	}
+	    
+	}];
+    [[windowSendArtboards contentView] addSubview:debugCheckbox]
+
+	var step2Label = [[NSTextField alloc] initWithFrame:NSMakeRect(74, 172, 540, 17)]
+	[step2Label setEditable:false]
+	[step2Label setBordered:false]
+	[step2Label setDrawsBackground:false]
+	[step2Label setFont:[NSFont systemFontOfSize:12]]
+	[step2Label setStringValue:"2. Close this window and replicate the bug."]
+	[step2Label setTextColor:[NSColor colorWithCalibratedRed:(93/255) green:(93/255) blue:(93/255) alpha:1]]
+	[[windowSendArtboards contentView] addSubview:step2Label]
+
+	var step3Label = [[NSTextField alloc] initWithFrame:NSMakeRect(74, 144, 540, 17)]
+	[step3Label setEditable:false]
+	[step3Label setBordered:false]
+	[step3Label setDrawsBackground:false]
+	[step3Label setFont:[NSFont systemFontOfSize:12]]
+	[step3Label setStringValue:"3. Come back to this window and hit send."]
+	[step3Label setTextColor:[NSColor colorWithCalibratedRed:(93/255) green:(93/255) blue:(93/255) alpha:1]]
+	[[windowSendArtboards contentView] addSubview:step3Label]
+	
+	var bottomActionsView = [[NSView alloc] initWithFrame:NSMakeRect(74, 112, 348, 1)]
+	bottomActionsView.setWantsLayer(true)
+	[[windowSendArtboards contentView] addSubview:bottomActionsView]	
+		
+	var borderLayer = [CALayer layer]
+	borderLayer.frame = CGRectMake(0, 1, 348, 1)
+	[borderLayer setBackgroundColor:CGColorCreateGenericRGB(220/255, 220/255, 220/255, 1.0)]
+	[bottomActionsView setLayer:borderLayer];
+
+	var yPosBottomElements = 45;
+
+	var versionLabel = [[NSTextField alloc] initWithFrame:NSMakeRect(74, yPosBottomElements + 5, 266, 26)]
+	[versionLabel setEditable:false]
+	[versionLabel setBordered:false]
+	[versionLabel setAlignment:0] 
+	[versionLabel setFont:[NSFont systemFontOfSize:11]]
+	[versionLabel setTextColor:[NSColor colorWithCalibratedRed:(93/255) green:(93/255) blue:(93/255) alpha:1]]
+	[versionLabel setDrawsBackground:false]
+	[versionLabel setStringValue:"OSX " + systemVersion + " Sketch " + sketchVersion + " Plugin " + pluginVersion]
+	[[windowSendArtboards contentView] addSubview:versionLabel]
+	
+	var sendButton = [[NSButton alloc] initWithFrame:NSMakeRect(353, yPosBottomElements, 76, 46)]
+	[sendButton setTitle:"Send"]
+	[sendButton setBezelStyle:NSRoundedBezelStyle]
+	[sendButton setCOSJSTargetFunction:function(sender) {
+
+			var logs = fetchLog(context);
+
+			var subject = @"Sketch Plugin Support";
+			var body =[NSString stringWithFormat:@"Describe your bug here: \n\n\n\n\n My Logs:\n\n Plugin Version: %@ \n System Version: %@ \n Sketch Version: %@ \n %@", pluginVersion, systemVersion, sketchVersion, logs];
+			var to = @"help@marvelapp.com";
+			var encodedSubject = [NSString stringWithFormat:@"SUBJECT=%@", [subject stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
+			var encodedBody = [NSString stringWithFormat:@"BODY=%@", [body stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
+			var encodedTo = [to stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+			var encodedURLString = [NSString stringWithFormat:@"mailto:%@?%@&%@", encodedTo, encodedSubject, encodedBody];
+			var mailtoURL = [NSURL URLWithString:encodedURLString];
+
+			[[NSWorkspace sharedWorkspace] openURL:mailtoURL];
+
+			[windowSendArtboards orderOut:nil]
+			[app stopModal]
+	    
+	}];
+	[sendButton setAction:"callAction:"]
+	[[windowSendArtboards contentView] addSubview:sendButton]
+	
+	var cancelButton = [[NSButton alloc] initWithFrame:NSMakeRect(283, yPosBottomElements, 76, 46)]
+	[cancelButton setTitle:"Close"]
+	[cancelButton setBezelStyle:NSRoundedBezelStyle]
+	[cancelButton setCOSJSTargetFunction:function(sender) {
+	    [windowSendArtboards orderOut:nil]
+	    [app stopModal]
+	}];
+	[cancelButton setAction:"callAction:"]
+	[[windowSendArtboards contentView] addSubview:cancelButton]
+
+	[windowSendArtboards setDefaultButtonCell:[sendButton cell]];
+	
+	[app runModalForWindow:windowSendArtboards]
+}
+
+
+
+function createProject(nameValue, context){
+
+	sketchLog(context,"createProject()")
+	
+	var token = getActiveTokenFromComputer(context)
 	
 	var jsonDict = [[NSDictionary alloc] initWithObjectsAndKeys: nameValue, @"name", nil]
 	var errorDataConvert;
@@ -444,7 +554,7 @@ function createProject(nameValue){
 		
 	var response = nil;
 	var error = nil;
-	sketchLog("Start create project connection")
+	sketchLog(context,"NSURLConnection createProject()")
 	var data = [NSURLConnection sendSynchronousRequest:request returningResponse:response error:error];
 	
 	if (error == nil && data != nil)
@@ -453,7 +563,7 @@ function createProject(nameValue){
 		var res = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableLeaves error:errorJson]
 		 
 		if(res.detail && res.detail == "Invalid token"){
-		  	deleteActiveTokenFromComputer()
+		  	deleteActiveTokenFromComputer(context)
 		  	fireError("Your token is not valid anymore, please login again.","After you are logged in again please try again.")
 		  	return false
 		} else if (res.detail && res.detail == "Project name already exists"){
@@ -467,24 +577,24 @@ function createProject(nameValue){
 		return false	
 	    	
 	} else {
-			dealWithErrors(data)
+			dealWithErrors(context,data)
 	}
 
 	return false;
 }
 
-function loginWithUsernameAndPassword(email, password){
+function loginWithUsernameAndPassword(email, password, context){
 
-			sketchLog("Get Token From Server Start");
-			getTokenFromServer(email,password)
-			sketchLog("Get Token From Server End");			
+			sketchLog(context,"loginWithUsernameAndPassword()");
+			getTokenFromServer(email,password, context)
+			sketchLog(context,"loginWithUsernameAndPassword() finished");			
 }
 
 // Api Calls
 
-function getTokenFromServer(email,password){
+function getTokenFromServer(email,password, context){
 		
-		sketchLog("Get token from server")
+		sketchLog(context,"getTokenFromServer()")
 		var url = [NSURL URLWithString:rootURL + "loginApp/"];
 
 		var request=[NSMutableURLRequest requestWithURL:url cachePolicy:NSURLRequestReloadIgnoringCacheData timeoutInterval:60]
@@ -504,7 +614,7 @@ function getTokenFromServer(email,password){
 			
 		var response = nil;
 		var error = nil;
-		sketchLog("Fetch token")
+		sketchLog(context,"Fetch token")
 		var data = [NSURLConnection sendSynchronousRequest:request returningResponse:response error:error];
 			
 		if (error == nil && data != nil){	
@@ -513,10 +623,10 @@ function getTokenFromServer(email,password){
 			
 				  	var token = res.token
 				  	
-				  	sketchLog("Return token if exists")  
+				  	sketchLog(context,"Return token if exists")  
 				  	
 				  	if(token){
-				  			sketchLog("Token exists and gets returned") 
+				  			sketchLog(context,"Token exists and gets returned") 
 				  			
 				  			[[NSUserDefaults standardUserDefaults] setObject:token forKey:"token"]
 							[[NSUserDefaults standardUserDefaults] synchronize]
@@ -528,26 +638,26 @@ function getTokenFromServer(email,password){
 								[app displayDialog:"If you sign into Marvel using Dropbox, you'll need to set a password for your account to use Sketch, head to My Profile in Marvel to set one up." withTitle:"Incorrect email or password."]
 							
 						} else {
-								dealWithErrors(data)
+								dealWithErrors(context,data)
 						}
 				  	
-						sketchLog("Token does not exist")  		
+						sketchLog(context,"Token does not exist")  		
 					  
 			    	
 			} else {
 										
-						dealWithErrors(data)
+						dealWithErrors(context,data)
 						
 			}
 		
 			return false;	
 }
 
-function getProjectNamesArray() {
+function getProjectNamesArray(context) {
 	
-	sketchLog("Get project names")
+	sketchLog(context,"getProjectNamesArray()")
 	
-	var token = getActiveTokenFromComputer()
+	var token = getActiveTokenFromComputer(context)
 	
 	var url = [NSURL URLWithString:rootURL + "project/all/"];
 	
@@ -560,23 +670,22 @@ function getProjectNamesArray() {
 	
 	var response = nil;
 	var error = nil;
-	sketchLog("Fetch project names")
+	sketchLog(context,"NSURLConnection getProjectNamesArray()")
 	var data = [NSURLConnection sendSynchronousRequest:request returningResponse:response error:error];
 	
 	if (error == nil && data != nil)
 	{	    
 	    var errorJson;
 	    		
-			var res = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableLeaves error:errorJson]
-	
-		  if(res.detail && res.detail == "Invalid token"){
-		  		deleteActiveTokenFromComputer()
+		var res = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableLeaves error:errorJson]
+		
+		if(res.detail && res.detail == "Invalid token"){
+		  		deleteActiveTokenFromComputer(context)
 		  		fireError("Your token is not valid anymore, please login again.","After you are logged in again please try again.")
 		  		return false
 		  } else {
-		  
+
 			  if(res.count() > 0){
-			   
 			   	var projects = [];
 			   	for (var i = 0; i < res.count(); i++) {
 			   		var project = res[i]
@@ -594,46 +703,140 @@ function getProjectNamesArray() {
 		}
 	    	
 	} else {
-			dealWithErrors(data)
+			dealWithErrors(context,data)
 	}
 
 	return false;		
 }
 
-function postFile(path, projectId, filename, uuid, width, height) {
+function postFile(context, path, projectId, filename, uuid, width, height) {
 			
-			sketchLog("Post file")
+		sketchLog(context,"postFile()")
 			
-			var dataImg = [[NSFileManager defaultManager] contentsAtPath:path];
-			var token = getActiveTokenFromComputer()
-			var postLength = [dataImg length].toString()
+		var dataImg = [[NSFileManager defaultManager] contentsAtPath:path];
+		var token = getActiveTokenFromComputer(context)
+		var postLength = [dataImg length].toString()
 
-			var task = NSTask.alloc().init()
-			task.setLaunchPath("/usr/bin/curl");
+		var task = NSTask.alloc().init()
+		task.setLaunchPath("/usr/bin/curl");
 						
-			var args = NSArray.arrayWithObjects("-v", "POST", "--header", "Content-Type: multipart/form-data; boundary=0xKhTmLbOuNdArY", "--header", "Authorization: Token " + token, "--header", "HTTP_AUTHORIZATION: " + token, "--header", "User-Agent: Sketch", "--header", "width: " + width, "--header", "height: " + height, "-F", "Content-Disposition: form-data; name=file; filename=" + filename + "; Content-Type=image/png;", "-F", "file=@" + path, rootURL + "content/upload/sketch/" + projectId + "/" + uuid + "/", nil);
-						
-			task.setArguments(args);
+		var args = NSArray.arrayWithObjects("-v", "POST", "--header", "Content-Type: multipart/form-data; boundary=0xKhTmLbOuNdArY", "--header", "Authorization: Token " + token, "--header", "HTTP_AUTHORIZATION: " + token, "--header", "User-Agent: Sketch", "--header", "width: " + width, "--header", "height: " + height, "-F", "Content-Disposition: form-data; name=file; filename=" + filename + "; Content-Type=image/png;", "-F", "file=@" + path, rootURL + "content/upload/sketch/" + projectId + "/" + uuid + "/", nil);
+				
+		task.setArguments(args);
+
+		if(settings.getDebugSettingFromComputer(context) == 1)
+		{
 			
-			if(DEBUG == true)
-			{
-				sketchLog("Output pipe")
-			  var outputPipe = [NSPipe pipe];
-				[task setStandardOutput:outputPipe];
-				task.launch();
-				var outputData = [[outputPipe fileHandleForReading] readDataToEndOfFile];
-				var outputString = [[[NSString alloc] initWithData:outputData encoding:NSUTF8StringEncoding]]; // Autorelease optional, depending on usage.
-				sketchLog(outputString)
+			sketchLog(context,"Output pipe")
+			var outputPipe = [NSPipe pipe];
+			[task setStandardOutput:outputPipe];
+			task.launch();
+			var outputData = [[outputPipe fileHandleForReading] readDataToEndOfFile];
+			
+			var classNameOfOuput = NSStringFromClass([outputData class]);
+			sketchLog(context,"Ouput is " + classNameOfOuput)			
+
+			if(classNameOfOuput != "_NSZeroData"){
+				var errorJson;
+				sketchLog(context,"Convert to JSON")
+				var res = [NSJSONSerialization JSONObjectWithData:outputData options:NSJSONReadingMutableLeaves error:errorJson]
+
+			 	if(errorJson == nil && res != null){
+				  	sketchLog(context,"Result: " + res)
+				} else {
+					sketchLog(context, "JSON convert failed")
+				} 
 			} else {
-				task.launch();
+				sketchLog(context, "Empty output")
 			}
+
+		//postFileNSUrlConnection(context, path, projectId, filename, uuid, width, height)	
+
+		} else {
+			task.launch();
+		}
+}
+
+function postFileNSUrlConnection(context, path, projectId, filename, uuid, width, height) {
+			
+	sketchLog(context,"postFileNSUrlConnection()")
+	
+	var token = getActiveTokenFromComputer(context)
+
+	var url = [NSURL URLWithString:rootURL + "content/upload/sketch/" + projectId + "/" + uuid + "/"];
+	
+	sketchLog(context,"url " + url)
+
+	sketchLog(context,"NSMutableURLRequest requestWithURL")
+
+	var request=[NSMutableURLRequest requestWithURL:url cachePolicy:NSURLRequestReloadIgnoringCacheData timeoutInterval:60]
+	[request setHTTPMethod:"POST"]
+	[request setValue:"Sketch" forHTTPHeaderField:"User-Agent"]
+	[request setValue:"multipart/form-data; boundary=0xKhTmLbOuNdArY" forHTTPHeaderField:"Content-Type"]
+	[request setValue:"Token " + token forHTTPHeaderField:"Authorization"]
+	[request setValue:width.toString() forHTTPHeaderField:"width"]
+	[request setValue:height.toString() forHTTPHeaderField:"height"]
+	[request setValue:token forHTTPHeaderField:"HTTP_AUTHORIZATION"]
+	
+	sketchLog(context,"tempPostData alloc")
+
+	var tempPostData = [NSMutableData data]; 
+	var filedata = [[NSFileManager defaultManager] contentsAtPath:path];
+    [tempPostData appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=file; filename=%@; Content-Type=image/png; file=%@", filename, filedata] dataUsingEncoding:NSUTF8StringEncoding]];
+	[request setHTTPBody:tempPostData]
+
+	var response = nil;
+	var error = nil;
+	sketchLog(context,"NSURLConnection postFileNSUrlConnection()")
+	var data = [NSURLConnection sendSynchronousRequest:request returningResponse:response error:error];
+	
+	if (error == nil && data != nil)
+	{	    
+
+		sketchLog(context,"no error or data not nil")
+
+	    var errorJson;
+
+	    if(data.length > 0){
+
+	    	sketchLog(context,"rdata bigger than nil")
+
+		var res = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableLeaves error:errorJson]
+		
+		if(res){ 
+			sketchLog(context,"result")
+			if(res.detail && res.detail == "Invalid token"){
+			  	//deleteActiveTokenFromComputer(context)
+			  	fireError("Your token is not valid anymore, please login again.","After you are logged in again please try again.")
+			  	return false
+			} else if (res.detail && res.detail){
+			  	fireError(res.detail)
+			  	return false
+			} else if ([res valueForKey:@"id"]) {
+				//var itemId = [NSString stringWithFormat:@"%@", [[res valueForKey:@"id"] intValue]];
+			   	return itemId
+			}
+		} else {
+			sketchLog(context,"no result")
+		}
+	} else {
+		sketchLog(context,"no result2")
+	}
+	    	
+	} else {
+		sketchLog(context,"error")
+			dealWithErrors(context,data)
+	}
+
+	return false;
+			
 }
 
 // Helpers
 
-function dealWithErrors(data){
+function dealWithErrors(context,data){
 
-		sketchLog("Received an error from the server")
+		sketchLog(context,"Received an error from the server")
 		var stringRead = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];	
 		
 		var alert = [[NSAlert alloc] init]
@@ -649,13 +852,13 @@ function dealWithErrors(data){
 		
 		var responseCode = [alert runModal]
 		if(responseCode == "1001"){
-				webViewWhichShowsResults()
+				webViewWhichShowsResults(context)
 		}
 
-		sketchLog("Return data " + stringRead)		
+		sketchLog(context,"Return data " + stringRead)		
 }
 
-function webViewWhichShowsResults(){
+function webViewWhichShowsResults(context){
 	// create window
 		var webViewWindow = [[NSWindow alloc] init]
 		[webViewWindow setFrame:NSMakeRect(0, 0, 680, 420) display:false]
@@ -699,13 +902,9 @@ function webViewWhichShowsResults(){
 		[app runModalForWindow:webViewWindow ]
 }
 
-function isRetinaDisplay() {
-    return NSScreen.isOnRetinaScreen();
-}
-
-function exportArtboardsAndSendTo(projectId, scale, selection, document) {
+function exportArtboardsAndSendTo(context, projectId, scale, selection, document) {
 		
-	sketchLog("Export Selected Artboards and send to project with id " + projectId + " and size " + scale)
+	sketchLog(context,"exportArtboardsAndSendTo() : project with id " + projectId + " and size " + scale)
 
 				var loop = [selection objectEnumerator];
 				var existing_artboards_names = [];
@@ -714,8 +913,8 @@ function exportArtboardsAndSendTo(projectId, scale, selection, document) {
 				  	
 				  	if (artboard.className() == "MSArtboardGroup") {
 				  	
-				  	var arrayLength = existing_artboards_names.length;
-				  	for (var i = 0; i < arrayLength; i++) {
+				  	var arrayCount = existing_artboards_names.length;
+				  	for (var i = 0; i < arrayCount; i++) {
 				  	
 				  			if(existing_artboards_names[i] == [artboard name]){
 				  				
@@ -736,12 +935,12 @@ function exportArtboardsAndSendTo(projectId, scale, selection, document) {
 				  return false
 				}
 		
-	sendArtboardOnArray(selection, scale, projectId, document)
+	sendArtboardOnArray(context, selection, scale, projectId, document)
 }
 
-function exportAllArtboardsAndSendTo(projectId, scale, document) {
+function exportAllArtboardsAndSendTo(context, projectId, scale, document) {
 
-		sketchLog("Export All Artboards and send to project with id " + projectId + " and size " + scale)
+		sketchLog(context,"exportAllArtboardsAndSendTo() : project with id " + projectId + " and size " + scale)
 					
 					var artboards = [[document currentPage] artboards];
 					var loop = [artboards objectEnumerator];
@@ -749,8 +948,8 @@ function exportAllArtboardsAndSendTo(projectId, scale, document) {
 											
 					while (artboard = [loop nextObject]) {
 					  	
-					  	var arrayLength = existing_artboards_names.length;
-					  	for (var i = 0; i < arrayLength; i++) {
+					  	var arrayCount = existing_artboards_names.length;
+					  	for (var i = 0; i < arrayCount; i++) {
 					  	
 					  			if(existing_artboards_names[i] == [artboard name]){
 					  				
@@ -764,10 +963,10 @@ function exportAllArtboardsAndSendTo(projectId, scale, document) {
 				
 					}
 			
-					sendArtboardOnArray(artboards, scale, projectId, document)				
+					sendArtboardOnArray(context, artboards, scale, projectId, document)				
 }
 
-function sendArtboardOnArray(array, scale, projectId, document){
+function sendArtboardOnArray(context, array, scale, projectId, document){
 
 		var loopFinal = [array objectEnumerator];
 		
@@ -775,26 +974,21 @@ function sendArtboardOnArray(array, scale, projectId, document){
 				
 				if (item.className() == "MSArtboardGroup") {
 				
-					var filename = escapedFileName([item name]) + ".png"
+					var filename = mini.escapedFileName([item name]) + ".png"
 					
-					sketchLog("Artboard found with name " + filename + " and object id " + item.objectID())
+					sketchLog(context,"Artboard found with name " + filename + " and object id " + item.objectID())
 					var path = NSTemporaryDirectory() + filename
 					var version = copy_layer_with_factor(item, scale)
 
 					[document saveArtboardOrSlice:version toFile:path];
 					
-					postFile(path, projectId, filename,item.objectID(), [[item frame] width], [[item frame] height])
+					postFile(context, path, projectId, filename,item.objectID(), [[item frame] width], [[item frame] height])
 
 				}
 		}
 }
 
-function escapedFileName(string){
-	
-	var notAllowedChars = [NSCharacterSet characterSetWithCharactersInString:@"\\<>=,!#$&'()*+/:;=?@[]%"];
-	var cleanString = [[string componentsSeparatedByCharactersInSet:notAllowedChars] componentsJoinedByString:@""];
-	return cleanString
-}
+
 
 function copy_layer_with_factor(original_slice, factor){
     var copy = [original_slice duplicate];
@@ -811,9 +1005,10 @@ function fireError(title,text){
 		[app displayDialog:text withTitle:title]
 }
 
-function sketchLog(string){
-	if(DEBUG == true)
+function sketchLog(context,string){
+	if(settings.getDebugSettingFromComputer(context) == 1)
 	{
-		NSLog("Sketch: " + string)
+		NSLog(string)
+		errorLogging.write(context,string)
 	}
 }

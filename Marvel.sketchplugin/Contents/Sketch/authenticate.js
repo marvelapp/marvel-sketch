@@ -25,7 +25,7 @@ SOFTWARE.*/
 
 var onRun = function(context) {
 	
-	if (getActiveTokenFromComputer() == false) {
+	if (getActiveTokenFromComputer(context) == false) {
 		fireLoginWindowWithContext(context)
 	} else {
 		fireAlreadyLoggedInWindow(context)

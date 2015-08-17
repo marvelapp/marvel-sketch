@@ -4,9 +4,13 @@
 
 <h2>How to install:</h2>
 <p>
-<a href="https://github.com/marvelapp/marvelapp_sketchplugin/archive/master.zip">Download</a>, Unzip, double click the Marvel.sketchpluginbundle file. That’s it!. 
+<a href="https://github.com/marvelapp/marvelapp_sketchplugin/archive/master.zip">Download</a>, Unzip, double click the Marvel.sketchplugin file. That’s it!. 
 </p>
 
+<h2>How to update:</h2>
+<p>
+Go to the Sketch Plugin Directory and replace the Marvel.sketchplugin file with the new one.
+</p>
 
 <h2>Screenshots:</h2>
 <p><img src="http://i.imgur.com/Gw8VuPI.png" alt="marvel sketch plugin menu"></p>

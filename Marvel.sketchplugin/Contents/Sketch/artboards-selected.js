@@ -23,24 +23,21 @@ SOFTWARE.*/
 @import 'api.js'
 
 var onRun = function (context) {
+ 	
+	if (getActiveTokenFromComputer(context) == false) {
 
-	if (getActiveTokenFromComputer() == false) {
-		
-		sketchLog("Fire login window");
+		sketchLog(context,"Fire login window");
 		fireLoginWindowWithContext(context)
-
 	} else {
+
+		sketchLog(context,"Get project names array");
 		
-		sketchLog("Get project names array");
-		
-		var projectNamesArray = getProjectNamesArray()
-		
+		var projectNamesArray = getProjectNamesArray(context)
+
 		if(projectNamesArray){
-			fireSendArtboards(projectNamesArray, 1, context)
-		} else{
-			fireError("You don\'t have any projects.","Make first a project on marvelapp.com");
+			fireSendArtboards(projectNamesArray, 0, context)
 		}
 		
-
+		
 	}
 }
