@@ -403,10 +403,10 @@ function fireSupport(context){
 
 	sketchLog(context,"fireSupport()");
 
-	var systemVersionDictionary = [NSDictionary dictionaryWithContentsOfFile:@"/System/Library/CoreServices/SystemVersion.plist"];
-	var systemVersion = [systemVersionDictionary objectForKey:@"ProductVersion"];
+	var systemVersionDictionary = [NSDictionary dictionaryWithContentsOfFile:@"/System/Library/CoreServices/SystemVersion.plist"]
+	var systemVersion = [systemVersionDictionary objectForKey:@"ProductVersion"]
 	var pluginVersion = manifest.getPluginVersion(context)
-	var sketchVersion = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
+	var sketchVersion = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"]
 		
 	var windowSendArtboards = [[NSWindow alloc] init]
 	[windowSendArtboards setFrame:NSMakeRect(0, 0, 485, 333) display:false]
@@ -585,16 +585,16 @@ function createProject(nameValue, context){
 
 function loginWithUsernameAndPassword(email, password, context){
 
-			sketchLog(context,"Get Token From Server Start");
+			sketchLog(context,"loginWithUsernameAndPassword()");
 			getTokenFromServer(email,password, context)
-			sketchLog(context,"Get Token From Server End");			
+			sketchLog(context,"loginWithUsernameAndPassword() finished");			
 }
 
 // Api Calls
 
 function getTokenFromServer(email,password, context){
 		
-		sketchLog(context,"Get token from server")
+		sketchLog(context,"getTokenFromServer()")
 		var url = [NSURL URLWithString:rootURL + "loginApp/"];
 
 		var request=[NSMutableURLRequest requestWithURL:url cachePolicy:NSURLRequestReloadIgnoringCacheData timeoutInterval:60]
@@ -721,24 +721,36 @@ function postFile(context, path, projectId, filename, uuid, width, height) {
 		task.setLaunchPath("/usr/bin/curl");
 						
 		var args = NSArray.arrayWithObjects("-v", "POST", "--header", "Content-Type: multipart/form-data; boundary=0xKhTmLbOuNdArY", "--header", "Authorization: Token " + token, "--header", "HTTP_AUTHORIZATION: " + token, "--header", "User-Agent: Sketch", "--header", "width: " + width, "--header", "height: " + height, "-F", "Content-Disposition: form-data; name=file; filename=" + filename + "; Content-Type=image/png;", "-F", "file=@" + path, rootURL + "content/upload/sketch/" + projectId + "/" + uuid + "/", nil);
-						
+				
 		task.setArguments(args);
 
 		if(settings.getDebugSettingFromComputer(context) == 1)
 		{
-			/*
+			
 			sketchLog(context,"Output pipe")
-			 var outputPipe = [NSPipe pipe];
+			var outputPipe = [NSPipe pipe];
 			[task setStandardOutput:outputPipe];
 			task.launch();
 			var outputData = [[outputPipe fileHandleForReading] readDataToEndOfFile];
-				
-			if(outputData.length > 0){
-				var outputString = [[[NSString alloc] initWithData:outputData encoding:NSUTF8StringEncoding]];
-				sketchLog(context,outputString)
-			}*/
+			
+			var classNameOfOuput = NSStringFromClass([outputData class]);
+			sketchLog(context,"Ouput is " + classNameOfOuput)			
 
-		postFileNSUrlConnection(context, path, projectId, filename, uuid, width, height)	
+			if(classNameOfOuput != "_NSZeroData"){
+				var errorJson;
+				sketchLog(context,"Convert to JSON")
+				var res = [NSJSONSerialization JSONObjectWithData:outputData options:NSJSONReadingMutableLeaves error:errorJson]
+
+			 	if(errorJson == nil && res != null){
+				  	sketchLog(context,"Result: " + res)
+				} else {
+					sketchLog(context, "JSON convert failed")
+				} 
+			} else {
+				sketchLog(context, "Empty output")
+			}
+
+		//postFileNSUrlConnection(context, path, projectId, filename, uuid, width, height)	
 
 		} else {
 			task.launch();
@@ -892,7 +904,7 @@ function webViewWhichShowsResults(context){
 
 function exportArtboardsAndSendTo(context, projectId, scale, selection, document) {
 		
-	sketchLog(context,"Export Selected Artboards and send to project with id " + projectId + " and size " + scale)
+	sketchLog(context,"exportArtboardsAndSendTo() : project with id " + projectId + " and size " + scale)
 
 				var loop = [selection objectEnumerator];
 				var existing_artboards_names = [];
@@ -928,7 +940,7 @@ function exportArtboardsAndSendTo(context, projectId, scale, selection, document
 
 function exportAllArtboardsAndSendTo(context, projectId, scale, document) {
 
-		sketchLog(context,"Export All Artboards and send to project with id " + projectId + " and size " + scale)
+		sketchLog(context,"exportAllArtboardsAndSendTo() : project with id " + projectId + " and size " + scale)
 					
 					var artboards = [[document currentPage] artboards];
 					var loop = [artboards objectEnumerator];
