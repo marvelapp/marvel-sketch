@@ -68,7 +68,7 @@ var onRun = function(context) {
 	var newestVersion = updatesChecker.getNewestVersionNumber(context)
 	var pluginVersion = manifest.getPluginVersion(context)
 
-  if (newestVersion == pluginVersion) {
+  if (newestVersion != pluginVersion) {
     [app displayDialog:"Sketch " + newestVersion + " is currently the newest version available." withTitle:"You’re up-to-date!"]
   } else {
     var alert = [[NSAlert alloc] init]
