@@ -997,6 +997,6 @@ function sketchLog(context,string){
 	if(getDebugSettingFromComputer(context) == 1)
 	{
 		NSLog(string)
-		writeLog(context,string)
+		errorLogging.write(context,string)
 	}
 }

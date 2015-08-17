@@ -20,56 +20,54 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.*/
 
-function createFolderAtPath(context, pathString) {
-    	var fileManager = [NSFileManager defaultManager]
+var errorLogging = {
+
+	"createFolderAtPath": function(context, pathString){
+        var fileManager = [NSFileManager defaultManager]
     	if([fileManager fileExistsAtPath:pathString]){
     		return true
     	} else {
     		return [fileManager createDirectoryAtPath:pathString withIntermediateDirectories:true attributes:nil error:nil]
     	}
+    },
 
-}
+    "readTextFromFile": function(context,filePath){
+        var fileManager = [NSFileManager defaultManager]
+	    if([fileManager fileExistsAtPath:filePath]) {
+	    	var log = [NSString stringWithContentsOfFile:filePath encoding:NSUTF8StringEncoding error:nil];
+	    	if(log){
+	    		return log
+	    	} 
+	    	NSLog("Could not get log file data");
+	    	return false
+	    }
+	    return false
+    },
 
-function readTextFromFile(context,filePath) {
-    var fileManager = [NSFileManager defaultManager]
-    if([fileManager fileExistsAtPath:filePath]) {
-    	var log = [NSString stringWithContentsOfFile:filePath encoding:NSUTF8StringEncoding error:nil];
-    	if(log){
-    		return log
-    	} 
-    	NSLog("Could not get log file data");
-    	return false
-    }
-    return false
-}
+    "removeFileOrFolder": function(filePath){
+    	[[NSFileManager defaultManager] removeItemAtPath:filePath error:nil];
+    },
 
-function removeFileOrFolder(filePath) {
-    [[NSFileManager defaultManager] removeItemAtPath:filePath error:nil];
-}
-
-function writeTextToFile(context, text, filePath) {
-
+    "writeTextToFile": function(context, text, filePath){
     	var aFileHandle
 		var aFile
 		var t
 
-		var currentTime = getCurrentTime();
+		var currentTime = errorLogging.getCurrentTime();
 		t = [NSString stringWithFormat:@"%@ : %@\r\n", currentTime, text],
 		aFile = [NSString stringWithFormat:@"%@", filePath]
 
 		aFileHandle = [NSFileHandle fileHandleForWritingAtPath:aFile]
-		
+			
 		if(aFileHandle){
 			[aFileHandle truncateFileAtOffset:[aFileHandle seekToEndOfFile]]
 			[aFileHandle writeData:[t dataUsingEncoding:NSUTF8StringEncoding]]
 		} else {
 			[t writeToFile:aFile atomically:true encoding:NSUTF8StringEncoding error:nil]
 		}
+    },
 
-}
-
-function writeLog(context,text){
-
+    "write": function(context,text){
 		if(!context){
 			if(text){
 				NSLog("No context was provided for log : " + text)
@@ -85,43 +83,39 @@ function writeLog(context,text){
 			return false
 		}
 
-		var logsDirectory = getLogDirectory(context)
+		var logsDirectory = errorLogging.getLogDirectory(context)
 
-		if(createFolderAtPath(context, logsDirectory)){
-			writeTextToFile(context, text, logsDirectory  + "main.txt")
+		if(errorLogging.createFolderAtPath(context, logsDirectory)){
+			errorLogging.writeTextToFile(context, text, logsDirectory  + "main.txt")
 		}
+    },
 
-}
-
-function getLogDirectory(context){
-
-		var scriptFullPath = context.scriptPath
+    "getLogDirectory": function(context){
+    	var scriptFullPath = context.scriptPath
 		var directoryPlugin = [scriptFullPath stringByDeletingLastPathComponent]
 		var logsDirectory = directoryPlugin + "/logs/"
 
 		return logsDirectory
+	},
 
-}
-
-function fetchLog(context){
+	"fetchLog": function(context){
 
 		var logsDirectory = getLogDirectory(context) + "main.txt"
 
-		var log = readTextFromFile(context,logsDirectory)
+		var log = errorLogging.readTextFromFile(context,logsDirectory)
 
 		if(log){
 			return log
 		}
 
 		return false
-}
 
+	},
 
-function getCurrentTime(){
+	"getCurrentTime": function(){
 		var DateFormatter=[[NSDateFormatter alloc] init]
 		[DateFormatter setDateFormat:@"yyyy-MM-dd hh:mm:ss"]  
 		return [DateFormatter stringFromDate:[NSDate date]]
+	}		
+
 }
-
-
-
