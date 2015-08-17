@@ -1,1 +1,470 @@
-2015-08-14 03:43:07 : fireSupport()
+2015-08-14 03:44:40 : getActiveTokenFromComputer()
+2015-08-14 03:44:40 : Token return : 53947f3429c6a0dd3a1d4d9ceb7df6382ec5a064
+2015-08-14 03:44:40 : Get project names array
+2015-08-14 03:44:40 : getProjectNamesArray()
+2015-08-14 03:44:40 : getActiveTokenFromComputer()
+2015-08-14 03:44:40 : Token return : 53947f3429c6a0dd3a1d4d9ceb7df6382ec5a064
+2015-08-14 03:44:40 : NSURLConnection getProjectNamesArray()
+2015-08-14 03:44:42 : fireSendArtboards()
+2015-08-14 03:44:44 : Send Artboards
+2015-08-14 03:44:44 : Export Selected Artboards and send to project with id 285794 and size 1
+2015-08-14 03:44:44 : Artboard found with name UI Kit.png and object id A1063146-E696-481C-93ED-8F1796CC7FF7
+2015-08-14 03:44:44 : postFile()
+2015-08-14 03:44:44 : getActiveTokenFromComputer()
+2015-08-14 03:44:44 : Token return : 53947f3429c6a0dd3a1d4d9ceb7df6382ec5a064
+2015-08-14 03:44:44 : Output pipe
+2015-08-14 03:55:21 : getActiveTokenFromComputer()
+2015-08-14 03:55:21 : Token return : 53947f3429c6a0dd3a1d4d9ceb7df6382ec5a064
+2015-08-14 03:55:21 : Get project names array
+2015-08-14 03:55:21 : getProjectNamesArray()
+2015-08-14 03:55:21 : getActiveTokenFromComputer()
+2015-08-14 03:55:21 : Token return : 53947f3429c6a0dd3a1d4d9ceb7df6382ec5a064
+2015-08-14 03:55:21 : NSURLConnection getProjectNamesArray()
+2015-08-14 03:55:23 : fireSendArtboards()
+2015-08-14 03:55:25 : Send Artboards
+2015-08-14 03:55:25 : Export Selected Artboards and send to project with id 285794 and size 1
+2015-08-14 03:55:25 : Artboard found with name UI Kit.png and object id A1063146-E696-481C-93ED-8F1796CC7FF7
+2015-08-14 03:55:26 : postFile()
+2015-08-14 03:55:26 : getActiveTokenFromComputer()
+2015-08-14 03:55:26 : Token return : 53947f3429c6a0dd3a1d4d9ceb7df6382ec5a064
+2015-08-14 03:55:26 : Output pipe
+2015-08-14 03:58:06 : getActiveTokenFromComputer()
+2015-08-14 03:58:06 : Token return : 53947f3429c6a0dd3a1d4d9ceb7df6382ec5a064
+2015-08-14 03:58:06 : Get project names array
+2015-08-14 03:58:06 : getProjectNamesArray()
+2015-08-14 03:58:06 : getActiveTokenFromComputer()
+2015-08-14 03:58:06 : Token return : 53947f3429c6a0dd3a1d4d9ceb7df6382ec5a064
+2015-08-14 03:58:06 : NSURLConnection getProjectNamesArray()
+2015-08-14 03:58:08 : fireSendArtboards()
+2015-08-14 03:58:09 : Send Artboards
+2015-08-14 03:58:09 : Export Selected Artboards and send to project with id 285794 and size 1
+2015-08-14 03:58:09 : Artboard found with name UI Kit.png and object id A1063146-E696-481C-93ED-8F1796CC7FF7
+2015-08-14 03:58:10 : postFile()
+2015-08-14 03:58:10 : getActiveTokenFromComputer()
+2015-08-14 03:58:10 : Token return : 53947f3429c6a0dd3a1d4d9ceb7df6382ec5a064
+2015-08-14 03:58:10 : Output pipe
+2015-08-14 03:58:32 : getActiveTokenFromComputer()
+2015-08-14 03:58:32 : Token return : 53947f3429c6a0dd3a1d4d9ceb7df6382ec5a064
+2015-08-14 03:58:32 : Get project names array
+2015-08-14 03:58:32 : getProjectNamesArray()
+2015-08-14 03:58:32 : getActiveTokenFromComputer()
+2015-08-14 03:58:32 : Token return : 53947f3429c6a0dd3a1d4d9ceb7df6382ec5a064
+2015-08-14 03:58:32 : NSURLConnection getProjectNamesArray()
+2015-08-14 03:58:34 : fireSendArtboards()
+2015-08-14 03:58:36 : Send Artboards
+2015-08-14 03:58:36 : Export Selected Artboards and send to project with id 285794 and size 1
+2015-08-14 03:58:36 : Artboard found with name UI Kit.png and object id A1063146-E696-481C-93ED-8F1796CC7FF7
+2015-08-14 03:58:36 : postFile()
+2015-08-14 03:58:36 : getActiveTokenFromComputer()
+2015-08-14 03:58:36 : Token return : 53947f3429c6a0dd3a1d4d9ceb7df6382ec5a064
+2015-08-14 03:58:36 : Output pipe
+2015-08-14 04:00:16 : getActiveTokenFromComputer()
+2015-08-14 04:00:16 : Token return : 53947f3429c6a0dd3a1d4d9ceb7df6382ec5a064
+2015-08-14 04:00:16 : Get project names array
+2015-08-14 04:00:16 : getProjectNamesArray()
+2015-08-14 04:00:16 : getActiveTokenFromComputer()
+2015-08-14 04:00:16 : Token return : 53947f3429c6a0dd3a1d4d9ceb7df6382ec5a064
+2015-08-14 04:00:16 : NSURLConnection getProjectNamesArray()
+2015-08-14 04:00:19 : fireSendArtboards()
+2015-08-14 04:00:21 : Send Artboards
+2015-08-14 04:00:21 : Export Selected Artboards and send to project with id 285794 and size 1
+2015-08-14 04:00:21 : Artboard found with name UI Kit.png and object id A1063146-E696-481C-93ED-8F1796CC7FF7
+2015-08-14 04:00:21 : postFile()
+2015-08-14 04:00:21 : getActiveTokenFromComputer()
+2015-08-14 04:00:21 : Token return : 53947f3429c6a0dd3a1d4d9ceb7df6382ec5a064
+2015-08-14 04:00:21 : Output pipe
+2015-08-14 04:21:51 : getActiveTokenFromComputer()
+2015-08-14 04:21:51 : Token return : 53947f3429c6a0dd3a1d4d9ceb7df6382ec5a064
+2015-08-14 04:21:51 : Get project names array
+2015-08-14 04:21:51 : getProjectNamesArray()
+2015-08-14 04:21:51 : getActiveTokenFromComputer()
+2015-08-14 04:21:51 : Token return : 53947f3429c6a0dd3a1d4d9ceb7df6382ec5a064
+2015-08-14 04:21:51 : NSURLConnection getProjectNamesArray()
+2015-08-14 04:21:53 : fireSendArtboards()
+2015-08-14 04:22:34 : getActiveTokenFromComputer()
+2015-08-14 04:22:34 : Token return : 53947f3429c6a0dd3a1d4d9ceb7df6382ec5a064
+2015-08-14 04:22:34 : Get project names array
+2015-08-14 04:22:34 : getProjectNamesArray()
+2015-08-14 04:22:34 : getActiveTokenFromComputer()
+2015-08-14 04:22:34 : Token return : 53947f3429c6a0dd3a1d4d9ceb7df6382ec5a064
+2015-08-14 04:22:34 : NSURLConnection getProjectNamesArray()
+2015-08-14 04:22:34 : fireSendArtboards()
+2015-08-14 04:22:36 : Send Artboards
+2015-08-14 04:22:36 : Export All Artboards and send to project with id 285794 and size 1
+2015-08-14 04:22:36 : Artboard found with name UI Kit.png and object id A1063146-E696-481C-93ED-8F1796CC7FF7
+2015-08-14 04:22:36 : postFile()
+2015-08-14 04:22:36 : getActiveTokenFromComputer()
+2015-08-14 04:22:36 : Token return : 53947f3429c6a0dd3a1d4d9ceb7df6382ec5a064
+2015-08-14 04:22:36 : postFileNSUrlConnection()
+2015-08-14 04:22:36 : getActiveTokenFromComputer()
+2015-08-14 04:22:36 : Token return : 53947f3429c6a0dd3a1d4d9ceb7df6382ec5a064
+2015-08-14 04:24:04 : getActiveTokenFromComputer()
+2015-08-14 04:24:04 : Token return : 53947f3429c6a0dd3a1d4d9ceb7df6382ec5a064
+2015-08-14 04:24:04 : Get project names array
+2015-08-14 04:24:04 : getProjectNamesArray()
+2015-08-14 04:24:04 : getActiveTokenFromComputer()
+2015-08-14 04:24:04 : Token return : 53947f3429c6a0dd3a1d4d9ceb7df6382ec5a064
+2015-08-14 04:24:04 : NSURLConnection getProjectNamesArray()
+2015-08-14 04:24:04 : fireSendArtboards()
+2015-08-14 04:24:06 : Send Artboards
+2015-08-14 04:24:06 : Export Selected Artboards and send to project with id 285794 and size 1
+2015-08-14 04:24:06 : Artboard found with name UI Kit.png and object id A1063146-E696-481C-93ED-8F1796CC7FF7
+2015-08-14 04:24:06 : postFile()
+2015-08-14 04:24:06 : getActiveTokenFromComputer()
+2015-08-14 04:24:06 : Token return : 53947f3429c6a0dd3a1d4d9ceb7df6382ec5a064
+2015-08-14 04:24:06 : postFileNSUrlConnection()
+2015-08-14 04:24:06 : getActiveTokenFromComputer()
+2015-08-14 04:24:06 : Token return : 53947f3429c6a0dd3a1d4d9ceb7df6382ec5a064
+2015-08-14 04:25:18 : fireSupport()
+2015-08-14 04:26:31 : getActiveTokenFromComputer()
+2015-08-14 04:26:31 : Token return : 53947f3429c6a0dd3a1d4d9ceb7df6382ec5a064
+2015-08-14 04:26:31 : Get project names array
+2015-08-14 04:26:31 : getProjectNamesArray()
+2015-08-14 04:26:31 : getActiveTokenFromComputer()
+2015-08-14 04:26:31 : Token return : 53947f3429c6a0dd3a1d4d9ceb7df6382ec5a064
+2015-08-14 04:26:31 : NSURLConnection getProjectNamesArray()
+2015-08-14 04:26:32 : fireSendArtboards()
+2015-08-14 04:26:33 : Send Artboards
+2015-08-14 04:26:33 : Export Selected Artboards and send to project with id 285794 and size 1
+2015-08-14 04:26:33 : Artboard found with name UI Kit.png and object id A1063146-E696-481C-93ED-8F1796CC7FF7
+2015-08-14 04:26:33 : postFile()
+2015-08-14 04:26:33 : getActiveTokenFromComputer()
+2015-08-14 04:26:33 : Token return : 53947f3429c6a0dd3a1d4d9ceb7df6382ec5a064
+2015-08-14 04:26:33 : postFileNSUrlConnection()
+2015-08-14 04:26:33 : getActiveTokenFromComputer()
+2015-08-14 04:26:33 : Token return : 53947f3429c6a0dd3a1d4d9ceb7df6382ec5a064
+2015-08-14 04:27:56 : getActiveTokenFromComputer()
+2015-08-14 04:27:56 : Token return : 53947f3429c6a0dd3a1d4d9ceb7df6382ec5a064
+2015-08-14 04:27:56 : Get project names array
+2015-08-14 04:27:56 : getProjectNamesArray()
+2015-08-14 04:27:56 : getActiveTokenFromComputer()
+2015-08-14 04:27:56 : Token return : 53947f3429c6a0dd3a1d4d9ceb7df6382ec5a064
+2015-08-14 04:27:56 : NSURLConnection getProjectNamesArray()
+2015-08-14 04:27:58 : fireSendArtboards()
+2015-08-14 04:28:00 : Send Artboards
+2015-08-14 04:28:00 : Export Selected Artboards and send to project with id 285794 and size 1
+2015-08-14 04:28:00 : Artboard found with name UI Kit.png and object id A1063146-E696-481C-93ED-8F1796CC7FF7
+2015-08-14 04:28:00 : postFile()
+2015-08-14 04:28:00 : getActiveTokenFromComputer()
+2015-08-14 04:28:00 : Token return : 53947f3429c6a0dd3a1d4d9ceb7df6382ec5a064
+2015-08-14 04:28:00 : postFileNSUrlConnection()
+2015-08-14 04:28:00 : getActiveTokenFromComputer()
+2015-08-14 04:28:00 : Token return : 53947f3429c6a0dd3a1d4d9ceb7df6382ec5a064
+2015-08-14 04:28:00 : NSMutableURLRequest requestWithURL
+2015-08-14 04:29:16 : getActiveTokenFromComputer()
+2015-08-14 04:29:16 : Token return : 53947f3429c6a0dd3a1d4d9ceb7df6382ec5a064
+2015-08-14 04:29:16 : Get project names array
+2015-08-14 04:29:16 : getProjectNamesArray()
+2015-08-14 04:29:16 : getActiveTokenFromComputer()
+2015-08-14 04:29:16 : Token return : 53947f3429c6a0dd3a1d4d9ceb7df6382ec5a064
+2015-08-14 04:29:16 : NSURLConnection getProjectNamesArray()
+2015-08-14 04:29:16 : fireSendArtboards()
+2015-08-14 04:29:20 : Send Artboards
+2015-08-14 04:29:20 : Export Selected Artboards and send to project with id 285794 and size 1
+2015-08-14 04:29:20 : Artboard found with name UI Kit.png and object id A1063146-E696-481C-93ED-8F1796CC7FF7
+2015-08-14 04:29:20 : postFile()
+2015-08-14 04:29:20 : getActiveTokenFromComputer()
+2015-08-14 04:29:20 : Token return : 53947f3429c6a0dd3a1d4d9ceb7df6382ec5a064
+2015-08-14 04:29:20 : postFileNSUrlConnection()
+2015-08-14 04:29:20 : getActiveTokenFromComputer()
+2015-08-14 04:29:20 : Token return : 53947f3429c6a0dd3a1d4d9ceb7df6382ec5a064
+2015-08-14 04:29:20 : NSMutableURLRequest requestWithURL
+2015-08-14 04:29:21 : multi
+2015-08-14 04:29:21 : auth
+2015-08-14 04:29:49 : getActiveTokenFromComputer()
+2015-08-14 04:29:49 : Token return : 53947f3429c6a0dd3a1d4d9ceb7df6382ec5a064
+2015-08-14 04:29:49 : Get project names array
+2015-08-14 04:29:49 : getProjectNamesArray()
+2015-08-14 04:29:49 : getActiveTokenFromComputer()
+2015-08-14 04:29:49 : Token return : 53947f3429c6a0dd3a1d4d9ceb7df6382ec5a064
+2015-08-14 04:29:49 : NSURLConnection getProjectNamesArray()
+2015-08-14 04:29:50 : fireSendArtboards()
+2015-08-14 04:29:51 : Send Artboards
+2015-08-14 04:29:51 : Export Selected Artboards and send to project with id 285794 and size 1
+2015-08-14 04:29:51 : Artboard found with name UI Kit.png and object id A1063146-E696-481C-93ED-8F1796CC7FF7
+2015-08-14 04:29:51 : postFile()
+2015-08-14 04:29:51 : getActiveTokenFromComputer()
+2015-08-14 04:29:51 : Token return : 53947f3429c6a0dd3a1d4d9ceb7df6382ec5a064
+2015-08-14 04:29:51 : postFileNSUrlConnection()
+2015-08-14 04:29:51 : getActiveTokenFromComputer()
+2015-08-14 04:29:51 : Token return : 53947f3429c6a0dd3a1d4d9ceb7df6382ec5a064
+2015-08-14 04:29:51 : NSMutableURLRequest requestWithURL
+2015-08-14 04:29:51 : auth
+2015-08-14 04:31:05 : getActiveTokenFromComputer()
+2015-08-14 04:31:05 : Token return : 53947f3429c6a0dd3a1d4d9ceb7df6382ec5a064
+2015-08-14 04:31:05 : Get project names array
+2015-08-14 04:31:05 : getProjectNamesArray()
+2015-08-14 04:31:05 : getActiveTokenFromComputer()
+2015-08-14 04:31:05 : Token return : 53947f3429c6a0dd3a1d4d9ceb7df6382ec5a064
+2015-08-14 04:31:05 : NSURLConnection getProjectNamesArray()
+2015-08-14 04:31:05 : fireSendArtboards()
+2015-08-14 04:31:06 : Send Artboards
+2015-08-14 04:31:06 : Export Selected Artboards and send to project with id 285794 and size 1
+2015-08-14 04:31:06 : Artboard found with name UI Kit.png and object id A1063146-E696-481C-93ED-8F1796CC7FF7
+2015-08-14 04:31:07 : postFile()
+2015-08-14 04:31:07 : getActiveTokenFromComputer()
+2015-08-14 04:31:07 : Token return : 53947f3429c6a0dd3a1d4d9ceb7df6382ec5a064
+2015-08-14 04:31:07 : postFileNSUrlConnection()
+2015-08-14 04:31:07 : getActiveTokenFromComputer()
+2015-08-14 04:31:07 : Token return : 53947f3429c6a0dd3a1d4d9ceb7df6382ec5a064
+2015-08-14 04:31:07 : NSMutableURLRequest requestWithURL
+2015-08-14 04:31:07 : width
+2015-08-14 04:31:40 : getActiveTokenFromComputer()
+2015-08-14 04:31:40 : Token return : 53947f3429c6a0dd3a1d4d9ceb7df6382ec5a064
+2015-08-14 04:31:40 : Get project names array
+2015-08-14 04:31:40 : getProjectNamesArray()
+2015-08-14 04:31:40 : getActiveTokenFromComputer()
+2015-08-14 04:31:40 : Token return : 53947f3429c6a0dd3a1d4d9ceb7df6382ec5a064
+2015-08-14 04:31:40 : NSURLConnection getProjectNamesArray()
+2015-08-14 04:31:40 : fireSendArtboards()
+2015-08-14 04:31:42 : Send Artboards
+2015-08-14 04:31:42 : Export Selected Artboards and send to project with id 285794 and size 1
+2015-08-14 04:31:42 : Artboard found with name UI Kit.png and object id A1063146-E696-481C-93ED-8F1796CC7FF7
+2015-08-14 04:31:43 : postFile()
+2015-08-14 04:31:43 : getActiveTokenFromComputer()
+2015-08-14 04:31:43 : Token return : 53947f3429c6a0dd3a1d4d9ceb7df6382ec5a064
+2015-08-14 04:31:43 : postFileNSUrlConnection()
+2015-08-14 04:31:43 : getActiveTokenFromComputer()
+2015-08-14 04:31:43 : Token return : 53947f3429c6a0dd3a1d4d9ceb7df6382ec5a064
+2015-08-14 04:31:43 : NSMutableURLRequest requestWithURL
+2015-08-14 04:31:43 : width
+2015-08-14 04:31:43 : height
+2015-08-14 04:31:43 : tempPostData alloc
+2015-08-14 04:32:08 : getActiveTokenFromComputer()
+2015-08-14 04:32:08 : Token return : 53947f3429c6a0dd3a1d4d9ceb7df6382ec5a064
+2015-08-14 04:32:08 : Get project names array
+2015-08-14 04:32:08 : getProjectNamesArray()
+2015-08-14 04:32:08 : getActiveTokenFromComputer()
+2015-08-14 04:32:08 : Token return : 53947f3429c6a0dd3a1d4d9ceb7df6382ec5a064
+2015-08-14 04:32:08 : NSURLConnection getProjectNamesArray()
+2015-08-14 04:32:08 : fireSendArtboards()
+2015-08-14 04:32:10 : Send Artboards
+2015-08-14 04:32:10 : Export Selected Artboards and send to project with id 285794 and size 1
+2015-08-14 04:32:10 : Artboard found with name UI Kit.png and object id A1063146-E696-481C-93ED-8F1796CC7FF7
+2015-08-14 04:32:10 : postFile()
+2015-08-14 04:32:10 : getActiveTokenFromComputer()
+2015-08-14 04:32:10 : Token return : 53947f3429c6a0dd3a1d4d9ceb7df6382ec5a064
+2015-08-14 04:32:10 : postFileNSUrlConnection()
+2015-08-14 04:32:10 : getActiveTokenFromComputer()
+2015-08-14 04:32:10 : Token return : 53947f3429c6a0dd3a1d4d9ceb7df6382ec5a064
+2015-08-14 04:32:10 : NSMutableURLRequest requestWithURL
+2015-08-14 04:32:10 : width
+2015-08-14 04:32:10 : height
+2015-08-14 04:32:10 : tempPostData alloc
+2015-08-14 04:32:10 : NSURLConnection postFileNSUrlConnection()
+2015-08-14 04:33:22 : getActiveTokenFromComputer()
+2015-08-14 04:33:22 : Token return : 53947f3429c6a0dd3a1d4d9ceb7df6382ec5a064
+2015-08-14 04:33:22 : Get project names array
+2015-08-14 04:33:22 : getProjectNamesArray()
+2015-08-14 04:33:22 : getActiveTokenFromComputer()
+2015-08-14 04:33:22 : Token return : 53947f3429c6a0dd3a1d4d9ceb7df6382ec5a064
+2015-08-14 04:33:22 : NSURLConnection getProjectNamesArray()
+2015-08-14 04:33:23 : fireSendArtboards()
+2015-08-14 04:33:25 : Send Artboards
+2015-08-14 04:33:25 : Export Selected Artboards and send to project with id 285794 and size 1
+2015-08-14 04:33:25 : Artboard found with name UI Kit.png and object id A1063146-E696-481C-93ED-8F1796CC7FF7
+2015-08-14 04:33:25 : postFile()
+2015-08-14 04:33:25 : getActiveTokenFromComputer()
+2015-08-14 04:33:25 : Token return : 53947f3429c6a0dd3a1d4d9ceb7df6382ec5a064
+2015-08-14 04:33:25 : postFileNSUrlConnection()
+2015-08-14 04:33:25 : getActiveTokenFromComputer()
+2015-08-14 04:33:25 : Token return : 53947f3429c6a0dd3a1d4d9ceb7df6382ec5a064
+2015-08-14 04:33:25 : NSMutableURLRequest requestWithURL
+2015-08-14 04:33:25 : width
+2015-08-14 04:33:25 : height
+2015-08-14 04:33:25 : tempPostData alloc
+2015-08-14 04:33:25 : NSURLConnection postFileNSUrlConnection()
+2015-08-14 04:34:10 : getActiveTokenFromComputer()
+2015-08-14 04:34:10 : Token return : 53947f3429c6a0dd3a1d4d9ceb7df6382ec5a064
+2015-08-14 04:34:10 : Get project names array
+2015-08-14 04:34:10 : getProjectNamesArray()
+2015-08-14 04:34:10 : getActiveTokenFromComputer()
+2015-08-14 04:34:10 : Token return : 53947f3429c6a0dd3a1d4d9ceb7df6382ec5a064
+2015-08-14 04:34:10 : NSURLConnection getProjectNamesArray()
+2015-08-14 04:34:10 : fireSendArtboards()
+2015-08-14 04:34:12 : Send Artboards
+2015-08-14 04:34:12 : Export Selected Artboards and send to project with id 285794 and size 1
+2015-08-14 04:34:12 : Artboard found with name UI Kit.png and object id A1063146-E696-481C-93ED-8F1796CC7FF7
+2015-08-14 04:34:12 : postFile()
+2015-08-14 04:34:12 : getActiveTokenFromComputer()
+2015-08-14 04:34:12 : Token return : 53947f3429c6a0dd3a1d4d9ceb7df6382ec5a064
+2015-08-14 04:34:12 : postFileNSUrlConnection()
+2015-08-14 04:34:12 : getActiveTokenFromComputer()
+2015-08-14 04:34:12 : Token return : 53947f3429c6a0dd3a1d4d9ceb7df6382ec5a064
+2015-08-14 04:34:12 : NSMutableURLRequest requestWithURL
+2015-08-14 04:34:12 : width
+2015-08-14 04:34:12 : height
+2015-08-14 04:34:12 : tempPostData alloc
+2015-08-14 04:34:12 : NSURLConnection postFileNSUrlConnection()
+2015-08-14 04:36:27 : getActiveTokenFromComputer()
+2015-08-14 04:36:27 : Token return : 53947f3429c6a0dd3a1d4d9ceb7df6382ec5a064
+2015-08-14 04:36:27 : Get project names array
+2015-08-14 04:36:27 : getProjectNamesArray()
+2015-08-14 04:36:27 : getActiveTokenFromComputer()
+2015-08-14 04:36:27 : Token return : 53947f3429c6a0dd3a1d4d9ceb7df6382ec5a064
+2015-08-14 04:36:27 : NSURLConnection getProjectNamesArray()
+2015-08-14 04:36:28 : fireSendArtboards()
+2015-08-14 04:36:32 : Send Artboards
+2015-08-14 04:36:32 : Export Selected Artboards and send to project with id 285794 and size 1
+2015-08-14 04:36:32 : Artboard found with name UI Kit.png and object id A1063146-E696-481C-93ED-8F1796CC7FF7
+2015-08-14 04:36:32 : postFile()
+2015-08-14 04:36:32 : getActiveTokenFromComputer()
+2015-08-14 04:36:32 : Token return : 53947f3429c6a0dd3a1d4d9ceb7df6382ec5a064
+2015-08-14 04:36:32 : postFileNSUrlConnection()
+2015-08-14 04:36:32 : getActiveTokenFromComputer()
+2015-08-14 04:36:32 : Token return : 53947f3429c6a0dd3a1d4d9ceb7df6382ec5a064
+2015-08-14 04:36:32 : NSMutableURLRequest requestWithURL
+2015-08-14 04:36:32 : width
+2015-08-14 04:36:32 : height
+2015-08-14 04:36:32 : tempPostData alloc
+2015-08-14 04:36:32 : NSURLConnection postFileNSUrlConnection()
+2015-08-14 04:37:47 : getActiveTokenFromComputer()
+2015-08-14 04:37:47 : Token return : 53947f3429c6a0dd3a1d4d9ceb7df6382ec5a064
+2015-08-14 04:37:47 : Get project names array
+2015-08-14 04:37:47 : getProjectNamesArray()
+2015-08-14 04:37:47 : getActiveTokenFromComputer()
+2015-08-14 04:37:47 : Token return : 53947f3429c6a0dd3a1d4d9ceb7df6382ec5a064
+2015-08-14 04:37:47 : NSURLConnection getProjectNamesArray()
+2015-08-14 04:37:47 : fireSendArtboards()
+2015-08-14 04:37:48 : Send Artboards
+2015-08-14 04:37:48 : Export Selected Artboards and send to project with id 285794 and size 1
+2015-08-14 04:37:48 : Artboard found with name UI Kit.png and object id A1063146-E696-481C-93ED-8F1796CC7FF7
+2015-08-14 04:37:49 : postFile()
+2015-08-14 04:37:49 : getActiveTokenFromComputer()
+2015-08-14 04:37:49 : Token return : 53947f3429c6a0dd3a1d4d9ceb7df6382ec5a064
+2015-08-14 04:37:49 : postFileNSUrlConnection()
+2015-08-14 04:37:49 : getActiveTokenFromComputer()
+2015-08-14 04:37:49 : Token return : 53947f3429c6a0dd3a1d4d9ceb7df6382ec5a064
+2015-08-14 04:37:49 : NSMutableURLRequest requestWithURL
+2015-08-14 04:37:49 : width
+2015-08-14 04:37:49 : height
+2015-08-14 04:37:49 : tempPostData alloc
+2015-08-14 04:37:49 : NSURLConnection postFileNSUrlConnection()
+2015-08-14 04:37:49 : no error or data not nil
+2015-08-14 04:39:48 : getActiveTokenFromComputer()
+2015-08-14 04:39:48 : Token return : 53947f3429c6a0dd3a1d4d9ceb7df6382ec5a064
+2015-08-14 04:39:48 : Get project names array
+2015-08-14 04:39:48 : getProjectNamesArray()
+2015-08-14 04:39:48 : getActiveTokenFromComputer()
+2015-08-14 04:39:48 : Token return : 53947f3429c6a0dd3a1d4d9ceb7df6382ec5a064
+2015-08-14 04:39:48 : NSURLConnection getProjectNamesArray()
+2015-08-14 04:39:50 : fireSendArtboards()
+2015-08-14 04:39:51 : Send Artboards
+2015-08-14 04:39:51 : Export Selected Artboards and send to project with id 285794 and size 1
+2015-08-14 04:40:00 : getActiveTokenFromComputer()
+2015-08-14 04:40:00 : Token return : 53947f3429c6a0dd3a1d4d9ceb7df6382ec5a064
+2015-08-14 04:40:00 : Get project names array
+2015-08-14 04:40:00 : getProjectNamesArray()
+2015-08-14 04:40:00 : getActiveTokenFromComputer()
+2015-08-14 04:40:00 : Token return : 53947f3429c6a0dd3a1d4d9ceb7df6382ec5a064
+2015-08-14 04:40:00 : NSURLConnection getProjectNamesArray()
+2015-08-14 04:40:00 : fireSendArtboards()
+2015-08-14 04:40:04 : getActiveTokenFromComputer()
+2015-08-14 04:40:04 : Token return : 53947f3429c6a0dd3a1d4d9ceb7df6382ec5a064
+2015-08-14 04:40:04 : Get project names array
+2015-08-14 04:40:04 : getProjectNamesArray()
+2015-08-14 04:40:04 : getActiveTokenFromComputer()
+2015-08-14 04:40:04 : Token return : 53947f3429c6a0dd3a1d4d9ceb7df6382ec5a064
+2015-08-14 04:40:04 : NSURLConnection getProjectNamesArray()
+2015-08-14 04:40:04 : fireSendArtboards()
+2015-08-14 04:40:05 : Send Artboards
+2015-08-14 04:40:05 : Export Selected Artboards and send to project with id 285794 and size 1
+2015-08-14 04:40:05 : Artboard found with name Settings Copy 2.png and object id DB4A6177-EE09-436D-B2AE-E9878A953FDF
+2015-08-14 04:40:06 : postFile()
+2015-08-14 04:40:06 : getActiveTokenFromComputer()
+2015-08-14 04:40:06 : Token return : 53947f3429c6a0dd3a1d4d9ceb7df6382ec5a064
+2015-08-14 04:40:06 : postFileNSUrlConnection()
+2015-08-14 04:40:06 : getActiveTokenFromComputer()
+2015-08-14 04:40:06 : Token return : 53947f3429c6a0dd3a1d4d9ceb7df6382ec5a064
+2015-08-14 04:40:06 : NSMutableURLRequest requestWithURL
+2015-08-14 04:40:06 : width
+2015-08-14 04:40:06 : height
+2015-08-14 04:40:06 : tempPostData alloc
+2015-08-14 04:40:06 : NSURLConnection postFileNSUrlConnection()
+2015-08-14 04:40:06 : no error or data not nil
+2015-08-14 04:40:06 : no result2
+2015-08-14 04:40:56 : getActiveTokenFromComputer()
+2015-08-14 04:40:56 : Token return : 53947f3429c6a0dd3a1d4d9ceb7df6382ec5a064
+2015-08-14 04:40:56 : Get project names array
+2015-08-14 04:40:56 : getProjectNamesArray()
+2015-08-14 04:40:56 : getActiveTokenFromComputer()
+2015-08-14 04:40:56 : Token return : 53947f3429c6a0dd3a1d4d9ceb7df6382ec5a064
+2015-08-14 04:40:56 : NSURLConnection getProjectNamesArray()
+2015-08-14 04:40:56 : fireSendArtboards()
+2015-08-14 04:41:05 : Send Artboards
+2015-08-14 04:41:05 : Export Selected Artboards and send to project with id 285794 and size 1
+2015-08-14 04:41:05 : Artboard found with name Settings Copy 2.png and object id DB4A6177-EE09-436D-B2AE-E9878A953FDF
+2015-08-14 04:41:05 : postFile()
+2015-08-14 04:41:05 : getActiveTokenFromComputer()
+2015-08-14 04:41:05 : Token return : 53947f3429c6a0dd3a1d4d9ceb7df6382ec5a064
+2015-08-14 04:41:05 : postFileNSUrlConnection()
+2015-08-14 04:41:05 : getActiveTokenFromComputer()
+2015-08-14 04:41:05 : Token return : 53947f3429c6a0dd3a1d4d9ceb7df6382ec5a064
+2015-08-14 04:41:47 : getActiveTokenFromComputer()
+2015-08-14 04:41:47 : Token return : 53947f3429c6a0dd3a1d4d9ceb7df6382ec5a064
+2015-08-14 04:41:47 : Get project names array
+2015-08-14 04:41:47 : getProjectNamesArray()
+2015-08-14 04:41:47 : getActiveTokenFromComputer()
+2015-08-14 04:41:47 : Token return : 53947f3429c6a0dd3a1d4d9ceb7df6382ec5a064
+2015-08-14 04:41:47 : NSURLConnection getProjectNamesArray()
+2015-08-14 04:41:47 : fireSendArtboards()
+2015-08-14 04:41:48 : Send Artboards
+2015-08-14 04:41:48 : Export Selected Artboards and send to project with id 285794 and size 1
+2015-08-14 04:41:48 : Artboard found with name Settings Copy 2.png and object id DB4A6177-EE09-436D-B2AE-E9878A953FDF
+2015-08-14 04:41:48 : postFile()
+2015-08-14 04:41:48 : getActiveTokenFromComputer()
+2015-08-14 04:41:48 : Token return : 53947f3429c6a0dd3a1d4d9ceb7df6382ec5a064
+2015-08-14 04:41:48 : postFileNSUrlConnection()
+2015-08-14 04:41:48 : getActiveTokenFromComputer()
+2015-08-14 04:41:48 : Token return : 53947f3429c6a0dd3a1d4d9ceb7df6382ec5a064
+2015-08-14 04:42:30 : getActiveTokenFromComputer()
+2015-08-14 04:42:30 : Token return : 53947f3429c6a0dd3a1d4d9ceb7df6382ec5a064
+2015-08-14 04:42:30 : Get project names array
+2015-08-14 04:42:30 : getProjectNamesArray()
+2015-08-14 04:42:30 : getActiveTokenFromComputer()
+2015-08-14 04:42:30 : Token return : 53947f3429c6a0dd3a1d4d9ceb7df6382ec5a064
+2015-08-14 04:42:30 : NSURLConnection getProjectNamesArray()
+2015-08-14 04:42:30 : fireSendArtboards()
+2015-08-14 04:42:31 : Send Artboards
+2015-08-14 04:42:31 : Export Selected Artboards and send to project with id 285794 and size 1
+2015-08-14 04:42:31 : Artboard found with name Settings Copy 2.png and object id DB4A6177-EE09-436D-B2AE-E9878A953FDF
+2015-08-14 04:42:31 : postFile()
+2015-08-14 04:42:31 : getActiveTokenFromComputer()
+2015-08-14 04:42:31 : Token return : 53947f3429c6a0dd3a1d4d9ceb7df6382ec5a064
+2015-08-14 04:42:31 : postFileNSUrlConnection()
+2015-08-14 04:42:31 : getActiveTokenFromComputer()
+2015-08-14 04:42:31 : Token return : 53947f3429c6a0dd3a1d4d9ceb7df6382ec5a064
+2015-08-14 04:42:31 : url https://marvelapp.com/api/content/upload/sketch/285794/DB4A6177-EE09-436D-B2AE-E9878A953FDF/
+2015-08-14 04:42:31 : NSMutableURLRequest requestWithURL
+2015-08-14 04:42:31 : width
+2015-08-14 04:42:31 : height
+2015-08-14 04:42:31 : tempPostData alloc
+2015-08-14 04:42:31 : NSURLConnection postFileNSUrlConnection()
+2015-08-14 04:42:31 : no error or data not nil
+2015-08-14 04:42:31 : no result2
+2015-08-14 05:05:05 : fireSupport()
+2015-08-14 05:05:21 : fireSupport()
+2015-08-16 11:53:09 : fireSupport()
+2015-08-17 10:22:00 : fireSupport()
+2015-08-17 10:22:36 : fireSupport()
+2015-08-17 10:24:52 : fireSupport()
+2015-08-17 10:25:27 : fireSupport()
+2015-08-17 10:25:50 : fireSupport()
+2015-08-17 10:26:33 : fireSupport()
+2015-08-17 10:32:40 : fireSupport()
+2015-08-17 10:33:17 : fireSupport()
+2015-08-17 10:33:50 : fireSupport()
+2015-08-17 10:34:12 : fireSupport()
+2015-08-17 10:36:12 : fireSupport()
+2015-08-17 10:36:38 : fireSupport()
+2015-08-17 10:37:18 : fireSupport()
+2015-08-17 10:38:09 : fireSupport()
+2015-08-17 10:39:35 : fireSupport()
+2015-08-17 10:39:54 : fireSupport()
+2015-08-17 10:40:16 : fireSupport()
+2015-08-17 10:40:37 : fireSupport()
+2015-08-17 10:40:58 : fireSupport()
+2015-08-17 10:49:31 : fireSupport()
+2015-08-17 10:51:33 : fireSupport()
+2015-08-17 10:51:51 : fireSupport()
+2015-08-17 10:52:07 : fireSupport()

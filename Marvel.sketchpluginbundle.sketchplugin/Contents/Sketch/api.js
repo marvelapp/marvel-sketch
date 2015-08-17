@@ -23,6 +23,7 @@ SOFTWARE.*/
 @import 'helpers/error-logging.js'
 @import 'helpers/settings.js'
 @import 'helpers/mini.js'
+@import 'helpers/manifest.js'
 
 var rootURL = "https://marvelapp.com/api/"
 var app = [NSApplication sharedApplication];
@@ -399,11 +400,12 @@ function fireSendArtboards(projectsArray, all, context){
 
 
 function fireSupport(context){
-	
+
 	sketchLog(context,"fireSupport()");
 
 	var systemVersionDictionary = [NSDictionary dictionaryWithContentsOfFile:@"/System/Library/CoreServices/SystemVersion.plist"];
 	var systemVersion = [systemVersionDictionary objectForKey:@"ProductVersion"];
+	var pluginVersion = manifest.getPluginVersion(context)
 	var sketchVersion = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
 		
 	var windowSendArtboards = [[NSWindow alloc] init]
@@ -437,12 +439,13 @@ function fireSupport(context){
     }
     [debugCheckbox setCOSJSTargetFunction:function(sender) {
 
+    	var directory = getLogDirectory(context);
+        removeFileOrFolder(directory + "main.txt")
+
 		if ([sender state] == NSOnState) {
         	saveDebugSetting(1,context)
     	} else {
         	saveDebugSetting(0,context)
-        	var directory = getLogDirectory(context);
-        	removeFileOrFolder(directory + "main.txt")
     	}
 	    
 	}];
@@ -484,7 +487,7 @@ function fireSupport(context){
 	[versionLabel setFont:[NSFont systemFontOfSize:11]]
 	[versionLabel setTextColor:[NSColor colorWithCalibratedRed:(93/255) green:(93/255) blue:(93/255) alpha:1]]
 	[versionLabel setDrawsBackground:false]
-	[versionLabel setStringValue:"OSX " + systemVersion + " Sketch " + sketchVersion]
+	[versionLabel setStringValue:"OSX " + systemVersion + " Sketch " + sketchVersion + " Plugin " + pluginVersion]
 	[[windowSendArtboards contentView] addSubview:versionLabel]
 	
 	var sendButton = [[NSButton alloc] initWithFrame:NSMakeRect(353, yPosBottomElements, 76, 46)]
@@ -495,7 +498,7 @@ function fireSupport(context){
 			var logs = fetchLog(context);
 
 			var subject = @"Sketch Plugin Support";
-			var body =[NSString stringWithFormat:@"Describe your bug here: \n\n\n\n\n My Logs:\n\n System Version: %@ \n Sketch Version: %@ \n %@",systemVersion, sketchVersion, logs];
+			var body =[NSString stringWithFormat:@"Describe your bug here: \n\n\n\n\n My Logs:\n\n Plugin Version: %@ \n System Version: %@ \n Sketch Version: %@ \n %@", pluginVersion, systemVersion, sketchVersion, logs];
 			var to = @"help@marvelapp.com";
 			var encodedSubject = [NSString stringWithFormat:@"SUBJECT=%@", [subject stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
 			var encodedBody = [NSString stringWithFormat:@"BODY=%@", [body stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
@@ -708,35 +711,113 @@ function getProjectNamesArray(context) {
 
 function postFile(context, path, projectId, filename, uuid, width, height) {
 			
-			sketchLog(context,"postFile()")
+		sketchLog(context,"postFile()")
 			
-			var dataImg = [[NSFileManager defaultManager] contentsAtPath:path];
-			var token = getActiveTokenFromComputer(context)
-			var postLength = [dataImg length].toString()
+		var dataImg = [[NSFileManager defaultManager] contentsAtPath:path];
+		var token = getActiveTokenFromComputer(context)
+		var postLength = [dataImg length].toString()
 
-			var task = NSTask.alloc().init()
-			task.setLaunchPath("/usr/bin/curl");
+		var task = NSTask.alloc().init()
+		task.setLaunchPath("/usr/bin/curl");
 						
-			var args = NSArray.arrayWithObjects("-v", "POST", "--header", "Content-Type: multipart/form-data; boundary=0xKhTmLbOuNdArY", "--header", "Authorization: Token " + token, "--header", "HTTP_AUTHORIZATION: " + token, "--header", "User-Agent: Sketch", "--header", "width: " + width, "--header", "height: " + height, "-F", "Content-Disposition: form-data; name=file; filename=" + filename + "; Content-Type=image/png;", "-F", "file=@" + path, rootURL + "content/upload/sketch/" + projectId + "/" + uuid + "/", nil);
+		var args = NSArray.arrayWithObjects("-v", "POST", "--header", "Content-Type: multipart/form-data; boundary=0xKhTmLbOuNdArY", "--header", "Authorization: Token " + token, "--header", "HTTP_AUTHORIZATION: " + token, "--header", "User-Agent: Sketch", "--header", "width: " + width, "--header", "height: " + height, "-F", "Content-Disposition: form-data; name=file; filename=" + filename + "; Content-Type=image/png;", "-F", "file=@" + path, rootURL + "content/upload/sketch/" + projectId + "/" + uuid + "/", nil);
 						
-			task.setArguments(args);
-			
-			if(getDebugSettingFromComputer(context) == 1)
-			{
-				sketchLog(context,"Output pipe")
-			 	var outputPipe = [NSPipe pipe];
-				[task setStandardOutput:outputPipe];
-				task.launch();
-				var outputData = [[outputPipe fileHandleForReading] readDataToEndOfFile];
+		task.setArguments(args);
 
-				if(outputData.length > 0){
-					var outputString = [[[NSString alloc] initWithData:outputData encoding:NSUTF8StringEncoding]];
-					sketchLog(context,outputString)
-				}	
+		if(getDebugSettingFromComputer(context) == 1)
+		{
+			/*
+			sketchLog(context,"Output pipe")
+			 var outputPipe = [NSPipe pipe];
+			[task setStandardOutput:outputPipe];
+			task.launch();
+			var outputData = [[outputPipe fileHandleForReading] readDataToEndOfFile];
 				
-			} else {
-				task.launch();
+			if(outputData.length > 0){
+				var outputString = [[[NSString alloc] initWithData:outputData encoding:NSUTF8StringEncoding]];
+				sketchLog(context,outputString)
+			}*/
+
+		postFileNSUrlConnection(context, path, projectId, filename, uuid, width, height)	
+
+		} else {
+			task.launch();
+		}
+}
+
+function postFileNSUrlConnection(context, path, projectId, filename, uuid, width, height) {
+			
+	sketchLog(context,"postFileNSUrlConnection()")
+	
+	var token = getActiveTokenFromComputer(context)
+
+	var url = [NSURL URLWithString:rootURL + "content/upload/sketch/" + projectId + "/" + uuid + "/"];
+	
+	sketchLog(context,"url " + url)
+
+	sketchLog(context,"NSMutableURLRequest requestWithURL")
+
+	var request=[NSMutableURLRequest requestWithURL:url cachePolicy:NSURLRequestReloadIgnoringCacheData timeoutInterval:60]
+	[request setHTTPMethod:"POST"]
+	[request setValue:"Sketch" forHTTPHeaderField:"User-Agent"]
+	[request setValue:"multipart/form-data; boundary=0xKhTmLbOuNdArY" forHTTPHeaderField:"Content-Type"]
+	[request setValue:"Token " + token forHTTPHeaderField:"Authorization"]
+	[request setValue:width.toString() forHTTPHeaderField:"width"]
+	[request setValue:height.toString() forHTTPHeaderField:"height"]
+	[request setValue:token forHTTPHeaderField:"HTTP_AUTHORIZATION"]
+	
+	sketchLog(context,"tempPostData alloc")
+
+	var tempPostData = [NSMutableData data]; 
+	var filedata = [[NSFileManager defaultManager] contentsAtPath:path];
+    [tempPostData appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=file; filename=%@; Content-Type=image/png; file=%@", filename, filedata] dataUsingEncoding:NSUTF8StringEncoding]];
+	[request setHTTPBody:tempPostData]
+
+	var response = nil;
+	var error = nil;
+	sketchLog(context,"NSURLConnection postFileNSUrlConnection()")
+	var data = [NSURLConnection sendSynchronousRequest:request returningResponse:response error:error];
+	
+	if (error == nil && data != nil)
+	{	    
+
+		sketchLog(context,"no error or data not nil")
+
+	    var errorJson;
+
+	    if(data.length > 0){
+
+	    	sketchLog(context,"rdata bigger than nil")
+
+		var res = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableLeaves error:errorJson]
+		
+		if(res){ 
+			sketchLog(context,"result")
+			if(res.detail && res.detail == "Invalid token"){
+			  	//deleteActiveTokenFromComputer(context)
+			  	fireError("Your token is not valid anymore, please login again.","After you are logged in again please try again.")
+			  	return false
+			} else if (res.detail && res.detail){
+			  	fireError(res.detail)
+			  	return false
+			} else if ([res valueForKey:@"id"]) {
+				//var itemId = [NSString stringWithFormat:@"%@", [[res valueForKey:@"id"] intValue]];
+			   	return itemId
 			}
+		} else {
+			sketchLog(context,"no result")
+		}
+	} else {
+		sketchLog(context,"no result2")
+	}
+	    	
+	} else {
+		sketchLog(context,"error")
+			dealWithErrors(context,data)
+	}
+
+	return false;
+			
 }
 
 // Helpers
