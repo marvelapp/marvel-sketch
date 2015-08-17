@@ -495,7 +495,7 @@ function fireSupport(context){
 	[sendButton setBezelStyle:NSRoundedBezelStyle]
 	[sendButton setCOSJSTargetFunction:function(sender) {
 
-			var logs = fetchLog(context);
+			var logs = errorLogging.fetchLog(context);
 
 			var subject = @"Sketch Plugin Support";
 			var body =[NSString stringWithFormat:@"Describe your bug here: \n\n\n\n\n My Logs:\n\n Plugin Version: %@ \n System Version: %@ \n Sketch Version: %@ \n %@", pluginVersion, systemVersion, sketchVersion, logs];
