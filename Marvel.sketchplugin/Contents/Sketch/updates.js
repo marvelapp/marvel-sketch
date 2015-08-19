@@ -41,13 +41,14 @@ var updatesChecker = {
        	
        	if (error == nil && data != nil)
        	{	    
-       	    var errorJson;
+       	  var errorJson;
        	    		
        		var res = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableLeaves error:errorJson]
        		
        		if(errorJson == nil){
-       			return res.version
-
+            if(res.version){
+       			  return res.version
+            }
        		} else {
        			sketchLog(context,"NSURLConnection updatesChecker.getNewestVersionNumber() Convert to JSON failed")
        			return false
@@ -56,6 +57,7 @@ var updatesChecker = {
        	} 
 
        	sketchLog(context,"updatesChecker.getNewestVersionNumber() failed")
+        [app displayDialog:"Try again later..." withTitle:"Could not contact GitHub properly."]
        	return false
 
     }
