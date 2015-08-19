@@ -250,24 +250,37 @@ function fireSendArtboards(projectsArray, all, context){
 	var projectPopup = [[NSComboBox alloc] initWithFrame:NSMakeRect(74, yDropdowns, 266, 26)]
 	[projectPopup removeAllItems]
 	[projectPopup setFocusRingType:NSFocusRingTypeNone]
-	var lastUsedProjectId = settings.getLastUsedProject(context);
-	var lastUsedProjectIdIndex;
-	var projectNames = [];
+	var lastUsedProjectId = settings.getLastUsedProject(context)
+	var lastUsedProjectIdIndex
+	var projectNames = []
+
+	var noProjects = false
+	if(projectsArray.length == 0){
+		noProjects = true
+	}
+
+	sketchLog(context, "Find pre used projects");
 	for (i = 0; i < projectsArray.length; ++i) {
 			projectNames.push(projectsArray[i].name);
 
 			if(lastUsedProjectId == projectsArray[i].id){
 				lastUsedProjectIdIndex = i;
+				sketchLog(context, "Last used project index " + lastUsedProjectIdIndex + "and ID is " + projectsArray[i].id)
 			}
 	}
 	[projectPopup addItemsWithObjectValues:projectNames]
+
+	sketchLog(context, "Set last used project")
+
 	if(lastUsedProjectIdIndex){
 		[projectPopup selectItemAtIndex:lastUsedProjectIdIndex]
 	} else {
-		[projectPopup selectItemAtIndex:0]
+		if (noProjects == false){
+			sketchLog(context, "There are projects")
+			[projectPopup selectItemAtIndex:0]
+		}
 	}
 	[[windowSendArtboards contentView] addSubview:projectPopup]
-	
 	var subtitleField = [[NSTextField alloc] initWithFrame:NSMakeRect(74, yDropdowns - 28, 266, 26)]
 	[subtitleField setEditable:false]
 	[subtitleField setBordered:false]
@@ -373,6 +386,7 @@ function fireSendArtboards(projectsArray, all, context){
 					}
 					settings.saveScaleSetting(scaleString,context)
 					settings.saveLastUsedProject(projectId,context)
+					
 					[windowSendArtboards orderOut:nil]
 					[app stopModal]
 
@@ -696,7 +710,8 @@ function getProjectNamesArray(context) {
 			   	 
 			   } else {
 			   	
-			   	return false
+			   	var projects = [];
+			   	return projects;
 			   	
 			  }
 			  

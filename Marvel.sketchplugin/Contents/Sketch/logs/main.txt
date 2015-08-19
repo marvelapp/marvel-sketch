@@ -1,0 +1,898 @@
+2015-08-19 05:18:53 : getActiveTokenFromComputer()
+2015-08-19 05:18:53 : Token return : 16d9efc4d0b1c8e51106978070df7131afa37472
+2015-08-19 05:18:53 : Get project names array
+2015-08-19 05:18:53 : getProjectNamesArray()
+2015-08-19 05:18:53 : getActiveTokenFromComputer()
+2015-08-19 05:18:53 : Token return : 16d9efc4d0b1c8e51106978070df7131afa37472
+2015-08-19 05:18:53 : NSURLConnection getProjectNamesArray()
+2015-08-19 05:19:05 : getActiveTokenFromComputer()
+2015-08-19 05:19:05 : Token return : 16d9efc4d0b1c8e51106978070df7131afa37472
+2015-08-19 05:19:05 : Get project names array
+2015-08-19 05:19:05 : getProjectNamesArray()
+2015-08-19 05:19:05 : getActiveTokenFromComputer()
+2015-08-19 05:19:05 : Token return : 16d9efc4d0b1c8e51106978070df7131afa37472
+2015-08-19 05:19:05 : NSURLConnection getProjectNamesArray()
+2015-08-19 05:20:33 : getActiveTokenFromComputer()
+2015-08-19 05:20:33 : Token return : 16d9efc4d0b1c8e51106978070df7131afa37472
+2015-08-19 05:20:33 : Get project names array
+2015-08-19 05:20:33 : getProjectNamesArray()
+2015-08-19 05:20:33 : getActiveTokenFromComputer()
+2015-08-19 05:20:33 : Token return : 16d9efc4d0b1c8e51106978070df7131afa37472
+2015-08-19 05:20:33 : NSURLConnection getProjectNamesArray()
+2015-08-19 05:20:33 : fireSendArtboards()
+2015-08-19 05:22:49 : getActiveTokenFromComputer()
+2015-08-19 05:22:49 : Token return : 16d9efc4d0b1c8e51106978070df7131afa37472
+2015-08-19 05:22:49 : Get project names array
+2015-08-19 05:22:49 : getProjectNamesArray()
+2015-08-19 05:22:49 : getActiveTokenFromComputer()
+2015-08-19 05:22:49 : Token return : 16d9efc4d0b1c8e51106978070df7131afa37472
+2015-08-19 05:22:49 : NSURLConnection getProjectNamesArray()
+2015-08-19 05:22:49 : fireSendArtboards()
+2015-08-19 05:22:49 : Find pre used projects
+2015-08-19 05:22:49 : Set last used project
+2015-08-19 05:23:10 : getActiveTokenFromComputer()
+2015-08-19 05:23:10 : Token return : 16d9efc4d0b1c8e51106978070df7131afa37472
+2015-08-19 05:23:10 : Get project names array
+2015-08-19 05:23:10 : getProjectNamesArray()
+2015-08-19 05:23:10 : getActiveTokenFromComputer()
+2015-08-19 05:23:10 : Token return : 16d9efc4d0b1c8e51106978070df7131afa37472
+2015-08-19 05:23:10 : NSURLConnection getProjectNamesArray()
+2015-08-19 05:23:10 : fireSendArtboards()
+2015-08-19 05:23:10 : Find pre used projects
+2015-08-19 05:23:10 : Set last used project
+2015-08-19 05:23:38 : Send Artboards
+2015-08-19 05:23:38 : createProject()
+2015-08-19 05:23:38 : getActiveTokenFromComputer()
+2015-08-19 05:23:38 : Token return : 16d9efc4d0b1c8e51106978070df7131afa37472
+2015-08-19 05:23:38 : NSURLConnection createProject()
+2015-08-19 05:23:39 : exportArtboardsAndSendTo() : project with id 37 and size 1
+2015-08-19 05:23:39 : Artboard found with name iPad Portrait.png and object id 3C448C10-5218-4C4B-B78D-F6E63140FB1D
+2015-08-19 05:23:39 : postFile()
+2015-08-19 05:23:39 : getActiveTokenFromComputer()
+2015-08-19 05:23:39 : Token return : 16d9efc4d0b1c8e51106978070df7131afa37472
+2015-08-19 05:23:39 : Output pipe
+2015-08-19 05:23:41 : Ouput is NSConcreteData
+2015-08-19 05:23:41 : Convert to JSON
+2015-08-19 05:23:41 : Result: {
+    "bottom_pixel_colour" = "<null>";
+    "bright_pixel_colour" = "<null>";
+    "comment_count" = 0;
+    "content_type" = "image/png";
+    description = "<null>";
+    directory = "<null>";
+    height = "<null>";
+    hotspots =     (
+    );
+    "hotspots_delta" = "";
+    id = 207;
+    "is_app_icon" = 0;
+    "is_desktop" = 1;
+    "layer_parent" = "<null>";
+    "layer_sync_uri" = "/api/secret-sauce/sketch/207/sync/";
+    name = "iPad Portrait.png";
+    "preview_thumbnail" = "";
+    "preview_thumbnail_640" = "<null>";
+    revision = "<null>";
+    seq = "<null>";
+    size = "<null>";
+    "source_platform" = 4;
+    "source_platform_human" = Desktop;
+    status = 2;
+    "status_pixel_colour" = "<null>";
+    thumbnail = "";
+    "top_pixel_colour" = "<null>";
+    url = "<null>";
+    uuid = "37-3C448C10-5218-4C4B-B78D-F6E63140FB1D";
+    version = 2;
+    width = "<null>";
+}
+2015-08-19 05:23:41 : Artboard found with name iPad Portrait Copy.png and object id 55CCAE56-34E2-4DB6-8792-D625691D9FF5
+2015-08-19 05:23:41 : postFile()
+2015-08-19 05:23:41 : getActiveTokenFromComputer()
+2015-08-19 05:23:41 : Token return : 16d9efc4d0b1c8e51106978070df7131afa37472
+2015-08-19 05:23:41 : Output pipe
+2015-08-19 05:23:43 : Ouput is NSConcreteData
+2015-08-19 05:23:43 : Convert to JSON
+2015-08-19 05:23:43 : Result: {
+    "bottom_pixel_colour" = "<null>";
+    "bright_pixel_colour" = "<null>";
+    "comment_count" = 0;
+    "content_type" = "image/png";
+    description = "<null>";
+    directory = "<null>";
+    height = "<null>";
+    hotspots =     (
+    );
+    "hotspots_delta" = "";
+    id = 208;
+    "is_app_icon" = 0;
+    "is_desktop" = 1;
+    "layer_parent" = "<null>";
+    "layer_sync_uri" = "/api/secret-sauce/sketch/208/sync/";
+    name = "iPad Portrait Copy.png";
+    "preview_thumbnail" = "";
+    "preview_thumbnail_640" = "<null>";
+    revision = "<null>";
+    seq = "<null>";
+    size = "<null>";
+    "source_platform" = 4;
+    "source_platform_human" = Desktop;
+    status = 2;
+    "status_pixel_colour" = "<null>";
+    thumbnail = "";
+    "top_pixel_colour" = "<null>";
+    url = "<null>";
+    uuid = "37-55CCAE56-34E2-4DB6-8792-D625691D9FF5";
+    version = 2;
+    width = "<null>";
+}
+2015-08-19 05:24:18 : getActiveTokenFromComputer()
+2015-08-19 05:24:18 : Token return : 16d9efc4d0b1c8e51106978070df7131afa37472
+2015-08-19 05:24:18 : Get project names array
+2015-08-19 05:24:18 : getProjectNamesArray()
+2015-08-19 05:24:18 : getActiveTokenFromComputer()
+2015-08-19 05:24:18 : Token return : 16d9efc4d0b1c8e51106978070df7131afa37472
+2015-08-19 05:24:18 : NSURLConnection getProjectNamesArray()
+2015-08-19 05:24:18 : fireSendArtboards()
+2015-08-19 05:24:18 : Find pre used projects
+2015-08-19 05:24:18 : Set last used project
+2015-08-19 05:24:24 : Send Artboards
+2015-08-19 05:24:24 : exportArtboardsAndSendTo() : project with id 37 and size 1
+2015-08-19 05:24:24 : Artboard found with name iPad Portrait.png and object id 55CCAE56-34E2-4DB6-8792-D625691D9FF5
+2015-08-19 05:24:24 : postFile()
+2015-08-19 05:24:24 : getActiveTokenFromComputer()
+2015-08-19 05:24:24 : Token return : 16d9efc4d0b1c8e51106978070df7131afa37472
+2015-08-19 05:24:24 : Output pipe
+2015-08-19 05:24:25 : Ouput is NSConcreteData
+2015-08-19 05:24:25 : Convert to JSON
+2015-08-19 05:24:25 : Result: {
+    "bottom_pixel_colour" = "0, 0, 0, 0.0";
+    "bright_pixel_colour" = "<null>";
+    "comment_count" = 0;
+    "content_type" = "image/png";
+    description = "<null>";
+    directory = "<null>";
+    height = 1024;
+    hotspots =     (
+    );
+    "hotspots_delta" = "";
+    id = 208;
+    "is_app_icon" = 0;
+    "is_desktop" = 1;
+    "layer_parent" = "<null>";
+    "layer_sync_uri" = "/api/secret-sauce/sketch/208/sync/";
+    name = "iPad Portrait.png";
+    "preview_thumbnail" = "https://res.cloudinary.com/marvel-content/image/fetch/s--gg9RSPaU--/t_width_320/https://marvelapp-dev.storage.googleapis.com/serve/ebb47728ac504b658733a0112a00b498.png";
+    "preview_thumbnail_640" = "<null>";
+    revision = "<null>";
+    seq = "<null>";
+    size = "<null>";
+    "source_platform" = 4;
+    "source_platform_human" = Desktop;
+    status = 2;
+    "status_pixel_colour" = "0, 0, 0, 0.0";
+    thumbnail = "https://res.cloudinary.com/marvel-content/image/fetch/s--FJ_-93aK--/q_70,t_thumbnail_fill_320_568/https://marvelapp-dev.storage.googleapis.com/serve/ebb47728ac504b658733a0112a00b498.png";
+    "top_pixel_colour" = "0, 0, 0, 0.0";
+    url = "https://marvelapp-dev.storage.googleapis.com/serve/ebb47728ac504b658733a0112a00b498.png";
+    uuid = "37-55CCAE56-34E2-4DB6-8792-D625691D9FF5";
+    version = 6;
+    width = 768;
+}
+2015-08-19 05:24:33 : getActiveTokenFromComputer()
+2015-08-19 05:24:33 : Token return : 16d9efc4d0b1c8e51106978070df7131afa37472
+2015-08-19 05:24:33 : Get project names array
+2015-08-19 05:24:33 : getProjectNamesArray()
+2015-08-19 05:24:33 : getActiveTokenFromComputer()
+2015-08-19 05:24:33 : Token return : 16d9efc4d0b1c8e51106978070df7131afa37472
+2015-08-19 05:24:33 : NSURLConnection getProjectNamesArray()
+2015-08-19 05:24:33 : fireSendArtboards()
+2015-08-19 05:24:33 : Find pre used projects
+2015-08-19 05:24:33 : Set last used project
+2015-08-19 05:25:43 : getActiveTokenFromComputer()
+2015-08-19 05:25:43 : Token return : 16d9efc4d0b1c8e51106978070df7131afa37472
+2015-08-19 05:25:43 : Get project names array
+2015-08-19 05:25:43 : getProjectNamesArray()
+2015-08-19 05:25:43 : getActiveTokenFromComputer()
+2015-08-19 05:25:43 : Token return : 16d9efc4d0b1c8e51106978070df7131afa37472
+2015-08-19 05:25:43 : NSURLConnection getProjectNamesArray()
+2015-08-19 05:25:43 : fireSendArtboards()
+2015-08-19 05:25:43 : Find pre used projects
+2015-08-19 05:25:43 : Set last used project
+2015-08-19 05:25:46 : Send Artboards
+2015-08-19 05:25:46 : exportArtboardsAndSendTo() : project with id 37 and size 1
+2015-08-19 05:25:46 : Artboard found with name iPad Portrait 5.png and object id 55CCAE56-34E2-4DB6-8792-D625691D9FF5
+2015-08-19 05:25:46 : postFile()
+2015-08-19 05:25:46 : getActiveTokenFromComputer()
+2015-08-19 05:25:46 : Token return : 16d9efc4d0b1c8e51106978070df7131afa37472
+2015-08-19 05:25:46 : Output pipe
+2015-08-19 05:25:48 : Ouput is NSConcreteData
+2015-08-19 05:25:48 : Convert to JSON
+2015-08-19 05:25:48 : Result: {
+    "bottom_pixel_colour" = "0, 0, 0, 0.0";
+    "bright_pixel_colour" = "<null>";
+    "comment_count" = 0;
+    "content_type" = "image/png";
+    description = "<null>";
+    directory = "<null>";
+    height = 1024;
+    hotspots =     (
+    );
+    "hotspots_delta" = "";
+    id = 208;
+    "is_app_icon" = 0;
+    "is_desktop" = 1;
+    "layer_parent" = "<null>";
+    "layer_sync_uri" = "/api/secret-sauce/sketch/208/sync/";
+    name = "iPad Portrait 5.png";
+    "preview_thumbnail" = "https://res.cloudinary.com/marvel-content/image/fetch/s--r_3ekuNX--/t_width_320/https://marvelapp-dev.storage.googleapis.com/serve/a01db2fb892047e987b2c2fc5d35aceb.png";
+    "preview_thumbnail_640" = "<null>";
+    revision = "<null>";
+    seq = "<null>";
+    size = "<null>";
+    "source_platform" = 4;
+    "source_platform_human" = Desktop;
+    status = 2;
+    "status_pixel_colour" = "0, 0, 0, 0.0";
+    thumbnail = "https://res.cloudinary.com/marvel-content/image/fetch/s--kXOGIhbf--/q_70,t_thumbnail_fill_320_568/https://marvelapp-dev.storage.googleapis.com/serve/a01db2fb892047e987b2c2fc5d35aceb.png";
+    "top_pixel_colour" = "0, 0, 0, 0.0";
+    url = "https://marvelapp-dev.storage.googleapis.com/serve/a01db2fb892047e987b2c2fc5d35aceb.png";
+    uuid = "37-55CCAE56-34E2-4DB6-8792-D625691D9FF5";
+    version = 10;
+    width = 768;
+}
+2015-08-19 05:26:16 : getActiveTokenFromComputer()
+2015-08-19 05:26:16 : Token return : 16d9efc4d0b1c8e51106978070df7131afa37472
+2015-08-19 05:26:16 : Get project names array
+2015-08-19 05:26:16 : getProjectNamesArray()
+2015-08-19 05:26:16 : getActiveTokenFromComputer()
+2015-08-19 05:26:16 : Token return : 16d9efc4d0b1c8e51106978070df7131afa37472
+2015-08-19 05:26:16 : NSURLConnection getProjectNamesArray()
+2015-08-19 05:26:16 : fireSendArtboards()
+2015-08-19 05:26:16 : Find pre used projects
+2015-08-19 05:26:16 : Set last used project
+2015-08-19 05:26:18 : Send Artboards
+2015-08-19 05:26:18 : exportArtboardsAndSendTo() : project with id 37 and size 1
+2015-08-19 05:26:18 : Artboard found with name iPad Portrait Wicked And Awesome.png and object id 55CCAE56-34E2-4DB6-8792-D625691D9FF5
+2015-08-19 05:26:18 : postFile()
+2015-08-19 05:26:18 : getActiveTokenFromComputer()
+2015-08-19 05:26:18 : Token return : 16d9efc4d0b1c8e51106978070df7131afa37472
+2015-08-19 05:26:18 : Output pipe
+2015-08-19 05:26:20 : Ouput is NSConcreteData
+2015-08-19 05:26:20 : Convert to JSON
+2015-08-19 05:26:20 : Result: {
+    "bottom_pixel_colour" = "0, 0, 0, 0.0";
+    "bright_pixel_colour" = "<null>";
+    "comment_count" = 0;
+    "content_type" = "image/png";
+    description = "<null>";
+    directory = "<null>";
+    height = 1024;
+    hotspots =     (
+                {
+            action = click;
+            "anchor_y_pos" = "<null>";
+            "delta_check" = ca577be53bbb8185a8b40acd3fa4f004;
+            "dest_img_fk" = 207;
+            "external_url" = "<null>";
+            id = 27;
+            images =             (
+            );
+            "img_owner_fk" = 208;
+            location = 1;
+            "maintain_scroll" = 0;
+            "new_window" = 0;
+            "owner_hotspot" = "<null>";
+            "project_hotspot_delta" = "<null>";
+            "smooth_scroll" = 0;
+            status = 1;
+            "stay_on_page" = 0;
+            timer = "<null>";
+            transition = pushright;
+            type = 1;
+            url = "";
+            uuid = "0b0c9d6a-86f8-4b7a-cf2e-80c02f2799a3";
+            version = 1;
+            x = 182;
+            x2 = 626;
+            y = 256;
+            y2 = 805;
+        }
+    );
+    "hotspots_delta" = 0895a54587d7c3ae55787e96fe3e475a;
+    id = 208;
+    "is_app_icon" = 0;
+    "is_desktop" = 1;
+    "layer_parent" = "<null>";
+    "layer_sync_uri" = "/api/secret-sauce/sketch/208/sync/";
+    name = "iPad Portrait Wicked And Awesome.png";
+    "preview_thumbnail" = "https://res.cloudinary.com/marvel-content/image/fetch/s--ToE6q4t---/t_width_320/https://marvelapp-dev.storage.googleapis.com/serve/9965f6e18b4d4106b59af20e0561f748.png";
+    "preview_thumbnail_640" = "<null>";
+    revision = "<null>";
+    seq = "<null>";
+    size = "<null>";
+    "source_platform" = 4;
+    "source_platform_human" = Desktop;
+    status = 2;
+    "status_pixel_colour" = "0, 0, 0, 0.0";
+    thumbnail = "https://res.cloudinary.com/marvel-content/image/fetch/s--G78dUpfg--/q_70,t_thumbnail_fill_320_568/https://marvelapp-dev.storage.googleapis.com/serve/9965f6e18b4d4106b59af20e0561f748.png";
+    "top_pixel_colour" = "0, 0, 0, 0.0";
+    url = "https://marvelapp-dev.storage.googleapis.com/serve/9965f6e18b4d4106b59af20e0561f748.png";
+    uuid = "37-55CCAE56-34E2-4DB6-8792-D625691D9FF5";
+    version = 14;
+    width = 768;
+}
+2015-08-19 05:26:29 : getActiveTokenFromComputer()
+2015-08-19 05:26:29 : Token return : 16d9efc4d0b1c8e51106978070df7131afa37472
+2015-08-19 05:26:29 : Get project names array
+2015-08-19 05:26:29 : getProjectNamesArray()
+2015-08-19 05:26:29 : getActiveTokenFromComputer()
+2015-08-19 05:26:29 : Token return : 16d9efc4d0b1c8e51106978070df7131afa37472
+2015-08-19 05:26:29 : NSURLConnection getProjectNamesArray()
+2015-08-19 05:26:29 : fireSendArtboards()
+2015-08-19 05:26:29 : Find pre used projects
+2015-08-19 05:26:29 : Set last used project
+2015-08-19 05:26:32 : Send Artboards
+2015-08-19 05:26:32 : exportArtboardsAndSendTo() : project with id 37 and size 1
+2015-08-19 05:26:32 : Artboard found with name iPad Portrait.png and object id 3C448C10-5218-4C4B-B78D-F6E63140FB1D
+2015-08-19 05:26:32 : postFile()
+2015-08-19 05:26:32 : getActiveTokenFromComputer()
+2015-08-19 05:26:32 : Token return : 16d9efc4d0b1c8e51106978070df7131afa37472
+2015-08-19 05:26:32 : Output pipe
+2015-08-19 05:26:33 : Ouput is NSConcreteData
+2015-08-19 05:26:33 : Convert to JSON
+2015-08-19 05:26:33 : Result: {
+    "bottom_pixel_colour" = "0, 0, 0, 0.0";
+    "bright_pixel_colour" = "<null>";
+    "comment_count" = 0;
+    "content_type" = "image/png";
+    description = "<null>";
+    directory = "<null>";
+    height = 1024;
+    hotspots =     (
+    );
+    "hotspots_delta" = "";
+    id = 207;
+    "is_app_icon" = 0;
+    "is_desktop" = 1;
+    "layer_parent" = "<null>";
+    "layer_sync_uri" = "/api/secret-sauce/sketch/207/sync/";
+    name = "iPad Portrait.png";
+    "preview_thumbnail" = "https://res.cloudinary.com/marvel-content/image/fetch/s--sjFo4I_Y--/t_width_320/https://marvelapp-dev.storage.googleapis.com/serve/943765e709334586819fe64621e4c7d5.png";
+    "preview_thumbnail_640" = "<null>";
+    revision = "<null>";
+    seq = "<null>";
+    size = "<null>";
+    "source_platform" = 4;
+    "source_platform_human" = Desktop;
+    status = 2;
+    "status_pixel_colour" = "0, 0, 0, 0.0";
+    thumbnail = "https://res.cloudinary.com/marvel-content/image/fetch/s--vhRUK6S---/q_70,t_thumbnail_fill_320_568/https://marvelapp-dev.storage.googleapis.com/serve/943765e709334586819fe64621e4c7d5.png";
+    "top_pixel_colour" = "0, 0, 0, 0.0";
+    url = "https://marvelapp-dev.storage.googleapis.com/serve/943765e709334586819fe64621e4c7d5.png";
+    uuid = "37-3C448C10-5218-4C4B-B78D-F6E63140FB1D";
+    version = 6;
+    width = 768;
+}
+2015-08-19 05:31:01 : getActiveTokenFromComputer()
+2015-08-19 05:31:01 : Token return : 16d9efc4d0b1c8e51106978070df7131afa37472
+2015-08-19 05:31:01 : Get project names array
+2015-08-19 05:31:01 : getProjectNamesArray()
+2015-08-19 05:31:01 : getActiveTokenFromComputer()
+2015-08-19 05:31:01 : Token return : 16d9efc4d0b1c8e51106978070df7131afa37472
+2015-08-19 05:31:01 : NSURLConnection getProjectNamesArray()
+2015-08-19 05:31:01 : fireSendArtboards()
+2015-08-19 05:31:01 : Find pre used projects
+2015-08-19 05:31:01 : Set last used project
+2015-08-19 05:31:34 : getActiveTokenFromComputer()
+2015-08-19 05:31:34 : Token return : 16d9efc4d0b1c8e51106978070df7131afa37472
+2015-08-19 05:31:34 : Get project names array
+2015-08-19 05:31:34 : getProjectNamesArray()
+2015-08-19 05:31:34 : getActiveTokenFromComputer()
+2015-08-19 05:31:34 : Token return : 16d9efc4d0b1c8e51106978070df7131afa37472
+2015-08-19 05:31:34 : NSURLConnection getProjectNamesArray()
+2015-08-19 05:31:34 : fireSendArtboards()
+2015-08-19 05:31:34 : Find pre used projects
+2015-08-19 05:31:34 : Set last used project
+2015-08-19 05:33:23 : getActiveTokenFromComputer()
+2015-08-19 05:33:23 : Token return : 16d9efc4d0b1c8e51106978070df7131afa37472
+2015-08-19 05:33:23 : Get project names array
+2015-08-19 05:33:23 : getProjectNamesArray()
+2015-08-19 05:33:23 : getActiveTokenFromComputer()
+2015-08-19 05:33:23 : Token return : 16d9efc4d0b1c8e51106978070df7131afa37472
+2015-08-19 05:33:23 : NSURLConnection getProjectNamesArray()
+2015-08-19 05:33:23 : fireSendArtboards()
+2015-08-19 05:33:23 : Find pre used projects
+2015-08-19 05:33:23 : Set last used project
+2015-08-19 05:35:14 : getActiveTokenFromComputer()
+2015-08-19 05:35:14 : Token return : 16d9efc4d0b1c8e51106978070df7131afa37472
+2015-08-19 05:35:14 : Get project names array
+2015-08-19 05:35:14 : getProjectNamesArray()
+2015-08-19 05:35:14 : getActiveTokenFromComputer()
+2015-08-19 05:35:14 : Token return : 16d9efc4d0b1c8e51106978070df7131afa37472
+2015-08-19 05:35:14 : NSURLConnection getProjectNamesArray()
+2015-08-19 05:35:14 : fireSendArtboards()
+2015-08-19 05:35:14 : Find pre used projects
+2015-08-19 05:35:14 : Set last used project
+2015-08-19 05:35:14 : No projects found to select
+2015-08-19 05:35:51 : Send Artboards
+2015-08-19 05:35:51 : createProject()
+2015-08-19 05:35:51 : getActiveTokenFromComputer()
+2015-08-19 05:35:51 : Token return : 16d9efc4d0b1c8e51106978070df7131afa37472
+2015-08-19 05:35:51 : NSURLConnection createProject()
+2015-08-19 05:35:51 : exportArtboardsAndSendTo() : project with id 38 and size 1
+2015-08-19 05:35:51 : Artboard found with name iPad Portrait.png and object id 3C448C10-5218-4C4B-B78D-F6E63140FB1D
+2015-08-19 05:35:51 : postFile()
+2015-08-19 05:35:51 : getActiveTokenFromComputer()
+2015-08-19 05:35:51 : Token return : 16d9efc4d0b1c8e51106978070df7131afa37472
+2015-08-19 05:35:51 : Output pipe
+2015-08-19 05:35:53 : Ouput is NSConcreteData
+2015-08-19 05:35:53 : Convert to JSON
+2015-08-19 05:35:53 : Result: {
+    "bottom_pixel_colour" = "<null>";
+    "bright_pixel_colour" = "<null>";
+    "comment_count" = 0;
+    "content_type" = "image/png";
+    description = "<null>";
+    directory = "<null>";
+    height = "<null>";
+    hotspots =     (
+    );
+    "hotspots_delta" = "";
+    id = 214;
+    "is_app_icon" = 0;
+    "is_desktop" = 1;
+    "layer_parent" = "<null>";
+    "layer_sync_uri" = "/api/secret-sauce/sketch/214/sync/";
+    name = "iPad Portrait.png";
+    "preview_thumbnail" = "";
+    "preview_thumbnail_640" = "<null>";
+    revision = "<null>";
+    seq = "<null>";
+    size = "<null>";
+    "source_platform" = 4;
+    "source_platform_human" = Desktop;
+    status = 2;
+    "status_pixel_colour" = "<null>";
+    thumbnail = "";
+    "top_pixel_colour" = "<null>";
+    url = "<null>";
+    uuid = "38-3C448C10-5218-4C4B-B78D-F6E63140FB1D";
+    version = 2;
+    width = "<null>";
+}
+2015-08-19 05:35:53 : Artboard found with name iPad Portrait Wicked And Awesome.png and object id 55CCAE56-34E2-4DB6-8792-D625691D9FF5
+2015-08-19 05:35:53 : postFile()
+2015-08-19 05:35:53 : getActiveTokenFromComputer()
+2015-08-19 05:35:53 : Token return : 16d9efc4d0b1c8e51106978070df7131afa37472
+2015-08-19 05:35:53 : Output pipe
+2015-08-19 05:35:55 : Ouput is NSConcreteData
+2015-08-19 05:35:55 : Convert to JSON
+2015-08-19 05:35:55 : Result: {
+    "bottom_pixel_colour" = "<null>";
+    "bright_pixel_colour" = "<null>";
+    "comment_count" = 0;
+    "content_type" = "image/png";
+    description = "<null>";
+    directory = "<null>";
+    height = "<null>";
+    hotspots =     (
+    );
+    "hotspots_delta" = "";
+    id = 215;
+    "is_app_icon" = 0;
+    "is_desktop" = 1;
+    "layer_parent" = "<null>";
+    "layer_sync_uri" = "/api/secret-sauce/sketch/215/sync/";
+    name = "iPad Portrait Wicked And Awesome.png";
+    "preview_thumbnail" = "";
+    "preview_thumbnail_640" = "<null>";
+    revision = "<null>";
+    seq = "<null>";
+    size = "<null>";
+    "source_platform" = 4;
+    "source_platform_human" = Desktop;
+    status = 2;
+    "status_pixel_colour" = "<null>";
+    thumbnail = "";
+    "top_pixel_colour" = "<null>";
+    url = "<null>";
+    uuid = "38-55CCAE56-34E2-4DB6-8792-D625691D9FF5";
+    version = 2;
+    width = "<null>";
+}
+2015-08-19 05:36:11 : getActiveTokenFromComputer()
+2015-08-19 05:36:11 : Token return : 16d9efc4d0b1c8e51106978070df7131afa37472
+2015-08-19 05:36:11 : Get project names array
+2015-08-19 05:36:11 : getProjectNamesArray()
+2015-08-19 05:36:11 : getActiveTokenFromComputer()
+2015-08-19 05:36:11 : Token return : 16d9efc4d0b1c8e51106978070df7131afa37472
+2015-08-19 05:36:11 : NSURLConnection getProjectNamesArray()
+2015-08-19 05:36:11 : fireSendArtboards()
+2015-08-19 05:36:11 : Find pre used projects
+2015-08-19 05:36:11 : Set last used project
+2015-08-19 05:36:11 : No projects found to select
+2015-08-19 05:43:19 : getActiveTokenFromComputer()
+2015-08-19 05:43:19 : Token return : 16d9efc4d0b1c8e51106978070df7131afa37472
+2015-08-19 05:43:19 : Get project names array
+2015-08-19 05:43:19 : getProjectNamesArray()
+2015-08-19 05:43:19 : getActiveTokenFromComputer()
+2015-08-19 05:43:19 : Token return : 16d9efc4d0b1c8e51106978070df7131afa37472
+2015-08-19 05:43:19 : NSURLConnection getProjectNamesArray()
+2015-08-19 05:43:20 : fireSendArtboards()
+2015-08-19 05:43:20 : Find pre used projects
+2015-08-19 05:43:20 : Set last used project
+2015-08-19 05:43:42 : getActiveTokenFromComputer()
+2015-08-19 05:43:42 : Token return : 16d9efc4d0b1c8e51106978070df7131afa37472
+2015-08-19 05:43:42 : Get project names array
+2015-08-19 05:43:42 : getProjectNamesArray()
+2015-08-19 05:43:42 : getActiveTokenFromComputer()
+2015-08-19 05:43:42 : Token return : 16d9efc4d0b1c8e51106978070df7131afa37472
+2015-08-19 05:43:42 : NSURLConnection getProjectNamesArray()
+2015-08-19 05:43:42 : fireSendArtboards()
+2015-08-19 05:43:42 : Find pre used projects
+2015-08-19 05:43:42 : Set last used project
+2015-08-19 05:45:38 : getActiveTokenFromComputer()
+2015-08-19 05:45:38 : Token return : 16d9efc4d0b1c8e51106978070df7131afa37472
+2015-08-19 05:45:38 : Get project names array
+2015-08-19 05:45:38 : getProjectNamesArray()
+2015-08-19 05:45:38 : getActiveTokenFromComputer()
+2015-08-19 05:45:38 : Token return : 16d9efc4d0b1c8e51106978070df7131afa37472
+2015-08-19 05:45:38 : NSURLConnection getProjectNamesArray()
+2015-08-19 05:45:38 : fireSendArtboards()
+2015-08-19 05:45:38 : Find pre used projects
+2015-08-19 05:45:38 : Set last used project
+2015-08-19 05:47:02 : getActiveTokenFromComputer()
+2015-08-19 05:47:02 : Token return : 16d9efc4d0b1c8e51106978070df7131afa37472
+2015-08-19 05:47:02 : Get project names array
+2015-08-19 05:47:02 : getProjectNamesArray()
+2015-08-19 05:47:02 : getActiveTokenFromComputer()
+2015-08-19 05:47:02 : Token return : 16d9efc4d0b1c8e51106978070df7131afa37472
+2015-08-19 05:47:02 : NSURLConnection getProjectNamesArray()
+2015-08-19 05:47:02 : fireSendArtboards()
+2015-08-19 05:47:02 : Find pre used projects
+2015-08-19 05:47:02 : Set last used project
+2015-08-19 05:47:55 : getActiveTokenFromComputer()
+2015-08-19 05:47:55 : Token return : 16d9efc4d0b1c8e51106978070df7131afa37472
+2015-08-19 05:47:55 : Get project names array
+2015-08-19 05:47:55 : getProjectNamesArray()
+2015-08-19 05:47:55 : getActiveTokenFromComputer()
+2015-08-19 05:47:55 : Token return : 16d9efc4d0b1c8e51106978070df7131afa37472
+2015-08-19 05:47:55 : NSURLConnection getProjectNamesArray()
+2015-08-19 05:47:56 : fireSendArtboards()
+2015-08-19 05:47:56 : Find pre used projects
+2015-08-19 05:47:56 : Set last used project
+2015-08-19 05:47:56 : There are projects
+2015-08-19 05:48:17 : getActiveTokenFromComputer()
+2015-08-19 05:48:17 : Token return : 16d9efc4d0b1c8e51106978070df7131afa37472
+2015-08-19 05:48:17 : Get project names array
+2015-08-19 05:48:17 : getProjectNamesArray()
+2015-08-19 05:48:17 : getActiveTokenFromComputer()
+2015-08-19 05:48:17 : Token return : 16d9efc4d0b1c8e51106978070df7131afa37472
+2015-08-19 05:48:17 : NSURLConnection getProjectNamesArray()
+2015-08-19 05:48:18 : fireSendArtboards()
+2015-08-19 05:48:18 : Find pre used projects
+2015-08-19 05:48:18 : Set last used project
+2015-08-19 05:48:18 : There are projects
+2015-08-19 05:49:45 : getActiveTokenFromComputer()
+2015-08-19 05:49:45 : Token return : 16d9efc4d0b1c8e51106978070df7131afa37472
+2015-08-19 05:49:45 : Get project names array
+2015-08-19 05:49:45 : getProjectNamesArray()
+2015-08-19 05:49:45 : getActiveTokenFromComputer()
+2015-08-19 05:49:45 : Token return : 16d9efc4d0b1c8e51106978070df7131afa37472
+2015-08-19 05:49:45 : NSURLConnection getProjectNamesArray()
+2015-08-19 05:49:47 : fireSendArtboards()
+2015-08-19 05:49:47 : Find pre used projects
+2015-08-19 05:49:47 : Set last used project
+2015-08-19 05:49:56 : Send Artboards
+2015-08-19 05:49:56 : createProject()
+2015-08-19 05:49:56 : getActiveTokenFromComputer()
+2015-08-19 05:49:56 : Token return : 16d9efc4d0b1c8e51106978070df7131afa37472
+2015-08-19 05:49:56 : NSURLConnection createProject()
+2015-08-19 05:49:59 : exportArtboardsAndSendTo() : project with id 39 and size 1
+2015-08-19 05:49:59 : Artboard found with name iPad Portrait.png and object id 3C448C10-5218-4C4B-B78D-F6E63140FB1D
+2015-08-19 05:49:59 : postFile()
+2015-08-19 05:49:59 : getActiveTokenFromComputer()
+2015-08-19 05:49:59 : Token return : 16d9efc4d0b1c8e51106978070df7131afa37472
+2015-08-19 05:49:59 : Output pipe
+2015-08-19 05:50:04 : Ouput is NSConcreteData
+2015-08-19 05:50:04 : Convert to JSON
+2015-08-19 05:50:04 : Result: {
+    "bottom_pixel_colour" = "<null>";
+    "bright_pixel_colour" = "<null>";
+    "comment_count" = 0;
+    "content_type" = "image/png";
+    description = "<null>";
+    directory = "<null>";
+    height = "<null>";
+    hotspots =     (
+    );
+    "hotspots_delta" = "";
+    id = 216;
+    "is_app_icon" = 0;
+    "is_desktop" = 1;
+    "layer_parent" = "<null>";
+    "layer_sync_uri" = "/api/secret-sauce/sketch/216/sync/";
+    name = "iPad Portrait.png";
+    "preview_thumbnail" = "";
+    "preview_thumbnail_640" = "<null>";
+    revision = "<null>";
+    seq = "<null>";
+    size = "<null>";
+    "source_platform" = 4;
+    "source_platform_human" = Desktop;
+    status = 2;
+    "status_pixel_colour" = "<null>";
+    thumbnail = "";
+    "top_pixel_colour" = "<null>";
+    url = "<null>";
+    uuid = "39-3C448C10-5218-4C4B-B78D-F6E63140FB1D";
+    version = 2;
+    width = "<null>";
+}
+2015-08-19 05:50:04 : Artboard found with name iPad Portrait Wicked And Awesome.png and object id 55CCAE56-34E2-4DB6-8792-D625691D9FF5
+2015-08-19 05:50:04 : postFile()
+2015-08-19 05:50:04 : getActiveTokenFromComputer()
+2015-08-19 05:50:04 : Token return : 16d9efc4d0b1c8e51106978070df7131afa37472
+2015-08-19 05:50:04 : Output pipe
+2015-08-19 05:50:08 : Ouput is NSConcreteData
+2015-08-19 05:50:08 : Convert to JSON
+2015-08-19 05:50:08 : Result: {
+    "bottom_pixel_colour" = "<null>";
+    "bright_pixel_colour" = "<null>";
+    "comment_count" = 0;
+    "content_type" = "image/png";
+    description = "<null>";
+    directory = "<null>";
+    height = "<null>";
+    hotspots =     (
+    );
+    "hotspots_delta" = "";
+    id = 217;
+    "is_app_icon" = 0;
+    "is_desktop" = 1;
+    "layer_parent" = "<null>";
+    "layer_sync_uri" = "/api/secret-sauce/sketch/217/sync/";
+    name = "iPad Portrait Wicked And Awesome.png";
+    "preview_thumbnail" = "";
+    "preview_thumbnail_640" = "<null>";
+    revision = "<null>";
+    seq = "<null>";
+    size = "<null>";
+    "source_platform" = 4;
+    "source_platform_human" = Desktop;
+    status = 2;
+    "status_pixel_colour" = "<null>";
+    thumbnail = "";
+    "top_pixel_colour" = "<null>";
+    url = "<null>";
+    uuid = "39-55CCAE56-34E2-4DB6-8792-D625691D9FF5";
+    version = 2;
+    width = "<null>";
+}
+2015-08-19 05:50:58 : getActiveTokenFromComputer()
+2015-08-19 05:50:58 : Token return : 16d9efc4d0b1c8e51106978070df7131afa37472
+2015-08-19 05:50:58 : Get project names array
+2015-08-19 05:50:58 : getProjectNamesArray()
+2015-08-19 05:50:58 : getActiveTokenFromComputer()
+2015-08-19 05:50:58 : Token return : 16d9efc4d0b1c8e51106978070df7131afa37472
+2015-08-19 05:50:58 : NSURLConnection getProjectNamesArray()
+2015-08-19 05:51:00 : fireSendArtboards()
+2015-08-19 05:51:00 : Find pre used projects
+2015-08-19 05:51:00 : Set last used project
+2015-08-19 05:51:00 : There are projects
+2015-08-19 05:51:18 : getActiveTokenFromComputer()
+2015-08-19 05:51:18 : Token return : 16d9efc4d0b1c8e51106978070df7131afa37472
+2015-08-19 05:51:18 : Get project names array
+2015-08-19 05:51:18 : getProjectNamesArray()
+2015-08-19 05:51:18 : getActiveTokenFromComputer()
+2015-08-19 05:51:18 : Token return : 16d9efc4d0b1c8e51106978070df7131afa37472
+2015-08-19 05:51:18 : NSURLConnection getProjectNamesArray()
+2015-08-19 05:51:19 : fireSendArtboards()
+2015-08-19 05:51:19 : Find pre used projects
+2015-08-19 05:51:19 : Set last used project
+2015-08-19 05:51:19 : There are projects
+2015-08-19 05:51:20 : Send Artboards
+2015-08-19 05:51:20 : exportArtboardsAndSendTo() : project with id 39 and size 1
+2015-08-19 05:51:20 : Artboard found with name Po po po.png and object id 3C448C10-5218-4C4B-B78D-F6E63140FB1D
+2015-08-19 05:51:20 : postFile()
+2015-08-19 05:51:20 : getActiveTokenFromComputer()
+2015-08-19 05:51:20 : Token return : 16d9efc4d0b1c8e51106978070df7131afa37472
+2015-08-19 05:51:20 : Output pipe
+2015-08-19 05:51:26 : Ouput is NSConcreteData
+2015-08-19 05:51:26 : Convert to JSON
+2015-08-19 05:51:26 : Result: {
+    "bottom_pixel_colour" = "0, 0, 0, 0.0";
+    "bright_pixel_colour" = "<null>";
+    "comment_count" = 0;
+    "content_type" = "image/png";
+    description = "<null>";
+    directory = "<null>";
+    height = 1024;
+    hotspots =     (
+    );
+    "hotspots_delta" = "";
+    id = 216;
+    "is_app_icon" = 0;
+    "is_desktop" = 1;
+    "layer_parent" = "<null>";
+    "layer_sync_uri" = "/api/secret-sauce/sketch/216/sync/";
+    name = "Po po po.png";
+    "preview_thumbnail" = "https://res.cloudinary.com/marvel-content/image/fetch/s--rF9NyfVP--/t_width_320/https://marvelapp-dev.storage.googleapis.com/serve/baa2536cb7744f63b7954376ca349a39.png";
+    "preview_thumbnail_640" = "<null>";
+    revision = "<null>";
+    seq = "<null>";
+    size = "<null>";
+    "source_platform" = 4;
+    "source_platform_human" = Desktop;
+    status = 2;
+    "status_pixel_colour" = "0, 0, 0, 0.0";
+    thumbnail = "https://res.cloudinary.com/marvel-content/image/fetch/s--dpuhMk16--/q_70,t_thumbnail_fill_320_568/https://marvelapp-dev.storage.googleapis.com/serve/baa2536cb7744f63b7954376ca349a39.png";
+    "top_pixel_colour" = "0, 0, 0, 0.0";
+    url = "https://marvelapp-dev.storage.googleapis.com/serve/baa2536cb7744f63b7954376ca349a39.png";
+    uuid = "39-3C448C10-5218-4C4B-B78D-F6E63140FB1D";
+    version = 6;
+    width = 768;
+}
+2015-08-19 05:51:26 : Artboard found with name iPad Portrait.png and object id 55CCAE56-34E2-4DB6-8792-D625691D9FF5
+2015-08-19 05:51:26 : postFile()
+2015-08-19 05:51:26 : getActiveTokenFromComputer()
+2015-08-19 05:51:26 : Token return : 16d9efc4d0b1c8e51106978070df7131afa37472
+2015-08-19 05:51:26 : Output pipe
+2015-08-19 05:51:39 : Ouput is NSConcreteData
+2015-08-19 05:51:39 : Convert to JSON
+2015-08-19 05:51:39 : Result: {
+    "bottom_pixel_colour" = "0, 0, 0, 0.0";
+    "bright_pixel_colour" = "<null>";
+    "comment_count" = 0;
+    "content_type" = "image/png";
+    description = "<null>";
+    directory = "<null>";
+    height = 1024;
+    hotspots =     (
+    );
+    "hotspots_delta" = "";
+    id = 217;
+    "is_app_icon" = 0;
+    "is_desktop" = 1;
+    "layer_parent" = "<null>";
+    "layer_sync_uri" = "/api/secret-sauce/sketch/217/sync/";
+    name = "iPad Portrait.png";
+    "preview_thumbnail" = "https://res.cloudinary.com/marvel-content/image/fetch/s--vuJ9THFy--/t_width_320/https://marvelapp-dev.storage.googleapis.com/serve/d222350b83cc4f999debb48bc44bd1f7.png";
+    "preview_thumbnail_640" = "<null>";
+    revision = "<null>";
+    seq = "<null>";
+    size = "<null>";
+    "source_platform" = 4;
+    "source_platform_human" = Desktop;
+    status = 2;
+    "status_pixel_colour" = "0, 0, 0, 0.0";
+    thumbnail = "https://res.cloudinary.com/marvel-content/image/fetch/s--kNPJgJln--/q_70,t_thumbnail_fill_320_568/https://marvelapp-dev.storage.googleapis.com/serve/d222350b83cc4f999debb48bc44bd1f7.png";
+    "top_pixel_colour" = "0, 0, 0, 0.0";
+    url = "https://marvelapp-dev.storage.googleapis.com/serve/d222350b83cc4f999debb48bc44bd1f7.png";
+    uuid = "39-55CCAE56-34E2-4DB6-8792-D625691D9FF5";
+    version = 6;
+    width = 768;
+}
+2015-08-19 05:52:35 : getActiveTokenFromComputer()
+2015-08-19 05:52:35 : Token return : 16d9efc4d0b1c8e51106978070df7131afa37472
+2015-08-19 05:52:35 : Get project names array
+2015-08-19 05:52:35 : getProjectNamesArray()
+2015-08-19 05:52:35 : getActiveTokenFromComputer()
+2015-08-19 05:52:35 : Token return : 16d9efc4d0b1c8e51106978070df7131afa37472
+2015-08-19 05:52:35 : NSURLConnection getProjectNamesArray()
+2015-08-19 05:52:35 : fireSendArtboards()
+2015-08-19 05:52:35 : Find pre used projects
+2015-08-19 05:52:35 : Last used project index 0and ID is 39
+2015-08-19 05:52:35 : Set last used project
+2015-08-19 05:52:35 : There are projects
+2015-08-19 05:52:37 : Send Artboards
+2015-08-19 05:52:37 : exportArtboardsAndSendTo() : project with id 39 and size 1
+2015-08-19 05:52:37 : Artboard found with name iPad Portrait.png and object id 3C448C10-5218-4C4B-B78D-F6E63140FB1D
+2015-08-19 05:52:37 : postFile()
+2015-08-19 05:52:37 : getActiveTokenFromComputer()
+2015-08-19 05:52:37 : Token return : 16d9efc4d0b1c8e51106978070df7131afa37472
+2015-08-19 05:52:37 : Output pipe
+2015-08-19 05:53:11 : Ouput is NSConcreteData
+2015-08-19 05:53:11 : Convert to JSON
+2015-08-19 05:53:11 : Result: {
+    "bottom_pixel_colour" = "0, 0, 0, 0.0";
+    "bright_pixel_colour" = "<null>";
+    "comment_count" = 0;
+    "content_type" = "image/png";
+    description = "<null>";
+    directory = "<null>";
+    height = 1024;
+    hotspots =     (
+    );
+    "hotspots_delta" = "";
+    id = 216;
+    "is_app_icon" = 0;
+    "is_desktop" = 1;
+    "layer_parent" = "<null>";
+    "layer_sync_uri" = "/api/secret-sauce/sketch/216/sync/";
+    name = "iPad Portrait.png";
+    "preview_thumbnail" = "https://res.cloudinary.com/marvel-content/image/fetch/s--YiKuzkno--/t_width_320/https://marvelapp-dev.storage.googleapis.com/serve/a4f54e938bdf40bbbfe20ca75b0aa67e.png";
+    "preview_thumbnail_640" = "<null>";
+    revision = "<null>";
+    seq = "<null>";
+    size = "<null>";
+    "source_platform" = 4;
+    "source_platform_human" = Desktop;
+    status = 2;
+    "status_pixel_colour" = "0, 0, 0, 0.0";
+    thumbnail = "https://res.cloudinary.com/marvel-content/image/fetch/s--s1Gw1aMa--/q_70,t_thumbnail_fill_320_568/https://marvelapp-dev.storage.googleapis.com/serve/a4f54e938bdf40bbbfe20ca75b0aa67e.png";
+    "top_pixel_colour" = "0, 0, 0, 0.0";
+    url = "https://marvelapp-dev.storage.googleapis.com/serve/a4f54e938bdf40bbbfe20ca75b0aa67e.png";
+    uuid = "39-3C448C10-5218-4C4B-B78D-F6E63140FB1D";
+    version = 10;
+    width = 768;
+}
+2015-08-19 05:53:11 : Artboard found with name To to to.png and object id 55CCAE56-34E2-4DB6-8792-D625691D9FF5
+2015-08-19 05:53:11 : postFile()
+2015-08-19 05:53:11 : getActiveTokenFromComputer()
+2015-08-19 05:53:11 : Token return : 16d9efc4d0b1c8e51106978070df7131afa37472
+2015-08-19 05:53:11 : Output pipe
+2015-08-19 05:53:14 : Ouput is NSConcreteData
+2015-08-19 05:53:14 : Convert to JSON
+2015-08-19 05:53:14 : Result: {
+    "bottom_pixel_colour" = "0, 0, 0, 0.0";
+    "bright_pixel_colour" = "<null>";
+    "comment_count" = 0;
+    "content_type" = "image/png";
+    description = "<null>";
+    directory = "<null>";
+    height = 1024;
+    hotspots =     (
+                {
+            action = click;
+            "anchor_y_pos" = "<null>";
+            "delta_check" = b840f495e2307c66f4738430ad9762a0;
+            "dest_img_fk" = 216;
+            "external_url" = "<null>";
+            id = 28;
+            images =             (
+            );
+            "img_owner_fk" = 217;
+            location = 1;
+            "maintain_scroll" = 0;
+            "new_window" = 0;
+            "owner_hotspot" = "<null>";
+            "project_hotspot_delta" = "<null>";
+            "smooth_scroll" = 0;
+            status = 1;
+            "stay_on_page" = 0;
+            timer = "<null>";
+            transition = pushright;
+            type = 1;
+            url = "";
+            uuid = "e5d3aff0-b11c-41c4-cf3b-60a8703523db";
+            version = 1;
+            x = 190;
+            x2 = 543;
+            y = 255;
+            y2 = 511;
+        }
+    );
+    "hotspots_delta" = 28465ddabf8efad365dc27754167b099;
+    id = 217;
+    "is_app_icon" = 0;
+    "is_desktop" = 1;
+    "layer_parent" = "<null>";
+    "layer_sync_uri" = "/api/secret-sauce/sketch/217/sync/";
+    name = "To to to.png";
+    "preview_thumbnail" = "https://res.cloudinary.com/marvel-content/image/fetch/s--nwAoZVsC--/t_width_320/https://marvelapp-dev.storage.googleapis.com/serve/b8a5167888e34161a0330b2a6fc48130.png";
+    "preview_thumbnail_640" = "<null>";
+    revision = "<null>";
+    seq = "<null>";
+    size = "<null>";
+    "source_platform" = 4;
+    "source_platform_human" = Desktop;
+    status = 2;
+    "status_pixel_colour" = "0, 0, 0, 0.0";
+    thumbnail = "https://res.cloudinary.com/marvel-content/image/fetch/s--08c3XSy9--/q_70,t_thumbnail_fill_320_568/https://marvelapp-dev.storage.googleapis.com/serve/b8a5167888e34161a0330b2a6fc48130.png";
+    "top_pixel_colour" = "0, 0, 0, 0.0";
+    url = "https://marvelapp-dev.storage.googleapis.com/serve/b8a5167888e34161a0330b2a6fc48130.png";
+    uuid = "39-55CCAE56-34E2-4DB6-8792-D625691D9FF5";
+    version = 10;
+    width = 768;
+}
