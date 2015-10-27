@@ -98,6 +98,10 @@ function fireLoginWindowWithContext(context){
 	var yPosButtons = 102;
 	
 	var loginButton = [[NSButton alloc] initWithFrame:NSMakeRect(407, yPosButtons, 92, 46)]
+	var cancelButton = [[NSButton alloc] initWithFrame:NSMakeRect(321, yPosButtons, 92, 46)]
+	var createMarvelButton = [[NSButton alloc] initWithFrame:NSMakeRect(44, 23, 162, 32)]
+	var createHelpButton = [[NSButton alloc] initWithFrame:NSMakeRect(470, 23, 32, 32)]
+
 	[loginButton setTitle:"Login"]
 	[loginButton setBezelStyle:NSRoundedBezelStyle]
 	[loginButton setKeyEquivalent:"\r"]
@@ -107,17 +111,25 @@ function fireLoginWindowWithContext(context){
 	    var email = emailInputField.stringValue()
 	    var password = passwordField.stringValue()
 	    loginWithUsernameAndPassword(email, password, context)
+	    [cancelButton setCOSJSTargetFunction:undefined]
+	    [loginButton setCOSJSTargetFunction:undefined]
+	    [createMarvelButton setCOSJSTargetFunction:undefined]
+	    [createHelpButton setCOSJSTargetFunction:undefined]
 	}];
 	[loginButton setAction:"callAction:"]
 	[[loginWindow contentView] addSubview:loginButton]
 	
 	
-	var cancelButton = [[NSButton alloc] initWithFrame:NSMakeRect(321, yPosButtons, 92, 46)]
+	
 	[cancelButton setTitle:"Cancel"]
 	[cancelButton setBezelStyle:NSRoundedBezelStyle]
 	[cancelButton setCOSJSTargetFunction:function(sender) {
 	    [loginWindow orderOut:nil]
 	    [app stopModal]
+	    [cancelButton setCOSJSTargetFunction:undefined]
+	    [loginButton setCOSJSTargetFunction:undefined]
+	    [createMarvelButton setCOSJSTargetFunction:undefined]
+	    [createHelpButton setCOSJSTargetFunction:undefined]
 	}];
 	[cancelButton setAction:"callAction:"]
 	[[loginWindow contentView] addSubview:cancelButton]
@@ -140,7 +152,6 @@ function fireLoginWindowWithContext(context){
 
 	//Create Marvel Button
 	
-	var createMarvelButton = [[NSButton alloc] initWithFrame:NSMakeRect(44, 23, 162, 32)]
 	[createMarvelButton setTitle:"Create Marvel account"]
 	[createMarvelButton setBezelStyle:NSRoundedBezelStyle]
 	[createMarvelButton setCOSJSTargetFunction:function(sender) {
@@ -150,17 +161,15 @@ function fireLoginWindowWithContext(context){
 	    }    
 	}];
 	[createMarvelButton setAction:"callAction:"]
-	[bottomActionsView addSubview:createMarvelButton]
+	[bottomActionsView addSubview:createMarvelButton]	
 	
-	
-	var createHelpButton = [[NSButton alloc] initWithFrame:NSMakeRect(470, 23, 32, 32)]
 	[createHelpButton setBezelStyle:NSHelpButtonBezelStyle]
 	[createHelpButton setTitle:nil]
 	[createHelpButton setCOSJSTargetFunction:function(sender) {
 	    var url = [NSURL URLWithString:@"http://marvel.helpscoutdocs.com/article/62-getting-started-with-the-marvel-sketch-plugin"];
 	    if( ![[NSWorkspace sharedWorkspace] openURL:url] ){
 	        sketchLog(context,"Failed to open url:" + [url description])
-	    }    
+	    }
 	}];
 	[createHelpButton setAction:"callAction:"]
 	[bottomActionsView addSubview:createHelpButton]
@@ -201,25 +210,33 @@ function fireAlreadyLoggedInWindow(context){
 	
 	var yPosButtons = 100;
 	
+	// Buttons
+
 	var logoutButton = [[NSButton alloc] initWithFrame:NSMakeRect(267, yPosButtons, 92, 46)]
+	var cancelButton = [[NSButton alloc] initWithFrame:NSMakeRect(181, yPosButtons, 92, 46)]
+
 	[logoutButton setTitle:"Log out"]
 	[logoutButton setBezelStyle:NSRoundedBezelStyle]
 	[logoutButton setCOSJSTargetFunction:function(sender) {
-			deleteActiveTokenFromComputer(context)
+		deleteActiveTokenFromComputer(context)
 	    [alreadyLoggedInWindow orderOut:nil]
 	    [app stopModal]
+	    [logoutButton setCOSJSTargetFunction:undefined]
+	    [cancelButton setCOSJSTargetFunction:undefined]
 	    fireLoginWindowWithContext(context)
 	}];
 	[logoutButton setAction:"callAction:"]
 	[[alreadyLoggedInWindow contentView] addSubview:logoutButton]
 	
 	
-	var cancelButton = [[NSButton alloc] initWithFrame:NSMakeRect(181, yPosButtons, 92, 46)]
+	
 	[cancelButton setTitle:"Cancel"]
 	[cancelButton setBezelStyle:NSRoundedBezelStyle]
 	[cancelButton setCOSJSTargetFunction:function(sender) {
 	    [alreadyLoggedInWindow  orderOut:nil]
 	    [app stopModal]
+	    [logoutButton setCOSJSTargetFunction:undefined]
+	    [cancelButton setCOSJSTargetFunction:undefined]
 	}];
 	[cancelButton setAction:"callAction:"]
 	[[alreadyLoggedInWindow contentView] addSubview:cancelButton]
@@ -338,7 +355,11 @@ function fireSendArtboards(projectsArray, all, context){
 
 	var yPosButtons = 45;
 	
+	// Buttons
+
 	var sendButton = [[NSButton alloc] initWithFrame:NSMakeRect(295, yPosButtons, 134, 46)]
+	var cancelButton = [[NSButton alloc] initWithFrame:NSMakeRect(225, yPosButtons, 76, 46)]
+
 	[sendButton setTitle:"Send or update"]
 	[sendButton setBezelStyle:NSRoundedBezelStyle]
 	[sendButton setCOSJSTargetFunction:function(sender) {
@@ -389,6 +410,8 @@ function fireSendArtboards(projectsArray, all, context){
 					
 					[windowSendArtboards orderOut:nil]
 					[app stopModal]
+					[cancelButton setCOSJSTargetFunction:undefined]
+	    			[sendButton setCOSJSTargetFunction:undefined]
 
 				};
 
@@ -396,25 +419,24 @@ function fireSendArtboards(projectsArray, all, context){
 	}];
 	[sendButton setAction:"callAction:"]
 	[[windowSendArtboards contentView] addSubview:sendButton]
-	
-	var cancelButton = [[NSButton alloc] initWithFrame:NSMakeRect(225, yPosButtons, 76, 46)]
+
 	[cancelButton setTitle:"Cancel"]
 	[cancelButton setBezelStyle:NSRoundedBezelStyle]
 	[cancelButton setCOSJSTargetFunction:function(sender) {
 	    [windowSendArtboards orderOut:nil]
 	    [app stopModal]
+	    [cancelButton setCOSJSTargetFunction:undefined]
+	    [sendButton setCOSJSTargetFunction:undefined]
 	}];
 	[cancelButton setAction:"callAction:"]
 	[[windowSendArtboards contentView] addSubview:cancelButton]
 
 	[windowSendArtboards setDefaultButtonCell:[sendButton cell]];
 	
-	[app runModalForWindow:windowSendArtboards]
-}
-
+	[app runModalForWindow:windowSendArtboards]}
 
 function fireSupport(context){
-
+	
 	sketchLog(context,"fireSupport()");
 
 	var systemVersionDictionary = [NSDictionary dictionaryWithContentsOfFile:@"/System/Library/CoreServices/SystemVersion.plist"]
@@ -442,28 +464,6 @@ function fireSupport(context){
 	[step1Label setStringValue:"1. First tick this checkbox to turn debug mode on:"]
 	[step1Label setTextColor:[NSColor colorWithCalibratedRed:(93/255) green:(93/255) blue:(93/255) alpha:1]]
 	[[windowSendArtboards contentView] addSubview:step1Label]
-
-	var debugCheckbox = [[NSButton alloc] initWithFrame:NSMakeRect (350,195,50,25)]
-    [debugCheckbox setButtonType:NSSwitchButton];
-    [debugCheckbox setTitle:@""];
-    if(settings.getDebugSettingFromComputer(context) == 1){
-    	[debugCheckbox setState:NSOnState];
-    } else {
-    	[debugCheckbox setState:NSOffState];
-    }
-    [debugCheckbox setCOSJSTargetFunction:function(sender) {
-
-    	var directory = errorLogging.getLogDirectory(context);
-        errorLogging.removeFileOrFolder(directory + "main.txt")
-
-		if ([sender state] == NSOnState) {
-        	settings.saveDebugSetting(1,context)
-    	} else {
-        	settings.saveDebugSetting(0,context)
-    	}
-	    
-	}];
-    [[windowSendArtboards contentView] addSubview:debugCheckbox]
 
 	var step2Label = [[NSTextField alloc] initWithFrame:NSMakeRect(74, 172, 540, 17)]
 	[step2Label setEditable:false]
@@ -504,7 +504,34 @@ function fireSupport(context){
 	[versionLabel setStringValue:"OSX " + systemVersion + " Sketch " + sketchVersion + " Plugin " + pluginVersion]
 	[[windowSendArtboards contentView] addSubview:versionLabel]
 	
+
+	// Buttons
+
 	var sendButton = [[NSButton alloc] initWithFrame:NSMakeRect(353, yPosBottomElements, 76, 46)]
+	var cancelButton = [[NSButton alloc] initWithFrame:NSMakeRect(283, yPosBottomElements, 76, 46)]
+	var debugCheckbox = [[NSButton alloc] initWithFrame:NSMakeRect (360,195,50,25)]
+
+    [debugCheckbox setButtonType:NSSwitchButton];
+    [debugCheckbox setTitle:@""];
+    if(settings.getDebugSettingFromComputer(context) == 1){
+    	[debugCheckbox setState:NSOnState];
+    } else {
+    	[debugCheckbox setState:NSOffState];
+    }
+    [debugCheckbox setCOSJSTargetFunction:function(sender) {
+
+    	var directory = errorLogging.getLogDirectory(context);
+        errorLogging.removeFileOrFolder(directory + "main.txt")
+
+		if ([sender state] == NSOnState) {
+        	settings.saveDebugSetting(1,context)
+    	} else {
+        	settings.saveDebugSetting(0,context)
+    	}
+	    
+	}];
+    [[windowSendArtboards contentView] addSubview:debugCheckbox]
+
 	[sendButton setTitle:"Send"]
 	[sendButton setBezelStyle:NSRoundedBezelStyle]
 	[sendButton setCOSJSTargetFunction:function(sender) {
@@ -524,27 +551,29 @@ function fireSupport(context){
 
 			[windowSendArtboards orderOut:nil]
 			[app stopModal]
-	    
+			[sendButton setCOSJSTargetFunction:undefined]
+			[cancelButton setCOSJSTargetFunction:undefined]
+			[debugCheckbox setCOSJSTargetFunction:undefined]
 	}];
 	[sendButton setAction:"callAction:"]
 	[[windowSendArtboards contentView] addSubview:sendButton]
 	
-	var cancelButton = [[NSButton alloc] initWithFrame:NSMakeRect(283, yPosBottomElements, 76, 46)]
+	
 	[cancelButton setTitle:"Close"]
 	[cancelButton setBezelStyle:NSRoundedBezelStyle]
 	[cancelButton setCOSJSTargetFunction:function(sender) {
 	    [windowSendArtboards orderOut:nil]
 	    [app stopModal]
+	    [cancelButton setCOSJSTargetFunction:undefined]
+		[debugCheckbox setCOSJSTargetFunction:undefined]
+		[sendButton setCOSJSTargetFunction:undefined]
 	}];
 	[cancelButton setAction:"callAction:"]
 	[[windowSendArtboards contentView] addSubview:cancelButton]
-
+	
 	[windowSendArtboards setDefaultButtonCell:[sendButton cell]];
 	
-	[app runModalForWindow:windowSendArtboards]
-}
-
-
+	[app runModalForWindow:windowSendArtboards]}
 
 function createProject(nameValue, context){
 
@@ -594,15 +623,13 @@ function createProject(nameValue, context){
 			dealWithErrors(context,data)
 	}
 
-	return false;
-}
+	return false;}
 
 function loginWithUsernameAndPassword(email, password, context){
 
 			sketchLog(context,"loginWithUsernameAndPassword()");
 			getTokenFromServer(email,password, context)
-			sketchLog(context,"loginWithUsernameAndPassword() finished");			
-}
+			sketchLog(context,"loginWithUsernameAndPassword() finished");			}
 
 // Api Calls
 
@@ -664,8 +691,7 @@ function getTokenFromServer(email,password, context){
 						
 			}
 		
-			return false;	
-}
+			return false;	}
 
 function getProjectNamesArray(context) {
 	
@@ -721,8 +747,7 @@ function getProjectNamesArray(context) {
 			dealWithErrors(context,data)
 	}
 
-	return false;		
-}
+	return false;		}
 
 function postFile(context, path, projectId, filename, uuid, width, height) {
 			
@@ -769,8 +794,7 @@ function postFile(context, path, projectId, filename, uuid, width, height) {
 
 		} else {
 			task.launch();
-		}
-}
+		}}
 
 function postFileNSUrlConnection(context, path, projectId, filename, uuid, width, height) {
 			
@@ -843,9 +867,7 @@ function postFileNSUrlConnection(context, path, projectId, filename, uuid, width
 			dealWithErrors(context,data)
 	}
 
-	return false;
-			
-}
+	return false;}
 
 // Helpers
 
@@ -870,8 +892,7 @@ function dealWithErrors(context,data){
 				webViewWhichShowsResults(context)
 		}
 
-		sketchLog(context,"Return data " + stringRead)		
-}
+		sketchLog(context,"Return data " + stringRead)		}
 
 function webViewWhichShowsResults(context){
 	// create window
@@ -908,14 +929,14 @@ function webViewWhichShowsResults(context){
 		[cancelButton setCOSJSTargetFunction:function(sender) {
 		    [webViewWindow orderOut:nil]
 		    [app stopModal]
+		    [cancelButton setCOSJSTargetFunction:undefined]
 		}];
 		[cancelButton setAction:"callAction:"]
 		[[webViewWindow contentView] addSubview:cancelButton]
 		
 		[webViewWindow setDefaultButtonCell:[cancelButton cell]];
 			
-		[app runModalForWindow:webViewWindow ]
-}
+		[app runModalForWindow:webViewWindow ]}
 
 function exportArtboardsAndSendTo(context, projectId, scale, selection, document) {
 		
@@ -950,8 +971,7 @@ function exportArtboardsAndSendTo(context, projectId, scale, selection, document
 				  return false
 				}
 		
-	sendArtboardOnArray(context, selection, scale, projectId, document)
-}
+	sendArtboardOnArray(context, selection, scale, projectId, document)}
 
 function exportAllArtboardsAndSendTo(context, projectId, scale, document) {
 
@@ -978,8 +998,7 @@ function exportAllArtboardsAndSendTo(context, projectId, scale, document) {
 				
 					}
 			
-					sendArtboardOnArray(context, artboards, scale, projectId, document)				
-}
+					sendArtboardOnArray(context, artboards, scale, projectId, document)				}
 
 function sendArtboardOnArray(context, array, scale, projectId, document){
 
@@ -1000,10 +1019,7 @@ function sendArtboardOnArray(context, array, scale, projectId, document){
 					postFile(context, path, projectId, filename,item.objectID(), [[item frame] width], [[item frame] height])
 
 				}
-		}
-}
-
-
+		}}
 
 function copy_layer_with_factor(original_slice, factor){
     var copy = [original_slice duplicate];
@@ -1013,8 +1029,7 @@ function copy_layer_with_factor(original_slice, factor){
     slice = [MSExportRequest requestWithRect:rect scale:factor];
 
     [copy removeFromParent];
-    return slice;
-}
+    return slice;}
 
 function fireError(title,text){
 		[app displayDialog:text withTitle:title]
@@ -1025,5 +1040,4 @@ function sketchLog(context,string){
 	{
 		NSLog(string)
 		errorLogging.write(context,string)
-	}
-}
+	}}
