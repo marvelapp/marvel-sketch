@@ -83,7 +83,7 @@ function fireLoginWindowWithContext(context){
 	[subtitleField setFont:[NSFont systemFontOfSize:13]];
 	[subtitleField setTextColor:[NSColor colorWithCalibratedRed:(93/255) green:(93/255) blue:(93/255) alpha:1]];
 	[subtitleField setDrawsBackground:false]
-	[subtitleField setStringValue:"Sign in and sent artboards to Marvel!"]
+	[subtitleField setStringValue:"Sign in and send artboards to Marvel!"]
 	[subtitleField sizeToFit]
 	[[loginWindow contentView] addSubview:subtitleField]
 	
