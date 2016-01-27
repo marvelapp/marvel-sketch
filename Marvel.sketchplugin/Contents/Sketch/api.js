@@ -83,7 +83,7 @@ function fireLoginWindowWithContext(context){
 	[subtitleField setFont:[NSFont systemFontOfSize:13]];
 	[subtitleField setTextColor:[NSColor colorWithCalibratedRed:(93/255) green:(93/255) blue:(93/255) alpha:1]];
 	[subtitleField setDrawsBackground:false]
-	[subtitleField setStringValue:"Sign in and sent artboards to Marvel!"]
+	[subtitleField setStringValue:"Sign in and send artboards to Marvel!"]
 	[subtitleField sizeToFit]
 	[[loginWindow contentView] addSubview:subtitleField]
 	
@@ -788,6 +788,9 @@ function postFile(context, path, projectId, filename, uuid, width, height) {
 				} 
 			} else {
 				sketchLog(context, "Empty output")
+				deleteActiveTokenFromComputer(context)
+				fireError("Looks like your session has expired.","Please sign in again")
+				fireLoginWindowWithContext(context)
 			}
 
 		//postFileNSUrlConnection(context, path, projectId, filename, uuid, width, height)	
@@ -803,68 +806,81 @@ function postFileNSUrlConnection(context, path, projectId, filename, uuid, width
 	var token = getActiveTokenFromComputer(context)
 
 	var url = [NSURL URLWithString:rootURL + "content/upload/sketch/" + projectId + "/" + uuid + "/"];
-	
-	sketchLog(context,"url " + url)
 
-	sketchLog(context,"NSMutableURLRequest requestWithURL")
+	sketchLog(context,"NSMutableURLRequest requestWithURL: " + url)
 
 	var request=[NSMutableURLRequest requestWithURL:url cachePolicy:NSURLRequestReloadIgnoringCacheData timeoutInterval:60]
 	[request setHTTPMethod:"POST"]
 	[request setValue:"Sketch" forHTTPHeaderField:"User-Agent"]
-	[request setValue:"multipart/form-data; boundary=0xKhTmLbOuNdArY" forHTTPHeaderField:"Content-Type"]
 	[request setValue:"Token " + token forHTTPHeaderField:"Authorization"]
 	[request setValue:width.toString() forHTTPHeaderField:"width"]
 	[request setValue:height.toString() forHTTPHeaderField:"height"]
-	[request setValue:token forHTTPHeaderField:"HTTP_AUTHORIZATION"]
+	[request setValue:"Token " + token forHTTPHeaderField:"HTTP_AUTHORIZATION"]
 	
-	sketchLog(context,"tempPostData alloc")
+	var body = [NSMutableData data];
+	var boundary = "---------------------------14737809831466499882746641449";
+    var contentType = [NSString stringWithFormat:@"multipart/form-data; boundary=%@", boundary];
+    [request addValue:contentType forHTTPHeaderField:@"Content-Type"];
 
-	var tempPostData = [NSMutableData data]; 
-	var filedata = [[NSFileManager defaultManager] contentsAtPath:path];
-    [tempPostData appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=file; filename=%@; Content-Type=image/png; file=%@", filename, filedata] dataUsingEncoding:NSUTF8StringEncoding]];
-	[request setHTTPBody:tempPostData]
+    [body appendData:[[NSString stringWithFormat:@"\r\n--%@\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
+    var dataImg = [[NSFileManager defaultManager] contentsAtPath:path];
+    [body appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=file; filename=%@\r\n",filename] dataUsingEncoding:NSUTF8StringEncoding]];
+    [body appendData:[@"Content-Type: image/png\r\n\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
+    [body appendData:dataImg];
+    [body appendData:[[NSString stringWithFormat:@"\r\n--%@\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
 
-	var response = nil;
-	var error = nil;
+	[request setHTTPBody:body]
+
+	var response = MOPointer.alloc().init();
+	var error = MOPointer.alloc().init();
 	sketchLog(context,"NSURLConnection postFileNSUrlConnection()")
-	var data = [NSURLConnection sendSynchronousRequest:request returningResponse:response error:error];
-	
-	if (error == nil && data != nil)
-	{	    
 
-		sketchLog(context,"no error or data not nil")
+	var data = NSURLConnection.sendSynchronousRequest_returningResponse_error(request, response, error);
+	
+	sketchLog(context, "Full header response: " + response.value())
+
+	if (error.value() == nil && data != nil) {	    
+
+		sketchLog(context,"no error and data not nil")
 
 	    var errorJson;
 
-	    if(data.length > 0){
+	    if(data != nil){
 
 	    	sketchLog(context,"rdata bigger than nil")
 
-		var res = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableLeaves error:errorJson]
+			var res = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableLeaves error:errorJson]
 		
-		if(res){ 
-			sketchLog(context,"result")
-			if(res.detail && res.detail == "Invalid token"){
-			  	//deleteActiveTokenFromComputer(context)
-			  	fireError("Your token is not valid anymore, please login again.","After you are logged in again please try again.")
-			  	return false
-			} else if (res.detail && res.detail){
-			  	fireError(res.detail)
-			  	return false
-			} else if ([res valueForKey:@"id"]) {
-				//var itemId = [NSString stringWithFormat:@"%@", [[res valueForKey:@"id"] intValue]];
-			   	return itemId
+			if(res){
+				sketchLog(context,"result")
+				if(res.detail && res.detail == "Invalid token"){
+			  		//deleteActiveTokenFromComputer(context)
+			  		fireError("Your token is not valid anymore, please login again.","After you are logged in again please try again.")
+				} else if (res.detail && res.detail){
+			  		fireError(res.detail)
+				} else if ([res valueForKey:@"id"]) {
+					var itemId = [NSString stringWithFormat:@"%@", [[res valueForKey:@"id"] intValue]];
+			   		sketchLog(context,itemId)
+				}
+			} else {
+				sketchLog(context,"no result")
 			}
 		} else {
-			sketchLog(context,"no result")
+
+				    var errorJson;
+
+			var res = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableLeaves error:errorJson]
+
+			sketchLog(context,"no result but response code is " + res)
+			sketchLog(context,"no result but response code 3is " + error)
+			sketchLog(context,"no result but response code 2is " + response.statusCode)
+
+
 		}
-	} else {
-		sketchLog(context,"no result2")
-	}
 	    	
 	} else {
 		sketchLog(context,"error")
-			dealWithErrors(context,data)
+		dealWithErrors(context,data)
 	}
 
 	return false;}
@@ -1016,7 +1032,16 @@ function sendArtboardOnArray(context, array, scale, projectId, document){
 
 					[document saveArtboardOrSlice:version toFile:path];
 					
-					postFile(context, path, projectId, filename,item.objectID(), [[item frame] width], [[item frame] height])
+
+					//postFile(context, path, projectId, filename,item.objectID(), [[item frame] width], [[item frame] height])
+
+					
+					if(settings.getDebugSettingFromComputer(context) == 1){
+						postFileNSUrlConnection(context, path, projectId, filename,item.objectID(), [[item frame] width], [[item frame] height])
+					} else {	
+						postFile(context, path, projectId, filename,item.objectID(), [[item frame] width], [[item frame] height])
+					}
+					
 
 				}
 		}}
