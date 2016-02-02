@@ -676,7 +676,7 @@ function getTokenFromServer(email,password, context){
 				  			
 						} else if(res.password) {
 		
-								[app displayDialog:"If you sign into Marvel using Dropbox, you'll need to set a password for your account to use Sketch, head to My Profile in Marvel to set one up." withTitle:"Incorrect email or password."]
+								[app displayDialog:"If you sign in to Marvel using Dropbox or Google Drive, you'll need to set a password for your account to use Sketch, head to My Profile in Marvel to set one up." withTitle:"Incorrect email or password."]
 							
 						} else {
 								dealWithErrors(context,data)
