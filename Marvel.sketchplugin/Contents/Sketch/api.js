@@ -982,33 +982,36 @@ function exportAllArtboardsAndSendTo(context, projectId, scale, document) {
 
 function sendArtboardOnArray(context, array, scale, projectId, document){
 
-		var loopFinal = [array objectEnumerator];
+	var loopFinal = [array objectEnumerator];
+	while (item = [loopFinal nextObject]) {
+		if (item.className() == "MSArtboardGroup") {
+			var filename = mini.escapedFileName([item name]) + ".png"
+			sketchLog(context,"Artboard found with name " + filename + " and object id " + item.objectID())
+			// it's important the path is unique to prevent us sending the same image data for different artboards
+			var path = NSTemporaryDirectory() + item.objectID() + '/' + [item name] + '.png';
+			var version = copy_layer_with_factor(item, scale)
+
+			[document saveArtboardOrSlice:version toFile:path];
+
+			var args = [
+				context,
+				path,
+				projectId,
+				filename,
+				item.objectID(),
+				[[item frame] width],
+				[[item frame] height],
+			]
+
+			if(settings.getDebugSettingFromComputer(context) == 1){
+				postFileNSUrlConnection.apply(this, args);
+			} else {
+				postFile.apply(this, args);
+			}
 		
-		while (item = [loopFinal nextObject]) {
-				
-				if (item.className() == "MSArtboardGroup") {
-				
-					var filename = mini.escapedFileName([item name]) + ".png"
-					
-					sketchLog(context,"Artboard found with name " + filename + " and object id " + item.objectID())
-					var path = NSTemporaryDirectory() + filename
-					var version = copy_layer_with_factor(item, scale)
-
-					[document saveArtboardOrSlice:version toFile:path];
-					
-
-					//postFile(context, path, projectId, filename,item.objectID(), [[item frame] width], [[item frame] height])
-
-					
-					if(settings.getDebugSettingFromComputer(context) == 1){
-						postFileNSUrlConnection(context, path, projectId, filename,item.objectID(), [[item frame] width], [[item frame] height])
-					} else {	
-						postFile(context, path, projectId, filename,item.objectID(), [[item frame] width], [[item frame] height])
-					}
-					
-
-				}
-		}}
+		}
+	}
+}
 
 function copy_layer_with_factor(original_slice, factor){
     var copy = [original_slice duplicate];
