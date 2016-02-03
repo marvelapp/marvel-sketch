@@ -962,24 +962,9 @@ function exportArtboardsAndSendTo(context, projectId, scale, selection, document
 				var existing_artboards_names = [];
 										
 				while (artboard = [loop nextObject]) {
-				  	
 				  	if (artboard.className() == "MSArtboardGroup") {
-				  	
-				  	var arrayCount = existing_artboards_names.length;
-				  	for (var i = 0; i < arrayCount; i++) {
-				  	
-				  			if(existing_artboards_names[i] == [artboard name]){
-				  				
-				  				fireError("You have more than one artboard with the name '" + [artboard name]  + "', please change one of these artboard names.","Please rename one of these artboards in order to solve this issue.")
-				  				return false
-				  				  
-				  			} 
-				  	}
-				  	
-				  	existing_artboards_names.push([artboard name]); 
-				  	
+						existing_artboards_names.push([artboard name]);
 				  	}					  	 					  	 
-			
 				}
 				
 				if(existing_artboards_names.length == 0){
@@ -990,31 +975,10 @@ function exportArtboardsAndSendTo(context, projectId, scale, selection, document
 	sendArtboardOnArray(context, selection, scale, projectId, document)}
 
 function exportAllArtboardsAndSendTo(context, projectId, scale, document) {
-
-		sketchLog(context,"exportAllArtboardsAndSendTo() : project with id " + projectId + " and size " + scale)
-					
-					var artboards = [[document currentPage] artboards];
-					var loop = [artboards objectEnumerator];
-					var existing_artboards_names = [];
-											
-					while (artboard = [loop nextObject]) {
-					  	
-					  	var arrayCount = existing_artboards_names.length;
-					  	for (var i = 0; i < arrayCount; i++) {
-					  	
-					  			if(existing_artboards_names[i] == [artboard name]){
-					  				
-					  				fireError("You have more than one artboard with the name '" + [artboard name]  + "', please change one of these artboard names.","Please rename one of these artboards in order to solve this issue.")
-					  				return false
-					  				  
-					  			} 
-					  	}
-					  	
-					  	existing_artboards_names.push([artboard name]); 					  	 					  	 
-				
-					}
-			
-					sendArtboardOnArray(context, artboards, scale, projectId, document)				}
+	sketchLog(context,"exportAllArtboardsAndSendTo() : project with id " + projectId + " and size " + scale);
+	var artboards = [[document currentPage] artboards];
+	sendArtboardOnArray(context, artboards, scale, projectId, document);
+}
 
 function sendArtboardOnArray(context, array, scale, projectId, document){
 
