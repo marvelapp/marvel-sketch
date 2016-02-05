@@ -962,24 +962,9 @@ function exportArtboardsAndSendTo(context, projectId, scale, selection, document
 				var existing_artboards_names = [];
 										
 				while (artboard = [loop nextObject]) {
-				  	
 				  	if (artboard.className() == "MSArtboardGroup") {
-				  	
-				  	var arrayCount = existing_artboards_names.length;
-				  	for (var i = 0; i < arrayCount; i++) {
-				  	
-				  			if(existing_artboards_names[i] == [artboard name]){
-				  				
-				  				fireError("You have more than one artboard with the name '" + [artboard name]  + "', please change one of these artboard names.","Please rename one of these artboards in order to solve this issue.")
-				  				return false
-				  				  
-				  			} 
-				  	}
-				  	
-				  	existing_artboards_names.push([artboard name]); 
-				  	
+						existing_artboards_names.push([artboard name]);
 				  	}					  	 					  	 
-			
 				}
 				
 				if(existing_artboards_names.length == 0){
@@ -990,61 +975,43 @@ function exportArtboardsAndSendTo(context, projectId, scale, selection, document
 	sendArtboardOnArray(context, selection, scale, projectId, document)}
 
 function exportAllArtboardsAndSendTo(context, projectId, scale, document) {
-
-		sketchLog(context,"exportAllArtboardsAndSendTo() : project with id " + projectId + " and size " + scale)
-					
-					var artboards = [[document currentPage] artboards];
-					var loop = [artboards objectEnumerator];
-					var existing_artboards_names = [];
-											
-					while (artboard = [loop nextObject]) {
-					  	
-					  	var arrayCount = existing_artboards_names.length;
-					  	for (var i = 0; i < arrayCount; i++) {
-					  	
-					  			if(existing_artboards_names[i] == [artboard name]){
-					  				
-					  				fireError("You have more than one artboard with the name '" + [artboard name]  + "', please change one of these artboard names.","Please rename one of these artboards in order to solve this issue.")
-					  				return false
-					  				  
-					  			} 
-					  	}
-					  	
-					  	existing_artboards_names.push([artboard name]); 					  	 					  	 
-				
-					}
-			
-					sendArtboardOnArray(context, artboards, scale, projectId, document)				}
+	sketchLog(context,"exportAllArtboardsAndSendTo() : project with id " + projectId + " and size " + scale);
+	var artboards = [[document currentPage] artboards];
+	sendArtboardOnArray(context, artboards, scale, projectId, document);
+}
 
 function sendArtboardOnArray(context, array, scale, projectId, document){
 
-		var loopFinal = [array objectEnumerator];
+	var loopFinal = [array objectEnumerator];
+	while (item = [loopFinal nextObject]) {
+		if (item.className() == "MSArtboardGroup") {
+			var filename = mini.escapedFileName([item name]) + ".png"
+			sketchLog(context,"Artboard found with name " + filename + " and object id " + item.objectID())
+			// it's important the path is unique to prevent us sending the same image data for different artboards
+			var path = NSTemporaryDirectory() + item.objectID() + '/' + [item name] + '.png';
+			var version = copy_layer_with_factor(item, scale)
+
+			[document saveArtboardOrSlice:version toFile:path];
+
+			var args = [
+				context,
+				path,
+				projectId,
+				filename,
+				item.objectID(),
+				[[item frame] width],
+				[[item frame] height],
+			]
+
+			if(settings.getDebugSettingFromComputer(context) == 1){
+				postFileNSUrlConnection.apply(this, args);
+			} else {
+				postFile.apply(this, args);
+			}
 		
-		while (item = [loopFinal nextObject]) {
-				
-				if (item.className() == "MSArtboardGroup") {
-				
-					var filename = mini.escapedFileName([item name]) + ".png"
-					
-					sketchLog(context,"Artboard found with name " + filename + " and object id " + item.objectID())
-					var path = NSTemporaryDirectory() + filename
-					var version = copy_layer_with_factor(item, scale)
-
-					[document saveArtboardOrSlice:version toFile:path];
-					
-
-					//postFile(context, path, projectId, filename,item.objectID(), [[item frame] width], [[item frame] height])
-
-					
-					if(settings.getDebugSettingFromComputer(context) == 1){
-						postFileNSUrlConnection(context, path, projectId, filename,item.objectID(), [[item frame] width], [[item frame] height])
-					} else {	
-						postFile(context, path, projectId, filename,item.objectID(), [[item frame] width], [[item frame] height])
-					}
-					
-
-				}
-		}}
+		}
+	}
+}
 
 function copy_layer_with_factor(original_slice, factor){
     var copy = [original_slice duplicate];
