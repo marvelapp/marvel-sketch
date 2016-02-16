@@ -1,6 +1,6 @@
 /*The MIT License (MIT)
 
-Copyright (c) 2015 Marvel App
+Copyright (c) 2016 Marvel App
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -20,24 +20,18 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.*/
 
-@import 'api.js'
+function loadFrameworkIfNeeded(context){
 
-var onRun = function (context) {
- 	
-	if (getActiveTokenFromComputer(context) == false) {
-
-		sketchLog(context,"Fire login window");
-		fireLoginWindowWithContext(context)
+	var scriptPath = context.scriptPath;
+	var pluginRoot = [scriptPath stringByDeletingLastPathComponent];
+	
+	if (NSClassFromString('MarvelSketch') == null) {
+	  var mocha = [Mocha sharedRuntime];
+	  [mocha loadFrameworkWithName:'MarvelSketch' inDirectory:pluginRoot];
 	} else {
-
-		sketchLog(context,"Get project names array");
-		
-		var projectNamesArray = getProjectNamesArray(context)
-
-		if(projectNamesArray){
-			fireSendArtboards(projectNamesArray, 0, context)
-		}
-		
-		
+		NSLog("Marvel already loaded");
 	}
+
+	[MarvelSketch sharedManager]
+
 }
