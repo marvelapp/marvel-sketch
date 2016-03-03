@@ -7,15 +7,15 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleExecutable</key>
-	<string>MarvelSketch</string>
+	<string>MarvelFrameworkTests</string>
 	<key>CFBundleIdentifier</key>
-	<string>com.marvelprototyping.MarvelSketch</string>
+	<string>com.marvelprototyping.MarvelFrameworkTests</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
-	<string>MarvelSketch</string>
+	<string>MarvelFrameworkTests</string>
 	<key>CFBundlePackageType</key>
-	<string>FMWK</string>
+	<string>BNDL</string>
 	<key>CFBundleShortVersionString</key>
 	<string>1.0</string>
 	<key>CFBundleSignature</key>
@@ -33,14 +33,12 @@
 	<key>DTPlatformVersion</key>
 	<string>GM</string>
 	<key>DTSDKBuild</key>
-	<string>14D125</string>
+	<string>15C43</string>
 	<key>DTSDKName</key>
-	<string>macosx10.10</string>
+	<string>macosx10.11</string>
 	<key>DTXcode</key>
 	<string>0721</string>
 	<key>DTXcodeBuild</key>
 	<string>7C1002</string>
-	<key>NSHumanReadableCopyright</key>
-	<string>Copyright © 2016 Marvel Prototyping. All rights reserved.</string>
 </dict>
 </plist>

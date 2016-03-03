@@ -7,24 +7,26 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "ArtboardsWindowController.h"
-#import "MenuManager.h"
-#import "UploadManager.h"
-#import "UploadingBoxView.h"
+#import "MSFArtboardsWindowController.h"
+#import "MSFMenuManager.h"
+#import "MSFUploadManager.h"
+#import "MSFUploadingBoxView.h"
 
 @import AppKit;
 
 @interface MarvelSketch : NSObject
 
-@property (strong,nonatomic) ArtboardsWindowController *artboardsWindowController;
-@property (strong,nonatomic) MenuManager *menuManager;
-@property (strong,nonatomic) UploadManager *uploadManager;
-
-@property (strong,nonatomic) UploadingBoxView *uploadBoxView;
-
+@property (strong,nonatomic) MSFArtboardsWindowController *artboardsWindowController;
+@property (strong,nonatomic) MSFMenuManager *menuManager;
+@property (strong,nonatomic) MSFUploadManager *uploadManager;
 
 @property (strong,nonatomic) NSWindow *documentWindow;
 
 + (id)sharedManager;
+- (void)remove;
+- (void)add;
+- (void)setCurrentDocumentWindow;
+- (BOOL)userWantsMarvelHidden;
+- (void)toggleVisibility;
 
 @end

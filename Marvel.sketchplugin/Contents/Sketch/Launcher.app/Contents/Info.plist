@@ -7,15 +7,15 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleExecutable</key>
-	<string>MarvelSketch</string>
+	<string>Launcher</string>
 	<key>CFBundleIdentifier</key>
-	<string>com.marvelprototyping.MarvelSketch</string>
+	<string>com.marvelprototyping.Launcher</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
-	<string>MarvelSketch</string>
+	<string>Launcher</string>
 	<key>CFBundlePackageType</key>
-	<string>FMWK</string>
+	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
 	<string>1.0</string>
 	<key>CFBundleSignature</key>
@@ -40,7 +40,19 @@
 	<string>0721</string>
 	<key>DTXcodeBuild</key>
 	<string>7C1002</string>
+	<key>LSApplicationCategoryType</key>
+	<string>public.app-category.graphics-design</string>
+	<key>LSBackgroundOnly</key>
+	<true/>
+	<key>LSMinimumSystemVersion</key>
+	<string>10.10</string>
+	<key>LSUIElement</key>
+	<true/>
 	<key>NSHumanReadableCopyright</key>
 	<string>Copyright © 2016 Marvel Prototyping. All rights reserved.</string>
+	<key>NSMainNibFile</key>
+	<string>MainMenu</string>
+	<key>NSPrincipalClass</key>
+	<string>NSApplication</string>
 </dict>
 </plist>

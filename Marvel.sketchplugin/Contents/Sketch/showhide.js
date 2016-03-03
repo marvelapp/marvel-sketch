@@ -20,8 +20,17 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.*/
 
-@import 'framework.js';
-
 var showOrHideFramework = function(context) {
-  loadFrameworkIfNeeded(context)
+
+  var scriptPath = context.scriptPath
+  var pluginRoot = [scriptPath stringByDeletingLastPathComponent]
+
+  var task = [[NSTask alloc] init]
+  [task setLaunchPath:pluginRoot + "/Launcher.app/Contents/MacOS/Launcher"]
+  [task launch]
+
+  if (NSClassFromString('MarvelSketch')) {
+  	 [[MarvelSketch sharedManager] toggleVisibility]
+  }
+
 };

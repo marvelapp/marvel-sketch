@@ -20,18 +20,17 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.*/
 
-function loadFrameworkIfNeeded(context){
+var scriptPath = context.scriptPath;
+var pluginRoot = [scriptPath stringByDeletingLastPathComponent];
 
-	var scriptPath = context.scriptPath;
-	var pluginRoot = [scriptPath stringByDeletingLastPathComponent];
-	
-	if (NSClassFromString('MarvelSketch') == null) {
-	  var mocha = [Mocha sharedRuntime];
-	  [mocha loadFrameworkWithName:'MarvelSketch' inDirectory:pluginRoot];
-	} else {
-		NSLog("Marvel already loaded");
-	}
+if (NSClassFromString('MarvelSketch') == null) {
+	 var mocha = [Mocha sharedRuntime];
+	 [mocha loadFrameworkWithName:'MarvelSketch' inDirectory:pluginRoot];
+	 [MarvelSketch sharedManager];
+} 
 
-	[MarvelSketch sharedManager]
-
+if([[MarvelSketch sharedManager] userWantsMarvelHidden]){
+		[[MarvelSketch sharedManager] remove];
+} else {
+		[[MarvelSketch sharedManager] add];
 }

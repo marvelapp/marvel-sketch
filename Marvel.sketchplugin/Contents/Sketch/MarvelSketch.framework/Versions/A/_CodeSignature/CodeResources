@@ -4,108 +4,304 @@
 <dict>
 	<key>files</key>
 	<dict>
-		<key>Resources/ArtboardsWindowController.nib</key>
-		<data>
-		oHk/thK8yl1MF6tNu9LJ8lIL5rA=
-		</data>
 		<key>Resources/Assets.car</key>
 		<data>
-		fxbPFBjzKU/0rT1VvGfBMsn5v6A=
+		gZxTGHx3G4ti5WY4ygJ5ttjLV8Q=
 		</data>
-		<key>Resources/AuthenticationWindowController.nib</key>
+		<key>Resources/Frames.plist</key>
 		<data>
-		N9Xa5fqghR2EfBboiEOM8AXqydo=
+		1oubtwzq0R3Jmc4/iEMTmKMiuwk=
 		</data>
 		<key>Resources/Info.plist</key>
 		<data>
-		EX+Wcevq7TvRnFMl0S1zlLin6ag=
+		cBtsGqrnJ2EtsOZj4GZUc2My3Qw=
 		</data>
-		<key>Resources/LoginViewController.nib</key>
+		<key>Resources/JNWCollectionView-Info.plist</key>
 		<data>
-		jb/UonFiKj5Muh9FZU5iC8FDdF0=
+		ejeZTzXSsRayk466zPuBNMgC+Lw=
 		</data>
-		<key>Resources/LogoutViewController.nib</key>
+		<key>Resources/MSFActionBarView.nib</key>
 		<data>
-		OsLxAhFNhMQ7Xp8qMxxFZ2v0RNA=
+		5NEFLinEbkHgbuzssq4aRiqfBao=
 		</data>
-		<key>Resources/PickerCellView.nib</key>
+		<key>Resources/MSFArtboardsWindowController.nib</key>
 		<data>
-		I9TtXhLZuLWj/4aqoAr/5On403k=
+		hR+BwuJMDLggJwK0QNPeoGuFh5g=
 		</data>
-		<key>Resources/ReplacePickerViewController.nib</key>
+		<key>Resources/MSFAuthenticationWindowController.nib</key>
 		<data>
-		XyfxQbvRlXB/HETXnMZIOl+/vVI=
+		GBRKThJg1anCkWjyXdvmsxMgadg=
 		</data>
-		<key>Resources/ReplaceWindowController.nib</key>
+		<key>Resources/MSFLoginViewController.nib</key>
 		<data>
-		NAkySUN2NRXYj2oNTElrlTx4MhU=
+		3JS6mZnMxaKR8lHckowvUWEZBWs=
 		</data>
-		<key>Resources/SendArtboardsViewController.nib</key>
+		<key>Resources/MSFLogoutViewController.nib</key>
 		<data>
-		yp7St1Q4s/IMnf59bwQeqG/owOI=
+		bMrb5yF/oUnCfglWoXEfRIy9r9Y=
 		</data>
-		<key>Resources/UploadingBoxView.nib</key>
+		<key>Resources/MSFPickerCellView.nib</key>
 		<data>
-		Y4I7Sb/ALb+yWdd8zLhzydhGiu8=
+		hqx1IePZ2ZPkVEzic6ccsEntDRQ=
+		</data>
+		<key>Resources/MSFPreviewViewController.nib</key>
+		<data>
+		QJA77DBOsShEf4aUAIyL0SOw2Eo=
+		</data>
+		<key>Resources/MSFReplacePickerViewController.nib</key>
+		<data>
+		hxpQjDHkQEBRu8e5sRuCItUh9bo=
+		</data>
+		<key>Resources/MSFReplaceWindowController.nib</key>
+		<data>
+		pP2lch2eRWOUz9cTrk95kR8SttQ=
+		</data>
+		<key>Resources/MSFSendArtboardsViewController.nib</key>
+		<data>
+		MdCi5HxRu7GTx/4KoEw235CKdeM=
+		</data>
+		<key>Resources/MSFUploadingBoxView.nib</key>
+		<data>
+		AtZcQRa0iz5yqAEdYLr0IiRTses=
 		</data>
 	</dict>
 	<key>files2</key>
 	<dict>
 		<key>Headers/MarvelFramework.h</key>
 		<data>
-		CTZeshLonvG3CWpafoKNIK3oEpQ=
+		QpAy8i4fJzkOkzBKp9JXd8BQAtE=
 		</data>
 		<key>Headers/MarvelSketch.h</key>
 		<data>
-		bFElwKD485W0PMj8963MtxRZraU=
+		ABtELagGLJ48/cnmrSTc/Jyf85w=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
 		MuXPgR2A/8iwYKnBQjujbrIl66Q=
 		</data>
-		<key>Resources/ArtboardsWindowController.nib</key>
+		<key>PrivateHeaders/DPImageDownloaderCache.h</key>
 		<data>
-		oHk/thK8yl1MF6tNu9LJ8lIL5rA=
+		VkLaZVWmbSqnoXz0CEyxXleoPK0=
+		</data>
+		<key>PrivateHeaders/MSFActionBarView.h</key>
+		<data>
+		td4JI5enrZUfnZg+dKBUERr4m0o=
+		</data>
+		<key>PrivateHeaders/MSFArtboardsManager.h</key>
+		<data>
+		988vw7F1HbG3Jv99Pbu4uX6nqMc=
+		</data>
+		<key>PrivateHeaders/MSFArtboardsWindowController.h</key>
+		<data>
+		488a0WmRo3ydC1JczV2irEY7/mg=
+		</data>
+		<key>PrivateHeaders/MSFAuthenticationWindowController.h</key>
+		<data>
+		do5OXtdr4cRDsyP64Ev8/BGA1A8=
+		</data>
+		<key>PrivateHeaders/MSFCalls.h</key>
+		<data>
+		UTdK0/fky0UQeb3cluGZpZV3Oi8=
+		</data>
+		<key>PrivateHeaders/MSFClipView.h</key>
+		<data>
+		U1wP27S5BkwEdDCbxCwlLjFKE88=
+		</data>
+		<key>PrivateHeaders/MSFCollectionView+Private.h</key>
+		<data>
+		AFhtbgkd1gdkK0h0ADG+RLeRKYA=
+		</data>
+		<key>PrivateHeaders/MSFCollectionView.h</key>
+		<data>
+		Z95NGLmhbXQRG8PgfgZt04/93hs=
+		</data>
+		<key>PrivateHeaders/MSFCollectionViewCell.h</key>
+		<data>
+		cVSOPlPexKdRmuB6CzO2LRFwt9E=
+		</data>
+		<key>PrivateHeaders/MSFCollectionViewData.h</key>
+		<data>
+		dKrar0h83fNZC8kgVtH9bQVkn3Y=
+		</data>
+		<key>PrivateHeaders/MSFCollectionViewDocumentView.h</key>
+		<data>
+		ntADLoQ1pZd9/npCnrbZ3kNJz04=
+		</data>
+		<key>PrivateHeaders/MSFCollectionViewFramework.h</key>
+		<data>
+		bwebCMQ2U409zt7GdzisoBW9xho=
+		</data>
+		<key>PrivateHeaders/MSFCollectionViewGridLayout.h</key>
+		<data>
+		bscaGt4DXNhGyEDG6b32T1L6QEc=
+		</data>
+		<key>PrivateHeaders/MSFCollectionViewLayout.h</key>
+		<data>
+		+u9EkT1D6PKIwVH8LXqdyvGzByk=
+		</data>
+		<key>PrivateHeaders/MSFCollectionViewListLayout.h</key>
+		<data>
+		itZju8v0czoT5s1foP3X1o3vQdg=
+		</data>
+		<key>PrivateHeaders/MSFCollectionViewReusableView.h</key>
+		<data>
+		1j7x5eEP3fR7qdtdCQBZHEHj8lg=
+		</data>
+		<key>PrivateHeaders/MSFColor.h</key>
+		<data>
+		gtf8jNUdbn9ZMPufWvIW4kG72No=
+		</data>
+		<key>PrivateHeaders/MSFDPImageDownloader.h</key>
+		<data>
+		47HEUeKK4Zna5fkP6kT8L5razYI=
+		</data>
+		<key>PrivateHeaders/MSFFrameProperties.h</key>
+		<data>
+		dOYvNauDewND0e1leW5YMeNeDQo=
+		</data>
+		<key>PrivateHeaders/MSFKPCScaleToFillNSImageView.h</key>
+		<data>
+		WOr5Mhx4u03V7C2Fk49zikZ74sc=
+		</data>
+		<key>PrivateHeaders/MSFLastUsedProject.h</key>
+		<data>
+		e70WbPd9SVD87QpFAmGccy1Qvuo=
+		</data>
+		<key>PrivateHeaders/MSFLastUsedScale.h</key>
+		<data>
+		pFMZuN7+GP0O+KGvRlf1WuKue60=
+		</data>
+		<key>PrivateHeaders/MSFLoginViewController.h</key>
+		<data>
+		pAe33Oxuarzo7BaCwImBQZMjNBA=
+		</data>
+		<key>PrivateHeaders/MSFLogoutViewController.h</key>
+		<data>
+		D0RPaX9Q/RcUjQqYUKJN2KzNlo4=
+		</data>
+		<key>PrivateHeaders/MSFMenuManager.h</key>
+		<data>
+		IXbHfYEsPka1DSCrIJrGHKi4o6c=
+		</data>
+		<key>PrivateHeaders/MSFModalOverlay.h</key>
+		<data>
+		XpE6tRUzJ/10Q+j9eOTL8kHK3V4=
+		</data>
+		<key>PrivateHeaders/MSFNSProgressIndicator+ESSProgressIndicatorCategory.h</key>
+		<data>
+		K0O1asoWwfWAvw2bEyGIMmYFLrY=
+		</data>
+		<key>PrivateHeaders/MSFOverlayView.h</key>
+		<data>
+		JoLzF3xQQQDsg1aNF6OSW4mI0F4=
+		</data>
+		<key>PrivateHeaders/MSFPickerCellView.h</key>
+		<data>
+		fXJkuzp1olFBJD7GUracAkKDwWE=
+		</data>
+		<key>PrivateHeaders/MSFPickerHeaderView.h</key>
+		<data>
+		R8ZukuG3bMiY5/8SGOucr7+ch/A=
+		</data>
+		<key>PrivateHeaders/MSFPreviewViewController.h</key>
+		<data>
+		60tpmAXwZ071cNKPOmj0pKeW2hk=
+		</data>
+		<key>PrivateHeaders/MSFReplacePickerViewController.h</key>
+		<data>
+		TfE+N3lbMJLCRHo4qwu0lbRKd9A=
+		</data>
+		<key>PrivateHeaders/MSFReplaceWindowController.h</key>
+		<data>
+		i8hB84xcvkV+BP+kKghQpQio73o=
+		</data>
+		<key>PrivateHeaders/MSFScrollView.h</key>
+		<data>
+		C+rLaYje/I7fl7RrM1yPcS9tjSo=
+		</data>
+		<key>PrivateHeaders/MSFSendArtboardsViewController.h</key>
+		<data>
+		wNEL1L2GzPMs1pFf6zJlW9FnnTE=
+		</data>
+		<key>PrivateHeaders/MSFToken.h</key>
+		<data>
+		9F8W5MpY/U5ixnwdYTRi00K7ms8=
+		</data>
+		<key>PrivateHeaders/MSFUploadManager.h</key>
+		<data>
+		iZSGKDnOfcxkvqDqI5/blTwehZ0=
+		</data>
+		<key>PrivateHeaders/MSFUploadingBoxView.h</key>
+		<data>
+		UtEjG1vJo0dvrAza1IXWT0gWHyM=
+		</data>
+		<key>PrivateHeaders/NSIndexPath+MSFAdditions.h</key>
+		<data>
+		UjQQ9adUlMaAI0tfMkfyYZqITPg=
+		</data>
+		<key>PrivateHeaders/Version.h</key>
+		<data>
+		jBxmJrj5HzV/cy6e/BTOWeCIFlM=
 		</data>
 		<key>Resources/Assets.car</key>
 		<data>
-		fxbPFBjzKU/0rT1VvGfBMsn5v6A=
+		gZxTGHx3G4ti5WY4ygJ5ttjLV8Q=
 		</data>
-		<key>Resources/AuthenticationWindowController.nib</key>
+		<key>Resources/Frames.plist</key>
 		<data>
-		N9Xa5fqghR2EfBboiEOM8AXqydo=
+		1oubtwzq0R3Jmc4/iEMTmKMiuwk=
 		</data>
 		<key>Resources/Info.plist</key>
 		<data>
-		EX+Wcevq7TvRnFMl0S1zlLin6ag=
+		cBtsGqrnJ2EtsOZj4GZUc2My3Qw=
 		</data>
-		<key>Resources/LoginViewController.nib</key>
+		<key>Resources/JNWCollectionView-Info.plist</key>
 		<data>
-		jb/UonFiKj5Muh9FZU5iC8FDdF0=
+		ejeZTzXSsRayk466zPuBNMgC+Lw=
 		</data>
-		<key>Resources/LogoutViewController.nib</key>
+		<key>Resources/MSFActionBarView.nib</key>
 		<data>
-		OsLxAhFNhMQ7Xp8qMxxFZ2v0RNA=
+		5NEFLinEbkHgbuzssq4aRiqfBao=
 		</data>
-		<key>Resources/PickerCellView.nib</key>
+		<key>Resources/MSFArtboardsWindowController.nib</key>
 		<data>
-		I9TtXhLZuLWj/4aqoAr/5On403k=
+		hR+BwuJMDLggJwK0QNPeoGuFh5g=
 		</data>
-		<key>Resources/ReplacePickerViewController.nib</key>
+		<key>Resources/MSFAuthenticationWindowController.nib</key>
 		<data>
-		XyfxQbvRlXB/HETXnMZIOl+/vVI=
+		GBRKThJg1anCkWjyXdvmsxMgadg=
 		</data>
-		<key>Resources/ReplaceWindowController.nib</key>
+		<key>Resources/MSFLoginViewController.nib</key>
 		<data>
-		NAkySUN2NRXYj2oNTElrlTx4MhU=
+		3JS6mZnMxaKR8lHckowvUWEZBWs=
 		</data>
-		<key>Resources/SendArtboardsViewController.nib</key>
+		<key>Resources/MSFLogoutViewController.nib</key>
 		<data>
-		yp7St1Q4s/IMnf59bwQeqG/owOI=
+		bMrb5yF/oUnCfglWoXEfRIy9r9Y=
 		</data>
-		<key>Resources/UploadingBoxView.nib</key>
+		<key>Resources/MSFPickerCellView.nib</key>
 		<data>
-		Y4I7Sb/ALb+yWdd8zLhzydhGiu8=
+		hqx1IePZ2ZPkVEzic6ccsEntDRQ=
+		</data>
+		<key>Resources/MSFPreviewViewController.nib</key>
+		<data>
+		QJA77DBOsShEf4aUAIyL0SOw2Eo=
+		</data>
+		<key>Resources/MSFReplacePickerViewController.nib</key>
+		<data>
+		hxpQjDHkQEBRu8e5sRuCItUh9bo=
+		</data>
+		<key>Resources/MSFReplaceWindowController.nib</key>
+		<data>
+		pP2lch2eRWOUz9cTrk95kR8SttQ=
+		</data>
+		<key>Resources/MSFSendArtboardsViewController.nib</key>
+		<data>
+		MdCi5HxRu7GTx/4KoEw235CKdeM=
+		</data>
+		<key>Resources/MSFUploadingBoxView.nib</key>
+		<data>
+		AtZcQRa0iz5yqAEdYLr0IiRTses=
 		</data>
 	</dict>
 	<key>rules</key>
