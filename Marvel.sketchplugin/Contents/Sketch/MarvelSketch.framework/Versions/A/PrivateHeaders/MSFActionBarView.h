@@ -13,5 +13,6 @@
 @property (nonatomic, strong) NSView *nibView;
 @property (nonatomic, strong) NSView *bottomLineView;
 @property (nonatomic, strong) IBOutlet NSButton *allButton;
+@property (nonatomic, strong) IBOutlet NSImageView *logoImageView;
 
 @end

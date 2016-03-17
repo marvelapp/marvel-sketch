@@ -7,10 +7,6 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "MSDocument.h"
-#import "MSExportRequest.h"
-#import "MSArtboardGroup.h"
-#import "MSSliceTrimming.h"
 
 @interface MSFArtboardsManager : NSObject
 

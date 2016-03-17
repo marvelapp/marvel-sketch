@@ -20,12 +20,9 @@
 @property (strong,nonatomic) MSFMenuManager *menuManager;
 @property (strong,nonatomic) MSFUploadManager *uploadManager;
 
-@property (strong,nonatomic) NSWindow *documentWindow;
-
 + (id)sharedManager;
 - (void)remove;
 - (void)add;
-- (void)setCurrentDocumentWindow;
 - (BOOL)userWantsMarvelHidden;
 - (void)toggleVisibility;
 

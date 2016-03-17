@@ -8,12 +8,13 @@
 
 #import <Cocoa/Cocoa.h>
 #import "MSFCollectionViewCell.h"
-#import "MSFKPCScaleToFillNSImageView.h"
+#import "MSFScaleToFillNSImageView.h"
 
 @interface MSFPickerCellView : MSFCollectionViewCell
-@property (weak) NSView *nibView;
-@property (strong) IBOutlet MSFKPCScaleToFillNSImageView *imageView;
-@property (strong) IBOutlet NSTextField *nameLabel;
+@property (strong) NSView *mainView;
+@property (strong) MSFScaleToFillNSImageView *projectImage;
+@property (strong) NSTextField *nameLabel;
+@property (strong) NSImageView *tickImage;
 
 @end
 

@@ -7,7 +7,10 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import "MSDocument.h"
 
 @interface MSFReplaceWindowController : NSWindowController
+
+@property (nonatomic, strong) MSDocument *currentDocument;
 
 @end
