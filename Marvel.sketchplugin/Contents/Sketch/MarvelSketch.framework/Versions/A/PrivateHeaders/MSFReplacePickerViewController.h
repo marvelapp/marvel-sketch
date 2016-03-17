@@ -21,9 +21,8 @@
 @property(weak) IBOutlet NSButton *replaceButton;
 @property(weak) IBOutlet NSComboBox *projectsBox;
 @property(weak) IBOutlet NSView *leftView;
+@property(weak) IBOutlet NSView *leftViewLineView;
 @property(weak) IBOutlet MSFScaleToFillNSImageView *selectedArtboardImageView;
-@property(weak) IBOutlet NSTextField *selectedArtboardNameLabel;
-
 
 @property (strong) NSDictionary *detailsDictionary;
 @property (strong) NSMutableArray *projectsArray;
