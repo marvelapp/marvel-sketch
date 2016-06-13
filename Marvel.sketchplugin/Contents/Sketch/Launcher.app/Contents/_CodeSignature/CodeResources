@@ -24,20 +24,31 @@
 		<dict>
 			<key>cdhash</key>
 			<data>
-			pu8e4ItDVlvqYGHUSDEaNQHrSE0=
+			8xpSfetMIk+zEfbFOc0y701Wa+Y=
 			</data>
 			<key>requirement</key>
-			<string>anchor apple generic and identifier "com.cocoascript.CocoaScript" and (certificate leaf[field.1.2.840.113635.100.6.1.9] /* exists */ or certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = "7C95EP5VB7")</string>
+			<string>identifier "com.cocoascript.CocoaScript" and anchor apple generic and certificate leaf[subject.CN] = "Mac Developer: Maxime De Greve (Q8955VGPNP)" and certificate 1[field.1.2.840.113635.100.6.2.1] /* exists */</string>
 		</dict>
 		<key>Resources/archived-expanded-entitlements.xcent</key>
-		<data>
-		WgW5jHFya1cjOFseAG5kE6PdWn4=
-		</data>
+		<dict>
+			<key>hash</key>
+			<data>
+			WgW5jHFya1cjOFseAG5kE6PdWn4=
+			</data>
+			<key>hash2</key>
+			<data>
+			m8AqfAkpHnWpL/x2W9VTSVnKtUyS3rsd6bnlAEkrnV8=
+			</data>
+		</dict>
 		<key>Resources/en.lproj/MainMenu.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
 			s38AVuO78z8mW/yOgDgJBS7xzb4=
+			</data>
+			<key>hash2</key>
+			<data>
+			OmoJ3w4Jq5DcFP8bPiNrjy+pEgRxO9w6POFXybyoZa8=
 			</data>
 			<key>optional</key>
 			<true/>

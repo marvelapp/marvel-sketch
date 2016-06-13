@@ -1,6 +1,0 @@
-framework module MarvelSketch {
-  umbrella header "MarvelSketch.h"
-
-  export *
-  module * { export * }
-}

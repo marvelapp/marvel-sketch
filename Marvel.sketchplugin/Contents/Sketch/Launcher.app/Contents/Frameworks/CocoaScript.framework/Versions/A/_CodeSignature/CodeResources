@@ -12,9 +12,16 @@
 	<key>files2</key>
 	<dict>
 		<key>Resources/Info.plist</key>
-		<data>
-		KmBVYxi8MkQSpvdzxPVHp+Zo9bE=
-		</data>
+		<dict>
+			<key>hash</key>
+			<data>
+			KmBVYxi8MkQSpvdzxPVHp+Zo9bE=
+			</data>
+			<key>hash2</key>
+			<data>
+			9eU1b0DctVVCOQQyevyhOEovaQ3WaqJP4xT+iVwOTi4=
+			</data>
+		</dict>
 	</dict>
 	<key>rules</key>
 	<dict>

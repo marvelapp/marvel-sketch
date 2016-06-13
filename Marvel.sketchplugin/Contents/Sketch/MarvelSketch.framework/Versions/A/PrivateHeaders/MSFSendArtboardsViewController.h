@@ -11,8 +11,7 @@
 
 @interface MSFSendArtboardsViewController : NSViewController
 
-@property (nonatomic, copy) void (^hitCancel)(void);
-@property (nonatomic, copy) void (^hitSend)(void);
+@property (nonatomic, copy) void (^wantsToCloseWindow)(void);
 
 @property (nonatomic, strong) IBOutlet NSComboBox *projectsBox;
 @property (nonatomic, strong) IBOutlet NSComboBox *scaleBox;

@@ -10,13 +10,14 @@
 #import "MSFAuthenticationWindowController.h"
 #import "MSFArtboardsWindowController.h"
 #import "MSFReplaceWindowController.h"
+#import "MSFSendArtboardsViewController.h"
 
 @interface MSFMenuManager : NSObject <NSMenuDelegate>
 
+@property (strong,nonatomic) MSFSendArtboardsViewController *sendArtboardsViewController;
 @property (strong,nonatomic) MSFAuthenticationWindowController *authenticationWindowController;
 @property (strong,nonatomic) MSFArtboardsWindowController *artboardsWindowController;
 @property (strong,nonatomic) MSFReplaceWindowController *replaceWindowController;
-
 @property (strong,nonatomic) NSMenu *marvelMenu;
 
 - (void)set;
