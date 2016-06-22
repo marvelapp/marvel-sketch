@@ -6,7 +6,7 @@
 	<dict>
 		<key>Resources/Assets.car</key>
 		<data>
-		ZKKSa1Y5301PKgcsaWu87d52B54=
+		5fK/fUwkcilb67z7BTTP6gA9ZyE=
 		</data>
 		<key>Resources/Frames.plist</key>
 		<data>
@@ -14,7 +14,7 @@
 		</data>
 		<key>Resources/Info.plist</key>
 		<data>
-		6q34IqEQUmMHNql2fxDTS8XjgdQ=
+		c8faXP2N32jXArD1OcScOM8Rh4U=
 		</data>
 		<key>Resources/JNWCollectionView-Info.plist</key>
 		<data>
@@ -70,11 +70,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			m5IFdOQW+VHvmFGkwZDx4MN1JG4=
+			DSEqZImeWpSEff/iThi6fQvmD1g=
 			</data>
 			<key>hash2</key>
 			<data>
-			nbPd7+ESw7npnCnF6HCF8yJMAu0UNHmsdtnvigTS8bo=
+			3uPkI5GH+O9w2iEc2zJ+YsmqnmWwhTbx6hT1M1QFqx0=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>
@@ -114,22 +114,22 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			N/MsnjHKGS1V/uhG64VXyS5OwGg=
+			7SD3WrAfIhxyKuvYtZh1W8hIIyM=
 			</data>
 			<key>hash2</key>
 			<data>
-			KNCyNg9lFqbdzk4MmPo1iDCWYxBHS0Q0kdazWdvGr+g=
+			NuoVMqXZoz0xqN9BhNEM8KaK+Pk0nA99qnIHAQCkTTs=
 			</data>
 		</dict>
 		<key>PrivateHeaders/MSFArtboardsWindowController.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			488a0WmRo3ydC1JczV2irEY7/mg=
+			HhoiR2w9uSY3VXlcoslxPdbMgA8=
 			</data>
 			<key>hash2</key>
 			<data>
-			Sv7aubOROJ4nvfzsMNhQNGr/hPQ0jiR3nt5V6QbniCk=
+			y5IYxM85WMMu+hdvE+JBXmah3c4v02eN8BXuUdebesU=
 			</data>
 		</dict>
 		<key>PrivateHeaders/MSFAuthenticationWindowController.h</key>
@@ -345,11 +345,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			BafvZFMRIQDmvFJ5GmQtN0z1ryA=
+			nbgZEnIMabLrdrcN2SrXkLC7MNI=
 			</data>
 			<key>hash2</key>
 			<data>
-			pu8ExWXe3dyxJ/9tbjNltIcb/IHQoeMnqwdpCYRSyos=
+			0Ig6Lnh+Wr3NIzQSbCXx6fjsUdbAdFObJwrD62uHPIQ=
 			</data>
 		</dict>
 		<key>PrivateHeaders/MSFNSProgressIndicator+ESSProgressIndicatorCategory.h</key>
@@ -389,11 +389,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			OvD6KzgOLY9PDFeKY36mim3Fsf0=
+			B17x0/dQHZqQjKJUjF+/h5xuL08=
 			</data>
 			<key>hash2</key>
 			<data>
-			vkvSUan4xB1XXQEYyioQdGVo6HLH+eORw4ktk5Uz1w4=
+			ao3un19rbgb9pb584lgem66QtBHZUn95Ygu4rk60QBc=
 			</data>
 		</dict>
 		<key>PrivateHeaders/MSFScrollView.h</key>
@@ -466,11 +466,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			ZKKSa1Y5301PKgcsaWu87d52B54=
+			5fK/fUwkcilb67z7BTTP6gA9ZyE=
 			</data>
 			<key>hash2</key>
 			<data>
-			gLFXwjZlpycG2JJutmOT14Avx38awJQA8viattSt1zU=
+			IhkFFwSnugpNwh227u2XilPVh5RCUwQUPp29OdkhLGo=
 			</data>
 		</dict>
 		<key>Resources/Frames.plist</key>
@@ -488,11 +488,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			6q34IqEQUmMHNql2fxDTS8XjgdQ=
+			c8faXP2N32jXArD1OcScOM8Rh4U=
 			</data>
 			<key>hash2</key>
 			<data>
-			19bpDF6SGfNW3AJchQK6bNgBg9c6eGFdQny76gZpO54=
+			9NGsx5kWqVf2hwQHn4cq0hIzqRFl1p59IK/8Fa2H6rg=
 			</data>
 		</dict>
 		<key>Resources/JNWCollectionView-Info.plist</key>

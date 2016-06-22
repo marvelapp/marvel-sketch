@@ -4,9 +4,9 @@
 <dict>
 	<key>files</key>
 	<dict>
-		<key>Resources/archived-expanded-entitlements.xcent</key>
+		<key>Resources/AppIcon.icns</key>
 		<data>
-		WgW5jHFya1cjOFseAG5kE6PdWn4=
+		XlM7lZR9Q+aUtL/HNPOZWQr/M+k=
 		</data>
 		<key>Resources/en.lproj/MainMenu.nib</key>
 		<dict>
@@ -24,20 +24,20 @@
 		<dict>
 			<key>cdhash</key>
 			<data>
-			8xpSfetMIk+zEfbFOc0y701Wa+Y=
+			UrLhSTf3m05hldrYtSW13V0l5vc=
 			</data>
 			<key>requirement</key>
-			<string>identifier "com.cocoascript.CocoaScript" and anchor apple generic and certificate leaf[subject.CN] = "Mac Developer: Maxime De Greve (Q8955VGPNP)" and certificate 1[field.1.2.840.113635.100.6.2.1] /* exists */</string>
+			<string>anchor apple generic and identifier "com.cocoascript.CocoaScript" and (certificate leaf[field.1.2.840.113635.100.6.1.9] /* exists */ or certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = "7C95EP5VB7")</string>
 		</dict>
-		<key>Resources/archived-expanded-entitlements.xcent</key>
+		<key>Resources/AppIcon.icns</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			WgW5jHFya1cjOFseAG5kE6PdWn4=
+			XlM7lZR9Q+aUtL/HNPOZWQr/M+k=
 			</data>
 			<key>hash2</key>
 			<data>
-			m8AqfAkpHnWpL/x2W9VTSVnKtUyS3rsd6bnlAEkrnV8=
+			YL6CCNECcYpn9d5gvgz+5N8r7L3bcY1+/jbC1gq3UDU=
 			</data>
 		</dict>
 		<key>Resources/en.lproj/MainMenu.nib</key>
@@ -52,6 +52,17 @@
 			</data>
 			<key>optional</key>
 			<true/>
+		</dict>
+		<key>embedded.provisionprofile</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			PMZn+q5miqNFnZnnjl6XVsrBCgA=
+			</data>
+			<key>hash2</key>
+			<data>
+			AaypXBmm+89FZv8HJEjBhwXgd9M14eOttrFnblnuwUA=
+			</data>
 		</dict>
 	</dict>
 	<key>rules</key>
