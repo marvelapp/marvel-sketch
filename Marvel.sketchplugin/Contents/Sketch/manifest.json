@@ -3,58 +3,25 @@
   "description": "Send artboards to Marvel",
   "author": "Marvel",
   "homepage": "https://marvelapp.com/prototype-with-sketch/",
-  "version": 1.42,
-  "identifier": "com.marvel.sketch.marvel-plugin",
+  "version": 2.2,
+  "identifier": "com.marvelprototyping.MarvelSketch",
   "updateURL": "https://github.com/downloads/example/sketchplugins/sketchplugins.json",
   "compatibleVersion": 3,
   "bundleVersion": 1,
   "commands": [
     {
-      "name": "Login or Logout to Marvel...",
-      "identifier": "login",
-      "script": "authenticate.js",
-      "shortcut": ""
-    },
-    {
-      "name": "Send or Update All Artboards to Project...",
-      "identifier": "allartboards",
-      "shortcut": "cmd alt f",
-      "script": "artboards-all.js"
-    },
-    {
-      "name": "Send or Update Selected Artboards to Project...",
-      "identifier": "selectedartboards",
-      "shortcut": "cmd alt g",
-      "script": "artboards-selected.js"
-    },
-    {
-      "name": "Report a bug...",
-      "identifier": "support",
-      "script": "support.js",
-      "shortcut": ""
-    },
-    {
-      "name": "Check for updates...",
-      "identifier": "updates",
-      "script": "updates.js",
-      "shortcut": "",
+      "name": "Show/Hide Marvel",
+      "identifier": "showhide",
+      "script": "showhide.js",
+      "shortcut": "cmd l",
+      "handler": "showOrHideFramework"
     }
   ],
-
   "menu" : {
   "title": "Marvel",
+  "isRoot": true,
   "items": [
-    "login",
-    "allartboards",
-    "selectedartboards",
-    {
-       "title": "Support & Updates...",
-       "items": [
-         "support",
-         "updates"
-       ],
-     }
+    "showhide"
   ]
-}
-
+  }
 }

@@ -1,6 +1,6 @@
 /*The MIT License (MIT)
 
-Copyright (c) 2015 Marvel App
+Copyright (c) 2016 Marvel App
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -20,15 +20,20 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.*/
 
+var scriptPath = context.scriptPath;
+var pluginRoot = [scriptPath stringByDeletingLastPathComponent];
 
-@import 'api.js'
+if (NSClassFromString('MarvelSketch') == null) {
+    var mocha = [Mocha sharedRuntime];
+    if(![mocha loadFrameworkWithName:'MarvelSketch' inDirectory:pluginRoot]){
+        NSLog("MarvelSketch could not be loaded")
+        return
+    }
+    [MarvelSketch sharedManager];
+} 
 
-var onRun = function(context) {
-	
-	if (getActiveTokenFromComputer(context) == false) {
-		fireLoginWindowWithContext(context)
-	} else {
-		fireAlreadyLoggedInWindow(context)
-	}
-
+if([[MarvelSketch sharedManager] userWantsMarvelHidden]){
+		[[MarvelSketch sharedManager] remove];
+} else {
+		[[MarvelSketch sharedManager] add];
 }
