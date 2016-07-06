@@ -24,9 +24,18 @@ var scriptPath = context.scriptPath;
 var pluginRoot = [scriptPath stringByDeletingLastPathComponent];
 
 if (NSClassFromString('MarvelSketch') == null) {
+<<<<<<< HEAD:Marvel.sketchplugin/Contents/Sketch/load.js
 	 var mocha = [Mocha sharedRuntime];
 	 [mocha loadFrameworkWithName:'MarvelSketch' inDirectory:pluginRoot];
 	 [MarvelSketch sharedManager];
+=======
+    var mocha = [Mocha sharedRuntime];
+    if(![mocha loadFrameworkWithName:'MarvelSketch' inDirectory:pluginRoot]){
+        NSLog("MarvelSketch could not be loaded")
+        return
+    }
+    [MarvelSketch sharedManager];
+>>>>>>> development:Marvel.sketchplugin/Contents/Sketch/load.js
 } 
 
 if([[MarvelSketch sharedManager] userWantsMarvelHidden]){

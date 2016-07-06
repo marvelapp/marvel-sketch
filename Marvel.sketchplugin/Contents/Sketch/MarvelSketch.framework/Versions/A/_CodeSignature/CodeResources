@@ -6,7 +6,7 @@
 	<dict>
 		<key>Resources/Assets.car</key>
 		<data>
-		5fK/fUwkcilb67z7BTTP6gA9ZyE=
+		k8txqvegFClnuNM9iSF2HcdwWlc=
 		</data>
 		<key>Resources/Frames.plist</key>
 		<data>
@@ -14,7 +14,7 @@
 		</data>
 		<key>Resources/Info.plist</key>
 		<data>
-		c8faXP2N32jXArD1OcScOM8Rh4U=
+		LaeD+O2N11ARbzTAVE4ZCtVgoJo=
 		</data>
 		<key>Resources/JNWCollectionView-Info.plist</key>
 		<data>
@@ -47,6 +47,14 @@
 		<key>Resources/MSFSendArtboardsViewController.nib</key>
 		<data>
 		MdCi5HxRu7GTx/4KoEw235CKdeM=
+		</data>
+		<key>Resources/MSFShortcutViewController.nib</key>
+		<data>
+		IGED2/IihwAUZLqlsF40VuuWhwc=
+		</data>
+		<key>Resources/MSFShortcutWindowController.nib</key>
+		<data>
+		Z50/EYEDzryPq+fQ5fMK+PPOOUE=
 		</data>
 		<key>Resources/MSFUploadingBoxView.nib</key>
 		<data>
@@ -345,11 +353,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			nbgZEnIMabLrdrcN2SrXkLC7MNI=
+			wOpKr6SjciVMvWnni2XM+zQKkms=
 			</data>
 			<key>hash2</key>
 			<data>
-			0Ig6Lnh+Wr3NIzQSbCXx6fjsUdbAdFObJwrD62uHPIQ=
+			ewrLT749DttfkLSQ3KIQ1ymZ125CgZftdyaXB/2aYwM=
 			</data>
 		</dict>
 		<key>PrivateHeaders/MSFNSProgressIndicator+ESSProgressIndicatorCategory.h</key>
@@ -466,11 +474,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			5fK/fUwkcilb67z7BTTP6gA9ZyE=
+			k8txqvegFClnuNM9iSF2HcdwWlc=
 			</data>
 			<key>hash2</key>
 			<data>
-			IhkFFwSnugpNwh227u2XilPVh5RCUwQUPp29OdkhLGo=
+			Nbhjkr/2YqvVynweu0eTnnyLFGD5ZGQwXGs8S1eRHKE=
 			</data>
 		</dict>
 		<key>Resources/Frames.plist</key>
@@ -488,11 +496,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			c8faXP2N32jXArD1OcScOM8Rh4U=
+			LaeD+O2N11ARbzTAVE4ZCtVgoJo=
 			</data>
 			<key>hash2</key>
 			<data>
-			9NGsx5kWqVf2hwQHn4cq0hIzqRFl1p59IK/8Fa2H6rg=
+			+7w6XQHsYipSi7xWC4ucfa1XMecZAU5G7uw8Xrm1BDI=
 			</data>
 		</dict>
 		<key>Resources/JNWCollectionView-Info.plist</key>
@@ -581,6 +589,28 @@
 			<key>hash2</key>
 			<data>
 			Q80LxtABOFVMZ0XGz+pQvcgWWi/sACFnV0c3ZXDgJZA=
+			</data>
+		</dict>
+		<key>Resources/MSFShortcutViewController.nib</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			IGED2/IihwAUZLqlsF40VuuWhwc=
+			</data>
+			<key>hash2</key>
+			<data>
+			4TJNr5MQbsKnjDk7IammO/hAJcI90KeA8kB/taQGWkc=
+			</data>
+		</dict>
+		<key>Resources/MSFShortcutWindowController.nib</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			Z50/EYEDzryPq+fQ5fMK+PPOOUE=
+			</data>
+			<key>hash2</key>
+			<data>
+			K7boAJLrN3dpWMoJD0+KFJe3ZC3Wdp/C7f7vaiFqhPw=
 			</data>
 		</dict>
 		<key>Resources/MSFUploadingBoxView.nib</key>
