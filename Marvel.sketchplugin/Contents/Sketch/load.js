@@ -30,7 +30,7 @@ if (NSClassFromString('MarvelSketch') == null) {
         return
     }
     [MarvelSketch sharedManager];
-}
+} 
 
 if([[MarvelSketch sharedManager] userWantsMarvelHidden]){
 		[[MarvelSketch sharedManager] remove];

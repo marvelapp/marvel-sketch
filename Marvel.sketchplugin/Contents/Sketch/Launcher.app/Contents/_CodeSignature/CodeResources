@@ -8,10 +8,6 @@
 		<data>
 		XlM7lZR9Q+aUtL/HNPOZWQr/M+k=
 		</data>
-		<key>Resources/archived-expanded-entitlements.xcent</key>
-		<data>
-		WgW5jHFya1cjOFseAG5kE6PdWn4=
-		</data>
 		<key>Resources/en.lproj/MainMenu.nib</key>
 		<dict>
 			<key>hash</key>
@@ -28,7 +24,7 @@
 		<dict>
 			<key>cdhash</key>
 			<data>
-			tGmWaCHY4q9xeQYdb5lYoYEhlXA=
+			PFM6YBUJUc8gxvVf32EJ6Q1gGNI=
 			</data>
 			<key>requirement</key>
 			<string>anchor apple generic and identifier "com.cocoascript.CocoaScript" and (certificate leaf[field.1.2.840.113635.100.6.1.9] /* exists */ or certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = "7C95EP5VB7")</string>
@@ -44,17 +40,6 @@
 			YL6CCNECcYpn9d5gvgz+5N8r7L3bcY1+/jbC1gq3UDU=
 			</data>
 		</dict>
-		<key>Resources/archived-expanded-entitlements.xcent</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			WgW5jHFya1cjOFseAG5kE6PdWn4=
-			</data>
-			<key>hash2</key>
-			<data>
-			m8AqfAkpHnWpL/x2W9VTSVnKtUyS3rsd6bnlAEkrnV8=
-			</data>
-		</dict>
 		<key>Resources/en.lproj/MainMenu.nib</key>
 		<dict>
 			<key>hash</key>
@@ -67,6 +52,17 @@
 			</data>
 			<key>optional</key>
 			<true/>
+		</dict>
+		<key>embedded.provisionprofile</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			PMZn+q5miqNFnZnnjl6XVsrBCgA=
+			</data>
+			<key>hash2</key>
+			<data>
+			AaypXBmm+89FZv8HJEjBhwXgd9M14eOttrFnblnuwUA=
+			</data>
 		</dict>
 	</dict>
 	<key>rules</key>

@@ -3,7 +3,7 @@
   "description": "Send artboards to Marvel",
   "author": "Marvel",
   "homepage": "https://marvelapp.com/prototype-with-sketch/",
-  "version": 2.1,
+  "version": 2.2,
   "identifier": "com.marvelprototyping.MarvelSketch",
   "updateURL": "https://github.com/downloads/example/sketchplugins/sketchplugins.json",
   "compatibleVersion": 3,
