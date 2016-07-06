@@ -6,7 +6,7 @@
 	<dict>
 		<key>Resources/Assets.car</key>
 		<data>
-		k8txqvegFClnuNM9iSF2HcdwWlc=
+		cUK9Csqec1WimAw3i0oCu5W20rY=
 		</data>
 		<key>Resources/Frames.plist</key>
 		<data>
@@ -47,14 +47,6 @@
 		<key>Resources/MSFSendArtboardsViewController.nib</key>
 		<data>
 		MdCi5HxRu7GTx/4KoEw235CKdeM=
-		</data>
-		<key>Resources/MSFShortcutViewController.nib</key>
-		<data>
-		IGED2/IihwAUZLqlsF40VuuWhwc=
-		</data>
-		<key>Resources/MSFShortcutWindowController.nib</key>
-		<data>
-		Z50/EYEDzryPq+fQ5fMK+PPOOUE=
 		</data>
 		<key>Resources/MSFUploadingBoxView.nib</key>
 		<data>
@@ -353,11 +345,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			wOpKr6SjciVMvWnni2XM+zQKkms=
+			nbgZEnIMabLrdrcN2SrXkLC7MNI=
 			</data>
 			<key>hash2</key>
 			<data>
-			ewrLT749DttfkLSQ3KIQ1ymZ125CgZftdyaXB/2aYwM=
+			0Ig6Lnh+Wr3NIzQSbCXx6fjsUdbAdFObJwrD62uHPIQ=
 			</data>
 		</dict>
 		<key>PrivateHeaders/MSFNSProgressIndicator+ESSProgressIndicatorCategory.h</key>
@@ -474,11 +466,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			k8txqvegFClnuNM9iSF2HcdwWlc=
+			cUK9Csqec1WimAw3i0oCu5W20rY=
 			</data>
 			<key>hash2</key>
 			<data>
-			Nbhjkr/2YqvVynweu0eTnnyLFGD5ZGQwXGs8S1eRHKE=
+			YUjiXGyNDQb4vmpxNyJTNM1+eIL23+XRCGH+NkB2s9g=
 			</data>
 		</dict>
 		<key>Resources/Frames.plist</key>
@@ -589,28 +581,6 @@
 			<key>hash2</key>
 			<data>
 			Q80LxtABOFVMZ0XGz+pQvcgWWi/sACFnV0c3ZXDgJZA=
-			</data>
-		</dict>
-		<key>Resources/MSFShortcutViewController.nib</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			IGED2/IihwAUZLqlsF40VuuWhwc=
-			</data>
-			<key>hash2</key>
-			<data>
-			4TJNr5MQbsKnjDk7IammO/hAJcI90KeA8kB/taQGWkc=
-			</data>
-		</dict>
-		<key>Resources/MSFShortcutWindowController.nib</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			Z50/EYEDzryPq+fQ5fMK+PPOOUE=
-			</data>
-			<key>hash2</key>
-			<data>
-			K7boAJLrN3dpWMoJD0+KFJe3ZC3Wdp/C7f7vaiFqhPw=
 			</data>
 		</dict>
 		<key>Resources/MSFUploadingBoxView.nib</key>
