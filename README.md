@@ -1,6 +1,6 @@
 ### This is the old sketch plugin page, go here to download the latest plugin: https://marvelapp.com/prototype-with-sketch/ :blue_heart::+1:
 
-> in case you would still like to download the old plugin: https://github.com/marvelapp/marvel-sketch/archive/1.43.zip
+> in case you are still on Yosemite or you would still like to download the old plugin: https://github.com/marvelapp/marvel-sketch/archive/1.43.zip
 
 <p align="center">
 <img align="center" src="http://i.imgur.com/O7VuNhD.png" alt="marvel sketch plugin">
